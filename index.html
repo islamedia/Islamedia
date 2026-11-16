@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Islamedia.fr — Comprendre l’islam, sources à l’appui</title>
+<meta name="description" content="Islamedia.fr, média éducatif sur l’islam : des vidéos courtes en français sur le Coran, les prophètes et la croyance, avec des références vérifiées.">
+<meta name="theme-color" content="#123B2F">
+<link rel="canonical" href="https://islamedia.fr/">
+<!-- Aperçu quand on partage le lien (WhatsApp, Instagram, Facebook…) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Islamedia.fr">
+<meta property="og:url" content="https://islamedia.fr/">
+<meta property="og:title" content="Islamedia.fr — Comprendre l’islam, sources à l’appui">
+<meta property="og:description" content="Des vidéos courtes en français sur le Coran, les prophètes et la croyance, avec des références vérifiées.">
+<meta property="og:image" content="https://islamedia.fr/images/apercu-partage.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="preload" href="polices/manrope-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="polices/amiri-quran.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script>
+  /* Applique le thème (clair ou sombre) avant l'affichage, pour éviter un flash. */
+  (function () {
+    var d = document.documentElement, t = null;
+    d.classList.add("js");
+    try { t = localStorage.getItem("islamedia-theme"); } catch (e) {}
+    if (t !== "clair" && t !== "sombre") t = (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches) ? "sombre" : "clair";
+    d.setAttribute("data-theme", t);
+  })();
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Islamedia.fr","url":"https://islamedia.fr/","logo":"https://islamedia.fr/images/apple-touch-icon.png","description":"Média éducatif sur l’islam, en français."}</script>
+</head>
+<body>
+<a class="saut" href="#contenu">Aller au contenu</a>
+<svg class="defs" aria-hidden="true" focusable="false"><defs><linearGradient id="verre" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6E7BE" stop-opacity=".95"/><stop offset="1" stop-color="#C5A15B" stop-opacity=".8"/></linearGradient><radialGradient id="flamme"><stop offset="0" stop-color="#FFF8E6"/><stop offset=".55" stop-color="#F1DDA4" stop-opacity=".75"/><stop offset="1" stop-color="#F1DDA4" stop-opacity="0"/></radialGradient><filter id="lueur" x="-300%" y="-300%" width="700%" height="700%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs></svg>
+
+<!-- ===================== EN-TÊTE ===================== -->
+<header class="entete">
+  <div class="entete__in">
+    <a class="logo" href="#haut" aria-label="Islamedia.fr, retour en haut"><span>Islamedia</span><span class="logo__ext">.fr</span></a>
+    <nav class="menu" id="menu" aria-label="Navigation principale">
+      <a href="#verset">Verset du jour</a>
+      <a href="#series">Nos séries</a>
+      <a href="#methode">Notre méthode</a>
+      <a href="#bientot">Bientôt</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="entete__actions">
+      <button class="icone-btn" type="button" data-theme-bascule aria-label="Passer en mode sombre" aria-pressed="false">
+        <svg class="ico-lune" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A8.6 8.6 0 1 1 9.7 3.5a6.9 6.9 0 0 0 10.8 10.8Z"/></svg>
+        <svg class="ico-soleil" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+      </button>
+      <button class="icone-btn burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Ouvrir le menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <!-- ===================== ACCUEIL ===================== -->
+  <section class="hero" id="haut" aria-label="Accueil">
+    <div class="hero__motif" aria-hidden="true"></div>
+    <div class="ciel" aria-hidden="true"><span class="filante"></span></div>
+    <div class="hero__rosace" aria-hidden="true"><svg class="rosace" viewBox="-200 -200 400 400" xmlns="http://www.w3.org/2000/svg"><circle class="trace" pathLength="1" style="--d:0" r="196"/><circle class="trace" pathLength="1" style="--d:1" r="187"/><path class="trace" pathLength="1" style="--d:2" d="M0 -187 L132.23 132.23 L-187 0 L132.23 -132.23 L0 187 L-132.23 -132.23 L187 0 L-132.23 132.23 Z"/><path class="trace" pathLength="1" style="--d:3" d="M0 -140 L140 0 L0 140 L-140 0 Z"/><path class="trace" pathLength="1" style="--d:4" d="M98.99 -98.99 L98.99 98.99 L-98.99 98.99 L-98.99 -98.99 Z"/><circle class="trace" pathLength="1" style="--d:5" r="99"/><path class="trace" pathLength="1" style="--d:6" d="M37.89 -91.46 L37.89 91.46 L-91.46 -37.89 L91.46 -37.89 L-37.89 91.46 L-37.89 -91.46 L91.46 37.89 L-91.46 37.89 Z"/><circle class="trace" pathLength="1" style="--d:7" r="50"/><path class="trace" pathLength="1" style="--d:8" d="M0 -50 L14.65 -35.36 L35.36 -35.36 L35.36 -14.65 L50 0 L35.36 14.65 L35.36 35.36 L14.65 35.36 L0 50 L-14.65 35.36 L-35.36 35.36 L-35.36 14.65 L-50 0 L-35.36 -14.65 L-35.36 -35.36 L-14.65 -35.36 Z"/><circle class="grain" cx="0" cy="-163" r="2.4"/><circle class="grain" cx="62.38" cy="-150.59" r="2.4"/><circle class="grain" cx="115.26" cy="-115.26" r="2.4"/><circle class="grain" cx="150.59" cy="-62.38" r="2.4"/><circle class="grain" cx="163" cy="0" r="2.4"/><circle class="grain" cx="150.59" cy="62.38" r="2.4"/><circle class="grain" cx="115.26" cy="115.26" r="2.4"/><circle class="grain" cx="62.38" cy="150.59" r="2.4"/><circle class="grain" cx="0" cy="163" r="2.4"/><circle class="grain" cx="-62.38" cy="150.59" r="2.4"/><circle class="grain" cx="-115.26" cy="115.26" r="2.4"/><circle class="grain" cx="-150.59" cy="62.38" r="2.4"/><circle class="grain" cx="-163" cy="0" r="2.4"/><circle class="grain" cx="-150.59" cy="-62.38" r="2.4"/><circle class="grain" cx="-115.26" cy="-115.26" r="2.4"/><circle class="grain" cx="-62.38" cy="-150.59" r="2.4"/></svg></div>
+    <div class="lanterne lanterne--1" aria-hidden="true"><svg viewBox="0 0 60 244" xmlns="http://www.w3.org/2000/svg"><line x1="30" y1="0" x2="30" y2="120" stroke="#C5A15B" stroke-width="1.2" opacity=".85"/><circle cx="30" cy="124" r="4" fill="none" stroke="#C5A15B" stroke-width="1.4"/><path d="M17 140 L30 128 L43 140 Z" fill="#123B2F" stroke="#C5A15B" stroke-width="1.4" stroke-linejoin="round"/><rect x="13" y="140" width="34" height="6" rx="1.5" fill="#C5A15B"/><path d="M14 146 H46 L53 178 L46 210 H14 L7 178 Z" fill="url(#verre)" stroke="#C5A15B" stroke-width="1.4" stroke-linejoin="round"/><ellipse class="lueur" cx="30" cy="178" rx="17" ry="26" fill="url(#flamme)"/><g fill="none" stroke="#123B2F" stroke-width="2" stroke-linecap="round" opacity=".85"><path d="M22 147 V209 M30 147 V209 M38 147 V209 M8 178 H52"/><path d="M14 164 Q22 153 30 164 Q38 153 46 164"/><path d="M14 193 Q22 204 30 193 Q38 204 46 193"/></g><rect x="13" y="210" width="34" height="6" rx="1.5" fill="#C5A15B"/><path d="M18 216 H42 L30 230 Z" fill="#123B2F" stroke="#C5A15B" stroke-width="1.4" stroke-linejoin="round"/><line x1="30" y1="230" x2="30" y2="238" stroke="#C5A15B" stroke-width="1.4"/><circle cx="30" cy="240" r="2.2" fill="#C5A15B"/></svg></div>
+    <div class="lanterne lanterne--2" aria-hidden="true"><svg viewBox="0 0 60 194" xmlns="http://www.w3.org/2000/svg"><line x1="30" y1="0" x2="30" y2="70" stroke="#C5A15B" stroke-width="1.2" opacity=".85"/><circle cx="30" cy="74" r="4" fill="none" stroke="#C5A15B" stroke-width="1.4"/><path d="M17 90 L30 78 L43 90 Z" fill="#123B2F" stroke="#C5A15B" stroke-width="1.4" stroke-linejoin="round"/><rect x="13" y="90" width="34" height="6" rx="1.5" fill="#C5A15B"/><path d="M14 96 H46 L53 128 L46 160 H14 L7 128 Z" fill="url(#verre)" stroke="#C5A15B" stroke-width="1.4" stroke-linejoin="round"/><ellipse class="lueur" cx="30" cy="128" rx="17" ry="26" fill="url(#flamme)"/><g fill="none" stroke="#123B2F" stroke-width="2" stroke-linecap="round" opacity=".85"><path d="M22 97 V159 M30 97 V159 M38 97 V159 M8 128 H52"/><path d="M14 114 Q22 103 30 114 Q38 103 46 114"/><path d="M14 143 Q22 154 30 143 Q38 154 46 143"/></g><rect x="13" y="160" width="34" height="6" rx="1.5" fill="#C5A15B"/><path d="M18 166 H42 L30 180 Z" fill="#123B2F" stroke="#C5A15B" stroke-width="1.4" stroke-linejoin="round"/><line x1="30" y1="180" x2="30" y2="188" stroke="#C5A15B" stroke-width="1.4"/><circle cx="30" cy="190" r="2.2" fill="#C5A15B"/></svg></div>
+    <div class="lune" aria-hidden="true"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="or-lune" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6E7BE"/><stop offset="1" stop-color="#C5A15B"/></linearGradient><mask id="masque-lune"><rect width="100" height="100" fill="#fff"/><circle cx="63" cy="40" r="33" fill="#000"/></mask></defs><circle cx="48" cy="52" r="38" fill="url(#or-lune)" mask="url(#masque-lune)"/></svg></div>
+
+    <div class="hero__contenu">
+      <p class="basmala" lang="ar" dir="rtl"><span class="basmala__texte">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span></p>
+      <div class="logo-zone">
+        <span class="halo" aria-hidden="true"></span>
+        <h1 class="logo-hero"><span class="sr-only">Islamedia.fr</span><span class="logo-hero__nom" data-lettres aria-hidden="true">Islamedia</span><span class="logo-hero__ext" aria-hidden="true">.fr</span><span class="brillance" aria-hidden="true"></span></h1>
+      </div>
+      <!-- ✏️ Slogan et présentation : tu peux changer ces deux phrases -->
+      <p class="hero__slogan apparait" style="--delai:1.5s">Comprendre l’islam, <span class="or">sources</span> à l’appui.</p>
+      <p class="hero__intro apparait" style="--delai:1.65s">Des vidéos courtes en français sur le Coran, les prophètes et la croyance. Chaque verset est cité avec sa référence.</p>
+      <div class="hero__actions apparait" style="--delai:1.8s">
+        <a class="btn btn--or" href="#series">Découvrir nos séries</a>
+        <a class="btn btn--clair" href="#verset">Le verset du jour</a>
+      </div>
+    </div>
+    <a class="defiler" href="#verset" aria-label="Descendre vers le verset du jour"></a>
+    <svg class="arcades" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path class="plein" d="M0 80 L0 74 C1.8 40 30 18 45 6 C60 18 88.2 40 90 74 C91.8 40 120 18 135 6 C150 18 178.2 40 180 74 C181.8 40 210 18 225 6 C240 18 268.2 40 270 74 C271.8 40 300 18 315 6 C330 18 358.2 40 360 74 C361.8 40 390 18 405 6 C420 18 448.2 40 450 74 C451.8 40 480 18 495 6 C510 18 538.2 40 540 74 C541.8 40 570 18 585 6 C600 18 628.2 40 630 74 C631.8 40 660 18 675 6 C690 18 718.2 40 720 74 C721.8 40 750 18 765 6 C780 18 808.2 40 810 74 C811.8 40 840 18 855 6 C870 18 898.2 40 900 74 C901.8 40 930 18 945 6 C960 18 988.2 40 990 74 C991.8 40 1020 18 1035 6 C1050 18 1078.2 40 1080 74 C1081.8 40 1110 18 1125 6 C1140 18 1168.2 40 1170 74 C1171.8 40 1200 18 1215 6 C1230 18 1258.2 40 1260 74 C1261.8 40 1290 18 1305 6 C1320 18 1348.2 40 1350 74 C1351.8 40 1380 18 1395 6 C1410 18 1438.2 40 1440 74 L1440 80 Z"/><path class="filet" d="M0 74 C1.8 40 30 18 45 6 C60 18 88.2 40 90 74 C91.8 40 120 18 135 6 C150 18 178.2 40 180 74 C181.8 40 210 18 225 6 C240 18 268.2 40 270 74 C271.8 40 300 18 315 6 C330 18 358.2 40 360 74 C361.8 40 390 18 405 6 C420 18 448.2 40 450 74 C451.8 40 480 18 495 6 C510 18 538.2 40 540 74 C541.8 40 570 18 585 6 C600 18 628.2 40 630 74 C631.8 40 660 18 675 6 C690 18 718.2 40 720 74 C721.8 40 750 18 765 6 C780 18 808.2 40 810 74 C811.8 40 840 18 855 6 C870 18 898.2 40 900 74 C901.8 40 930 18 945 6 C960 18 988.2 40 990 74 C991.8 40 1020 18 1035 6 C1050 18 1078.2 40 1080 74 C1081.8 40 1110 18 1125 6 C1140 18 1168.2 40 1170 74 C1171.8 40 1200 18 1215 6 C1230 18 1258.2 40 1260 74 C1261.8 40 1290 18 1305 6 C1320 18 1348.2 40 1350 74 C1351.8 40 1380 18 1395 6 C1410 18 1438.2 40 1440 74"/></svg>
+  </section>
+
+  <!-- ===================== VERSET DU JOUR ===================== -->
+  <section class="section verset" id="verset" aria-labelledby="titre-verset">
+    <div class="conteneur">
+      <div class="entete-section" data-reveal>
+        <p class="surtitre">Verset du jour</p>
+        <h2 class="section__titre" id="titre-verset">Un verset à méditer</h2>
+      </div>
+      <figure class="mihrab" data-reveal data-verset>
+        <svg class="mihrab__arc" viewBox="0 0 600 190" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><path d="M1 190 V150 C1 62 196 32 300 12 C404 32 599 62 599 150 V190"/><path opacity=".55" d="M22 190 V154 C22 76 206 52 300 34 C394 52 578 76 578 154 V190"/><path class="apex" d="M300 2 L301.72 7.84 L307.07 4.93 L304.16 10.28 L310 12 L304.16 13.72 L307.07 19.07 L301.72 16.16 L300 22 L298.28 16.16 L292.93 19.07 L295.84 13.72 L290 12 L295.84 10.28 L292.93 4.93 L298.28 7.84 Z"/></svg>
+        <div class="mihrab__corps" aria-live="polite">
+          <span class="pilier pilier--1" aria-hidden="true"></span><span class="pilier pilier--2" aria-hidden="true"></span>
+          <span class="pilier pilier--3" aria-hidden="true"></span><span class="pilier pilier--4" aria-hidden="true"></span>
+          <span class="socle" aria-hidden="true"></span>
+          <blockquote class="verset__bloc">
+            <p class="verset__ar" lang="ar" dir="rtl">ٱقْرَأْ بِٱسْمِ رَبِّكَ ٱلَّذِى خَلَقَ</p>
+            <p class="verset__fr">Lis au nom de ton Seigneur qui a créé,</p>
+          </blockquote>
+          <figcaption class="verset__ref">Sourate Al‑‘Alaq (96), verset 1</figcaption>
+        </div>
+      </figure>
+      <div class="verset__nav" data-verset-nav hidden>
+        <button type="button" data-precedent aria-label="Verset précédent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="points" aria-hidden="true"></div>
+        <button type="button" data-suivant aria-label="Verset suivant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+      <p class="source">Texte arabe : <a href="https://tanzil.net" target="_blank" rel="noopener">Tanzil Project</a> (lecture Hafs), comparé lettre par lettre avec deux autres éditions. Traduction du sens : Rachid Maach, <a href="https://quranenc.com/fr/browse/french_rashid" target="_blank" rel="noopener">QuranEnc.com</a> (version 1.0.3).</p>
+    </div>
+  </section>
+
+  <!-- ===================== CHIFFRES ===================== -->
+  <section class="chiffres" aria-label="Le Coran en chiffres">
+    <div class="conteneur chiffres__grille">
+      <div class="chiffre" data-reveal><p class="chiffre__nb" data-compteur="114">114</p><p class="chiffre__label">sourates dans le Coran</p></div>
+      <div class="chiffre" data-reveal style="--delai:.12s"><p class="chiffre__nb" data-compteur="6236">6 236</p><p class="chiffre__label">versets (lecture Hafs)</p></div>
+      <div class="chiffre" data-reveal style="--delai:.24s"><p class="chiffre__nb" data-compteur="25">25</p><p class="chiffre__label">prophètes cités par leur nom</p></div>
+    </div>
+  </section>
+
+  <!-- ===================== SÉRIES ===================== -->
+  <section class="section series" id="series" aria-labelledby="titre-series">
+    <div class="conteneur">
+      <div class="entete-section" data-reveal>
+        <p class="surtitre">Nos séries</p>
+        <h2 class="section__titre" id="titre-series">Des vidéos courtes, des sources solides</h2>
+        <p class="section__intro">Une minute pour comprendre un sujet, avec le verset ou le hadith à l’écran. Les faits sont toujours séparés des interprétations.</p>
+      </div>
+      <div class="grille-series">
+        <article class="carte serie" data-reveal>
+          <div class="serie__visuel" aria-hidden="true"><svg class="anim-onde" viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="30" r=".9" fill="#F4F0E6" opacity=".35"/><circle cx="210" cy="24" r=".9" fill="#F4F0E6" opacity=".35"/><circle cx="34" cy="150" r=".9" fill="#F4F0E6" opacity=".35"/><circle cx="196" cy="160" r=".9" fill="#F4F0E6" opacity=".35"/><circle cx="78" cy="16" r=".9" fill="#F4F0E6" opacity=".35"/><circle cx="160" cy="168" r=".9" fill="#F4F0E6" opacity=".35"/><circle cx="226" cy="98" r=".9" fill="#F4F0E6" opacity=".35"/><circle cx="10" cy="96" r=".9" fill="#F4F0E6" opacity=".35"/><circle class="onde" style="--i:0" cx="120" cy="90" r="78"/><circle class="onde" style="--i:1" cx="120" cy="90" r="78"/><circle class="onde" style="--i:2" cx="120" cy="90" r="78"/><circle class="onde" style="--i:3" cx="120" cy="90" r="78"/><circle class="eclat" style="--i:0;--x:-5.58px;--y:-63.76px" cx="120" cy="90" r="2.2"/><circle class="eclat" style="--i:1;--x:42.71px;--y:-61.65px" cx="120" cy="90" r="1.5"/><circle class="eclat" style="--i:2;--x:62.31px;--y:-59.28px" cx="120" cy="90" r="1.5"/><circle class="eclat" style="--i:3;--x:70.84px;--y:-4.78px" cx="120" cy="90" r="2.2"/><circle class="eclat" style="--i:4;--x:81.23px;--y:11.21px" cx="120" cy="90" r="1.5"/><circle class="eclat" style="--i:5;--x:45.2px;--y:49.45px" cx="120" cy="90" r="1.5"/><circle class="eclat" style="--i:6;--x:39.84px;--y:67.06px" cx="120" cy="90" r="2.2"/><circle class="eclat" style="--i:7;--x:-13.92px;--y:87.9px" cx="120" cy="90" r="1.5"/><circle class="eclat" style="--i:8;--x:-26.17px;--y:69.22px" cx="120" cy="90" r="1.5"/><circle class="eclat" style="--i:9;--x:-73.93px;--y:41.95px" cx="120" cy="90" r="2.2"/><circle class="eclat" style="--i:10;--x:-66.63px;--y:21.47px" cx="120" cy="90" r="1.5"/><circle class="eclat" style="--i:11;--x:-75.18px;--y:-30.16px" cx="120" cy="90" r="1.5"/><circle class="eclat" style="--i:12;--x:-54.99px;--y:-36.5px" cx="120" cy="90" r="2.2"/><circle class="eclat" style="--i:13;--x:-22.15px;--y:-73.75px" cx="120" cy="90" r="1.5"/><circle class="noyau" cx="120" cy="90" r="7" filter="url(#lueur)"/></svg></div>
+          <div class="serie__corps">
+            <p class="serie__tag">Science &amp; Coran</p>
+            <h3>Le Big Bang dans le Coran ?</h3>
+            <p class="serie__texte">Ce que dit le verset, ce qu’en disent les savants, et ce qui relève de l’interprétation.</p>
+            <div class="serie__verset"><p class="serie__ar" lang="ar" dir="rtl">رَتْقًا فَفَتَقْنَٰهُمَا</p><p class="serie__ref">Sourate Al‑Anbiya (21), verset 30 · extrait</p></div>
+            <a class="serie__lien" data-lien="tiktok" hidden>Voir sur TikTok <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </article>
+        <article class="carte serie" data-reveal style="--delai:.1s">
+          <div class="serie__visuel" aria-hidden="true"><svg class="anim-miel" viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg"><path class="alveole" style="--i:0" d="M120 70 L137.32 80 L137.32 100 L120 110 L102.68 100 L102.68 80 Z"/><path class="alveole" style="--i:1" d="M158.11 70 L175.43 80 L175.43 100 L158.11 110 L140.78 100 L140.78 80 Z"/><path class="alveole" style="--i:2" d="M139.05 103 L156.37 113 L156.37 133 L139.05 143 L121.73 133 L121.73 113 Z"/><path class="alveole" style="--i:3" d="M100.95 103 L118.27 113 L118.27 133 L100.95 143 L83.63 133 L83.63 113 Z"/><path class="alveole" style="--i:4" d="M81.89 70 L99.22 80 L99.22 100 L81.89 110 L64.57 100 L64.57 80 Z"/><path class="alveole" style="--i:5" d="M100.95 37 L118.27 47 L118.27 67 L100.95 77 L83.63 67 L83.63 47 Z"/><path class="alveole" style="--i:6" d="M139.05 37 L156.37 47 L156.37 67 L139.05 77 L121.73 67 L121.73 47 Z"/><g transform="translate(120 90)"><g class="abeille"><ellipse class="aile" cx="-1" cy="-7" rx="4" ry="6.5"/><ellipse class="aile" cx="4" cy="-6.5" rx="3.5" ry="5.5"/><ellipse cx="2" cy="0" rx="8" ry="5" fill="#C5A15B"/><path d="M0 -4.6 V4.6 M4 -4.4 V4.4" stroke="#17241E" stroke-width="1.8"/><circle cx="-7.5" cy="-.5" r="3.4" fill="#17241E" stroke="#C5A15B" stroke-width="1"/><path d="M10 0 l4 0" stroke="#C5A15B" stroke-width="1.6" stroke-linecap="round"/></g></g></svg></div>
+          <div class="serie__corps">
+            <p class="serie__tag">Signes dans la nature</p>
+            <h3>L’abeille dans le Coran</h3>
+            <p class="serie__texte">Une sourate porte son nom. Ce que le texte en dit, ce que la science observe, et la différence entre les deux.</p>
+            <div class="serie__verset"><p class="serie__ar" lang="ar" dir="rtl">ٱلنَّحْلِ</p><p class="serie__ref">Sourate An‑Nahl (16), verset 68 · extrait</p></div>
+            <a class="serie__lien" data-lien="tiktok" hidden>Voir sur TikTok <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </article>
+        <article class="carte serie" data-reveal>
+          <div class="serie__visuel" aria-hidden="true"><svg class="anim-25" viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg"><circle class="anneau" cx="120" cy="90" r="78"/><path class="point" style="--i:0" d="M120 23.8 L121.01 26.99 L124.2 28 L121.01 29.01 L120 32.2 L118.99 29.01 L115.8 28 L118.99 26.99 Z"/><path class="point" style="--i:1" d="M135.42 25.75 L136.43 28.94 L139.62 29.95 L136.43 30.96 L135.42 34.15 L134.41 30.96 L131.22 29.95 L134.41 28.94 Z"/><path class="point" style="--i:2" d="M149.87 31.47 L150.88 34.66 L154.07 35.67 L150.88 36.68 L149.87 39.87 L148.86 36.68 L145.67 35.67 L148.86 34.66 Z"/><path class="point" style="--i:3" d="M162.44 40.6 L163.45 43.79 L166.64 44.8 L163.45 45.81 L162.44 49 L161.43 45.81 L158.24 44.8 L161.43 43.79 Z"/><path class="point" style="--i:4" d="M172.35 52.58 L173.36 55.77 L176.55 56.78 L173.36 57.79 L172.35 60.98 L171.34 57.79 L168.15 56.78 L171.34 55.77 Z"/><path class="point" style="--i:5" d="M178.97 66.64 L179.98 69.83 L183.17 70.84 L179.98 71.85 L178.97 75.04 L177.96 71.85 L174.77 70.84 L177.96 69.83 Z"/><path class="point" style="--i:6" d="M181.88 81.91 L182.89 85.1 L186.08 86.11 L182.89 87.12 L181.88 90.31 L180.87 87.12 L177.68 86.11 L180.87 85.1 Z"/><path class="point" style="--i:7" d="M180.9 97.42 L181.91 100.61 L185.1 101.62 L181.91 102.63 L180.9 105.82 L179.89 102.63 L176.7 101.62 L179.89 100.61 Z"/><path class="point" style="--i:8" d="M176.1 112.2 L177.11 115.39 L180.3 116.4 L177.11 117.41 L176.1 120.6 L175.09 117.41 L171.9 116.4 L175.09 115.39 Z"/><path class="point" style="--i:9" d="M167.77 125.32 L168.78 128.51 L171.97 129.52 L168.78 130.53 L167.77 133.72 L166.76 130.53 L163.57 129.52 L166.76 128.51 Z"/><path class="point" style="--i:10" d="M156.44 135.96 L157.45 139.15 L160.64 140.16 L157.45 141.17 L156.44 144.36 L155.43 141.17 L152.24 140.16 L155.43 139.15 Z"/><path class="point" style="--i:11" d="M142.82 143.45 L143.83 146.64 L147.02 147.65 L143.83 148.66 L142.82 151.85 L141.81 148.66 L138.62 147.65 L141.81 146.64 Z"/><path class="point" style="--i:12" d="M127.77 147.31 L128.78 150.5 L131.97 151.51 L128.78 152.52 L127.77 155.71 L126.76 152.52 L123.57 151.51 L126.76 150.5 Z"/><path class="point" style="--i:13" d="M112.23 147.31 L113.24 150.5 L116.43 151.51 L113.24 152.52 L112.23 155.71 L111.22 152.52 L108.03 151.51 L111.22 150.5 Z"/><path class="point" style="--i:14" d="M97.18 143.45 L98.19 146.64 L101.38 147.65 L98.19 148.66 L97.18 151.85 L96.17 148.66 L92.98 147.65 L96.17 146.64 Z"/><path class="point" style="--i:15" d="M83.56 135.96 L84.57 139.15 L87.76 140.16 L84.57 141.17 L83.56 144.36 L82.55 141.17 L79.36 140.16 L82.55 139.15 Z"/><path class="point" style="--i:16" d="M72.23 125.32 L73.24 128.51 L76.43 129.52 L73.24 130.53 L72.23 133.72 L71.22 130.53 L68.03 129.52 L71.22 128.51 Z"/><path class="point" style="--i:17" d="M63.9 112.2 L64.91 115.39 L68.1 116.4 L64.91 117.41 L63.9 120.6 L62.89 117.41 L59.7 116.4 L62.89 115.39 Z"/><path class="point" style="--i:18" d="M59.1 97.42 L60.11 100.61 L63.3 101.62 L60.11 102.63 L59.1 105.82 L58.09 102.63 L54.9 101.62 L58.09 100.61 Z"/><path class="point" style="--i:19" d="M58.12 81.91 L59.13 85.1 L62.32 86.11 L59.13 87.12 L58.12 90.31 L57.11 87.12 L53.92 86.11 L57.11 85.1 Z"/><path class="point" style="--i:20" d="M61.03 66.64 L62.04 69.83 L65.23 70.84 L62.04 71.85 L61.03 75.04 L60.02 71.85 L56.83 70.84 L60.02 69.83 Z"/><path class="point" style="--i:21" d="M67.65 52.58 L68.66 55.77 L71.85 56.78 L68.66 57.79 L67.65 60.98 L66.64 57.79 L63.45 56.78 L66.64 55.77 Z"/><path class="point" style="--i:22" d="M77.56 40.6 L78.57 43.79 L81.76 44.8 L78.57 45.81 L77.56 49 L76.55 45.81 L73.36 44.8 L76.55 43.79 Z"/><path class="point" style="--i:23" d="M90.13 31.47 L91.14 34.66 L94.33 35.67 L91.14 36.68 L90.13 39.87 L89.12 36.68 L85.93 35.67 L89.12 34.66 Z"/><path class="point" style="--i:24" d="M104.58 25.75 L105.59 28.94 L108.78 29.95 L105.59 30.96 L104.58 34.15 L103.57 30.96 L100.38 29.95 L103.57 28.94 Z"/><text class="nb" x="120" y="104" text-anchor="middle">25</text></svg></div>
+          <div class="serie__corps">
+            <p class="serie__tag">Les prophètes</p>
+            <h3>Les 25 prophètes cités dans le Coran</h3>
+            <p class="serie__texte">Leurs noms et leurs histoires, racontés avec leurs sources, sans jamais les représenter.</p>
+            <div class="serie__verset"><p class="serie__ref">Aucun personnage n’est dessiné, par respect.</p></div>
+            <a class="serie__lien" data-lien="tiktok" hidden>Voir sur TikTok <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </article>
+        <article class="carte serie" data-reveal style="--delai:.1s">
+          <div class="serie__visuel" aria-hidden="true"><svg class="anim-un" viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg"><circle class="cercle" cx="120" cy="90" r="76"/><line class="rayon" style="--i:0" x1="120" y1="73" x2="120" y2="30"/><line class="rayon" style="--i:1" x1="132.02" y1="77.98" x2="162.43" y2="47.57"/><line class="rayon" style="--i:2" x1="137" y1="90" x2="180" y2="90"/><line class="rayon" style="--i:3" x1="132.02" y1="102.02" x2="162.43" y2="132.43"/><line class="rayon" style="--i:4" x1="120" y1="107" x2="120" y2="150"/><line class="rayon" style="--i:5" x1="107.98" y1="102.02" x2="77.57" y2="132.43"/><line class="rayon" style="--i:6" x1="103" y1="90" x2="60" y2="90"/><line class="rayon" style="--i:7" x1="107.98" y1="77.98" x2="77.57" y2="47.57"/><path class="etoile8" d="M120 54 L145.46 115.46 L84 90 L145.46 64.54 L120 126 L94.54 64.54 L156 90 L94.54 115.46 Z"/><circle class="noyau" cx="120" cy="90" r="6.5" filter="url(#lueur)"/></svg></div>
+          <div class="serie__corps">
+            <p class="serie__tag">Croyance</p>
+            <h3>Le Tawhid, l’unicité de Dieu</h3>
+            <p class="serie__texte">Les grandes questions sur la foi, comme « Qui a créé Allah ? », expliquées simplement à partir des textes.</p>
+            <div class="serie__verset"><p class="serie__ar" lang="ar" dir="rtl">قُلْ هُوَ ٱللَّهُ أَحَدٌ</p><p class="serie__ref">Sourate Al‑Ikhlas (112), verset 1</p></div>
+            <a class="serie__lien" data-lien="tiktok" hidden>Voir sur TikTok <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MÉTHODE ===================== -->
+  <section class="section methode" id="methode" aria-labelledby="titre-methode">
+    <div class="conteneur">
+      <div class="entete-section" data-reveal>
+        <p class="surtitre">Notre méthode</p>
+        <h2 class="section__titre" id="titre-methode">Quatre règles, dans chaque vidéo</h2>
+      </div>
+      <div class="grille-methode">
+        <article class="carte engagement" data-reveal>
+          <div class="pastille" aria-hidden="true"><svg viewBox="0 0 32 32"><path class="trait" pathLength="1" d="M4 7.5c4-1.6 8-1.4 12 1 4-2.4 8-2.6 12-1V25c-4-1.6-8-1.4-12 1-4-2.4-8-2.6-12-1Z"/><path class="trait" pathLength="1" d="M16 8.5V26"/><path class="trait" pathLength="1" d="M21 6.4v7.2l2-1.5 2 1.5V6.9"/></svg></div>
+          <h3>Des références affichées</h3>
+          <p>Chaque verset est cité avec sa sourate et son numéro, à partir d’un texte vérifié.</p>
+        </article>
+        <article class="carte engagement" data-reveal style="--delai:.08s">
+          <div class="pastille" aria-hidden="true"><svg viewBox="0 0 32 32"><path class="trait" pathLength="1" d="M16 5.5V27"/><path class="trait" pathLength="1" d="M10 27h12"/><path class="trait" pathLength="1" d="M5 9.5h22"/><path class="trait" pathLength="1" d="M5 9.5 1.8 17.5h6.4Z"/><path class="trait" pathLength="1" d="M27 9.5l-3.2 8h6.4Z"/></svg></div>
+          <h3>Les faits, puis l’interprétation</h3>
+          <p>On distingue ce que dit le texte de ce qu’en disent les commentateurs ou les lectures modernes.</p>
+        </article>
+        <article class="carte engagement" data-reveal style="--delai:.16s">
+          <div class="pastille" aria-hidden="true"><svg viewBox="0 0 32 32"><path class="trait" pathLength="1" d="M9 4h10l5 5v19H9Z"/><path class="trait" pathLength="1" d="M19 4v5h5"/><path class="trait" pathLength="1" d="M12.5 18.5l3 3 5.5-6.5"/></svg></div>
+          <h3>Des hadiths sourcés</h3>
+          <p>Un hadith est toujours donné avec son recueil et son degré d’authenticité.</p>
+        </article>
+        <article class="carte engagement" data-reveal style="--delai:.24s">
+          <div class="pastille" aria-hidden="true"><svg viewBox="0 0 32 32"><path class="trait" pathLength="1" d="M9 27V14.5a7 7 0 0 1 14 0V27"/><path class="trait" pathLength="1" d="M5.5 27h21"/><path class="trait" pathLength="1" d="M16 10.5l1.1 2.4 2.4 1.1-2.4 1.1-1.1 2.4-1.1-2.4-2.4-1.1 2.4-1.1Z"/></svg></div>
+          <h3>Aucun prophète représenté</h3>
+          <p>Nos animations ne montrent jamais les prophètes : on raconte, sans dessiner.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BIENTÔT ===================== -->
+  <section class="section bientot" id="bientot" aria-labelledby="titre-bientot">
+    <div class="conteneur">
+      <div class="entete-section" data-reveal>
+        <div class="bientot__lanterne" aria-hidden="true"><svg viewBox="0 0 60 168" xmlns="http://www.w3.org/2000/svg"><line x1="30" y1="0" x2="30" y2="44" stroke="#C5A15B" stroke-width="1.2" opacity=".85"/><circle cx="30" cy="48" r="4" fill="none" stroke="#C5A15B" stroke-width="1.4"/><path d="M17 64 L30 52 L43 64 Z" fill="#123B2F" stroke="#C5A15B" stroke-width="1.4" stroke-linejoin="round"/><rect x="13" y="64" width="34" height="6" rx="1.5" fill="#C5A15B"/><path d="M14 70 H46 L53 102 L46 134 H14 L7 102 Z" fill="url(#verre)" stroke="#C5A15B" stroke-width="1.4" stroke-linejoin="round"/><ellipse class="lueur" cx="30" cy="102" rx="17" ry="26" fill="url(#flamme)"/><g fill="none" stroke="#123B2F" stroke-width="2" stroke-linecap="round" opacity=".85"><path d="M22 71 V133 M30 71 V133 M38 71 V133 M8 102 H52"/><path d="M14 88 Q22 77 30 88 Q38 77 46 88"/><path d="M14 117 Q22 128 30 117 Q38 128 46 117"/></g><rect x="13" y="134" width="34" height="6" rx="1.5" fill="#C5A15B"/><path d="M18 140 H42 L30 154 Z" fill="#123B2F" stroke="#C5A15B" stroke-width="1.4" stroke-linejoin="round"/><line x1="30" y1="154" x2="30" y2="162" stroke="#C5A15B" stroke-width="1.4"/><circle cx="30" cy="164" r="2.2" fill="#C5A15B"/></svg></div>
+        <p class="surtitre">Bientôt sur islamedia.fr</p>
+        <h2 class="section__titre" id="titre-bientot">Le site va grandir</h2>
+        <p class="section__intro">Voici ce qui arrive, étape par étape.</p>
+      </div>
+      <ul class="liste-bientot">
+        <li class="carte prochain" data-reveal><span class="badge">Bientôt</span>
+          <div class="prochain__ico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 8.5c4-1.5 8-1.3 12 1 4-2.3 8-2.5 12-1v13c-4-1.5-8-1.3-12 1-4-2.3-8-2.5-12-1Z"/><path d="M16 9.5v13"/><path d="M8 28.5 24 23M24 28.5 8 23"/></svg></div>
+          <h3>Le Coran en ligne</h3><p>Le texte arabe vérifié et sa traduction, sourate par sourate.</p></li>
+        <li class="carte prochain" data-reveal style="--delai:.06s"><span class="badge">Bientôt</span>
+          <div class="prochain__ico" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="15" cy="17.5" r="10"/><path d="M15 12v5.5l3.8 2.4"/><path d="M24.4 2.8a4.6 4.6 0 1 0 4.7 6.3 3.6 3.6 0 1 1-4.7-6.3Z"/></svg></div>
+          <h3>Horaires de prière</h3><p>Calculés selon la méthode de la Diyanet, pour votre ville.</p></li>
+        <li class="carte prochain" data-reveal style="--delai:.12s"><span class="badge">Bientôt</span>
+          <div class="prochain__ico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 6h15a3 3 0 0 1 3 3v17H10a3 3 0 0 1-3-3Z"/><path d="M11 11.5h10M11 15.5h10M11 19.5h6"/></svg></div>
+          <h3>Histoires des prophètes</h3><p>Racontées étape par étape, avec leurs sources.</p></li>
+        <li class="carte prochain" data-reveal style="--delai:.18s"><span class="badge">Bientôt</span>
+          <div class="prochain__ico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 6.5h22v14H14l-6 5v-5H5Z"/><path d="M13.5 11.3a2.6 2.6 0 1 1 3.6 2.4c-.7.3-1.1.8-1.1 1.6v.3"/><path d="M16 18.3v.1"/></svg></div>
+          <h3>Des quiz</h3><p>Pour tester ses connaissances après chaque vidéo.</p></li>
+        <li class="carte prochain" data-reveal style="--delai:.24s"><span class="badge">Bientôt</span>
+          <div class="prochain__ico" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="9" y="3.5" width="14" height="25" rx="2.5"/><path d="M14 25h4"/><path d="M16 10l1 2.1 2.1 1-2.1 1-1 2.1-1-2.1-2.1-1 2.1-1Z"/></svg></div>
+          <h3>L’application Islamedia</h3><p>Le Coran, les horaires et des lieux calmes pour prier, dans votre poche.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="section contact" id="contact" aria-labelledby="titre-contact">
+    <div class="conteneur" data-reveal>
+      <div class="contact__etoile" aria-hidden="true"><svg viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 -46 L32.53 32.53 L-46 0 L32.53 -32.53 L0 46 L-32.53 -32.53 L46 0 L-32.53 32.53 Z"/><path d="M0 -28 L8.2 -19.8 L19.8 -19.8 L19.8 -8.2 L28 0 L19.8 8.2 L19.8 19.8 L8.2 19.8 L0 28 L-8.2 19.8 L-19.8 19.8 L-19.8 8.2 L-28 0 L-19.8 -8.2 L-19.8 -19.8 L-8.2 -19.8 Z"/><circle r="9" fill="none" stroke="#C5A15B" stroke-width="1.4"/></svg></div>
+      <p class="surtitre">Restons en contact</p>
+      <h2 class="section__titre" id="titre-contact">Suivez Islamedia.fr</h2>
+      <p class="section__intro">Retrouvez nos vidéos sur les réseaux. Une question, ou une remarque sur une source ? Écrivez-nous.</p>
+      <!-- Les boutons s'affichent tout seuls quand les liens sont remplis dans script.js (bloc RÉGLAGES) -->
+      <div class="contact__boutons">
+        <a class="btn btn--clair" data-lien="tiktok" hidden>TikTok</a>
+        <a class="btn btn--clair" data-lien="instagram" hidden>Instagram</a>
+        <a class="btn btn--clair" data-lien="youtube" hidden>YouTube</a>
+        <a class="btn btn--or" data-lien="email" hidden><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>Nous écrire</a>
+      </div>
+      <p class="contact__bientot" data-si-aucun-reseau>Nos comptes TikTok et Instagram arrivent très bientôt, inch’Allah.</p>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== PIED DE PAGE ===================== -->
+<footer class="pied">
+  <div class="conteneur">
+    <div class="pied__haut">
+      <div>
+        <a class="logo" href="#haut"><span>Islamedia</span><span class="logo__ext">.fr</span></a>
+        <p class="pied__slogan">Comprendre l’islam, sources à l’appui.</p>
+      </div>
+      <nav aria-label="Liens du pied de page">
+        <a href="#series">Nos séries</a>
+        <a href="#methode">Notre méthode</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+      </nav>
+    </div>
+    <p class="pied__sources">© <span data-annee>2026</span> Islamedia.fr · Texte coranique : <a href="https://tanzil.net" target="_blank" rel="noopener">Tanzil Project</a> (licence CC BY 3.0, texte non modifié) · Traduction du sens : Rachid Maach, <a href="https://quranenc.com" target="_blank" rel="noopener">QuranEnc.com</a> (version 1.0.3) · Ce site n’utilise ni cookies ni traceurs.</p>
+  </div>
+</footer>
+
+<!-- Versets affichés dans « Verset du jour » : texte arabe Tanzil vérifié, traduction QuranEnc.
+     Ne les modifie pas à la main : il faut ajouter un verset à partir d'une source vérifiée. -->
+<script type="application/json" id="donnees-versets">[{"ar": "ٱقْرَأْ بِٱسْمِ رَبِّكَ ٱلَّذِى خَلَقَ", "fr": "Lis au nom de ton Seigneur qui a créé,", "ref": "Sourate Al‑‘Alaq (96), verset 1"}, {"ar": "فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا", "fr": "Sache qu’il n’est d’épreuve qui ne soit suivie d’une délivrance.", "ref": "Sourate Ash‑Sharh (94), verset 5"}, {"ar": "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ", "fr": "Lequel des bienfaits de votre Seigneur oserez-vous renier ?", "ref": "Sourate Ar‑Rahman (55), verset 13"}, {"ar": "وَأَوْحَىٰ رَبُّكَ إِلَى ٱلنَّحْلِ أَنِ ٱتَّخِذِى مِنَ ٱلْجِبَالِ بُيُوتًا وَمِنَ ٱلشَّجَرِ وَمِمَّا يَعْرِشُونَ", "fr": "Quant aux abeilles, ton Seigneur leur a inspiré de trouver refuge dans les montagnes, les arbres et les abris que les hommes ont aménagés,", "ref": "Sourate An‑Nahl (16), verset 68"}]</script>
+<script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+ISLAMEDIA.FR — MODE D'EMPLOI DU SITE
+=====================================
+
+Ce dossier contient tout le site. Il fonctionne tel quel : pas de base de
+données, pas de logiciel à installer.
+
+
+1. CE QU'IL Y A DANS LE DOSSIER
+-------------------------------
+  index.html ............ la page d'accueil (le contenu : textes, sections)
+  style.css ............. l'apparence (couleurs, polices, animations)
+  script.js ............. les animations et le bloc RÉGLAGES (tes liens)
+  mentions-legales.html . la page obligatoire en France
+  404.html .............. la page affichée si une adresse n'existe pas
+  polices/ .............. Manrope, Inter et Amiri Quran (hébergées sur le site)
+  images/ ............... motif, favicon, icône iPhone, aperçu de partage
+  CNAME ................. indique à GitHub Pages ton adresse : islamedia.fr
+  robots.txt, sitemap.xml  pour Google
+  .nojekyll ............. fichier technique pour GitHub Pages (il peut être caché)
+
+
+2. METTRE LE SITE EN LIGNE GRATUITEMENT (GitHub Pages + ton domaine IONOS)
+--------------------------------------------------------------------------
+Le domaine acheté chez IONOS, c'est l'adresse. Il faut aussi un hébergement,
+l'endroit où vivent les fichiers. GitHub Pages l'offre gratuitement.
+À faire sur ton ordinateur.
+
+ A. Compte GitHub
+    Va sur github.com et crée un compte gratuit. Ton nom d'utilisateur
+    (TONPSEUDO) apparaîtra dans l'adresse provisoire du site. GitHub peut te
+    demander d'activer la double authentification : accepte.
+
+ B. Créer le dépôt
+    En haut à droite : « + » puis « New repository ».
+    Repository name : islamedia — laisse « Public » — « Create repository ».
+
+ C. Envoyer les fichiers
+    Décompresse le ZIP (clic droit > Extraire tout), puis ouvre le dossier
+    islamedia-site. Sur la page du dépôt, clique sur « uploading an existing
+    file ». Sélectionne TOUT le contenu du dossier (Ctrl + A) et glisse-le dans
+    la page : les fichiers et les dossiers polices et images.
+    ⚠ Glisse le contenu, pas le dossier islamedia-site lui-même.
+    En bas : « Commit changes ».
+
+ D. Activer GitHub Pages
+    Onglet « Settings » > « Pages » (menu de gauche).
+    « Build and deployment » > Source : « Deploy from a branch ».
+    Branch : « main » et « / (root) » > « Save ».
+    Le champ « Custom domain » doit afficher islamedia.fr (grâce au fichier
+    CNAME). Sinon, tape islamedia.fr et clique « Save ».
+
+ E. Brancher le domaine chez IONOS
+    Espace client IONOS > « Domaines & SSL » > menu « ⋯ » à côté
+    d'islamedia.fr > « DNS ».
+    1) Supprime les enregistrements A et AAAA existants dont le nom d'hôte est
+       @ (ils pointent vers la page d'attente d'IONOS), et celui de www.
+       Ne touche pas aux enregistrements MX, TXT ou SPF (ce sont les e-mails).
+    2) « Ajouter un enregistrement » > type A > nom d'hôte @ > pointe vers :
+         185.199.108.153
+       Si IONOS propose d'ajouter aussi l'enregistrement pour www, décoche.
+       Recommence trois fois avec :
+         185.199.109.153
+         185.199.110.153
+         185.199.111.153
+    3) « Ajouter un enregistrement » > type CNAME > nom d'hôte www >
+       pointe vers : TONPSEUDO.github.io   (ton nom d'utilisateur GitHub)
+    Facultatif (IPv6) : 4 enregistrements AAAA pour @ vers
+       2606:50c0:8000::153   2606:50c0:8001::153
+       2606:50c0:8002::153   2606:50c0:8003::153
+
+ F. Activer le HTTPS
+    Attends de 15 minutes à quelques heures. Dans GitHub > Settings > Pages,
+    coche « Enforce HTTPS » dès que la case devient cliquable (jusqu'à 24 h).
+    Ton site est en ligne : https://islamedia.fr
+
+ G. Conseillé pour la sécurité
+    GitHub > ta photo > Settings > Pages > « Add a domain » : vérifie
+    islamedia.fr en ajoutant chez IONOS l'enregistrement TXT qu'il te donne.
+    Personne d'autre ne pourra alors utiliser ton domaine sur GitHub.
+
+
+3. AUTRE SOLUTION : HÉBERGEMENT IONOS (payant)
+----------------------------------------------
+Tarifs vus sur ionos.fr le 16/11/2026 : pack Standard à 3 € HT/mois pendant
+6 mois, puis 6 € HT/mois. Si tu prends un pack d'hébergement :
+  1) Dans l'espace client, ouvre l'espace web (Webspace) de ton pack.
+  2) Envoie tout le contenu du dossier islamedia-site à la racine.
+  3) Dans « Domaines & SSL », relie islamedia.fr à cet espace web, puis
+     active le certificat SSL.
+  4) Dans mentions-legales.html, remplace le bloc « Hébergement » par
+     l'adresse d'IONOS (elle est déjà écrite en commentaire dans le fichier).
+Les fichiers CNAME et .nojekyll ne servent pas chez IONOS : tu peux les
+laisser, ils ne gênent pas.
+
+
+4. MODIFIER LE SITE
+-------------------
+ • Tes liens (TikTok, Instagram, YouTube), ton e-mail et ton nom :
+   ouvre script.js, remplis le bloc RÉGLAGES tout en haut, enregistre.
+   Les boutons apparaissent tout seuls quand un lien est rempli.
+   Sur GitHub : clique sur script.js > icône crayon > modifie >
+   « Commit changes ». Le site se met à jour en une minute environ.
+ • Les textes : dans index.html, les phrases sont lisibles entre les balises.
+   Cherche le texte à changer avec Ctrl + F.
+ • Mentions légales : ton nom et ton e-mail se remplissent depuis RÉGLAGES.
+   En France, le site doit indiquer qui l'édite, un contact et l'hébergeur.
+
+
+5. FIABILITÉ DES VERSETS
+------------------------
+ • Texte arabe : Tanzil Project, texte uthmani 1.1 (lecture Hafs), recopié
+   automatiquement, sans saisie à la main. Chaque verset affiché a été comparé
+   lettre par lettre avec deux autres éditions (Complexe du Roi Fahd et
+   QuranEnc) : identiques. Les voyelles et signes de lecture n'ont pas été
+   comparés automatiquement : fais relire par une personne qualifiée.
+   Licence Tanzil : texte non modifié, source citée, lien vers tanzil.net.
+ • Traduction du sens : Rachid Maach, QuranEnc.com, version 1.0.3.
+   QuranEnc autorise la republication sans modification, avec la mention de
+   la source et du numéro de version. Pense à vérifier de temps en temps
+   s'il existe une version plus récente.
+ • Pour ajouter un verset, ne le tape jamais à la main : demande-le à partir
+   de ces sources.
