@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Horaires de prière : Diyanet (DITIB) et autres méthodes · Islamedia.fr</title>
+<meta name="description" content="Horaires de prière pour votre ville en France, en Belgique et en Suisse : méthode de la Diyanet (DITIB), vérifiée sur ses calendriers officiels, ou Musulmans de France, Ligue islamique mondiale et autres méthodes.">
+<meta name="theme-color" content="#123B2F">
+<link rel="canonical" href="https://islamedia.fr/horaires/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Islamedia.fr">
+<meta property="og:url" content="https://islamedia.fr/horaires/">
+<meta property="og:title" content="Horaires de prière : Diyanet (DITIB) et autres méthodes · Islamedia.fr">
+<meta property="og:description" content="Horaires de prière pour votre ville en France, en Belgique et en Suisse : méthode de la Diyanet (DITIB), vérifiée sur ses calendriers officiels, ou Musulmans de France, Ligue islamique mondiale et autres méthodes.">
+<meta property="og:image" content="https://islamedia.fr/images/apercu-partage.jpg">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<link rel="preload" href="../polices/scheherazade-new.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css">
+<script>
+  (function () {
+    var d = document.documentElement, t = null, r = null;
+    d.classList.add("js");
+    try { t = localStorage.getItem("islamedia-theme"); r = JSON.parse(localStorage.getItem("islamedia-coran") || "null"); } catch (e) {}
+    if (t !== "clair" && t !== "sombre") t = (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches) ? "sombre" : "clair";
+    d.setAttribute("data-theme", t);
+    if (r) { ["ar", "fr", "tr"].forEach(function (l) { if (r[l] === false) d.classList.add("sans-" + l); });
+             if (typeof r.taille === "number") d.style.setProperty("--taille-ar", r.taille); }
+  })();
+</script>
+</head>
+<body class="page-horaires">
+<a class="saut" href="#contenu">Aller au contenu</a>
+<header class="entete est-defile entete--fixe">
+  <div class="entete__in">
+    <a class="logo" href="../" aria-label="Islamedia.fr, accueil"><span>Islamedia</span><span class="logo__ext">.fr</span></a>
+    <nav class="menu" id="menu" aria-label="Navigation principale">
+      <a href="../coran/">Le Coran</a>
+      <a href="../horaires/" aria-current="page">Horaires</a>
+      <a href="../#verset">Verset du jour</a>
+      <a href="../#series">Nos séries</a>
+      <a href="../#methode">Notre méthode</a>
+      <a href="../#contact">Contact</a>
+    </nav>
+    <div class="entete__actions">
+      <button class="icone-btn" type="button" data-theme-bascule aria-label="Passer en mode sombre" aria-pressed="false">
+        <svg class="ico-lune" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A8.6 8.6 0 1 1 9.7 3.5a6.9 6.9 0 0 0 10.8 10.8Z"/></svg>
+        <svg class="ico-soleil" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+      </button>
+      <button class="icone-btn burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Ouvrir le menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<main id="contenu" class="horaires" data-horaires-page data-racine="../">
+  <section class="horaires-tete">
+    <div class="conteneur">
+      <p class="surtitre">Horaires de prière</p>
+      <h1 class="horaires-tete__titre" data-h-titre>Horaires de prière</h1>
+      <p class="horaires-tete__intro">Calculés pour votre ville selon la méthode de la Diyanet (DITIB), ou celle de votre choix. Le calcul se fait dans votre navigateur : rien n’est envoyé.</p>
+    </div>
+  </section>
+
+  <div class="conteneur horaires__grille">
+    <section class="h-carte h-jour" aria-labelledby="h-jour-titre">
+      <div class="h-jour__tete">
+        <div>
+          <h2 class="h-jour__ville" id="h-jour-titre" data-h-ville>Paris</h2>
+          <p class="h-jour__meta"><span data-h-date>Aujourd’hui</span></p>
+        </div>
+        <p class="h-prochaine" aria-live="polite"><span>Prochaine prière</span><strong data-h-prochaine></strong></p>
+      </div>
+      <ol class="h-liste">
+        <li class="h-priere" data-h-priere><span class="h-priere__nom">Fajr<small data-h-tr lang="tr" hidden>İmsak</small></span><span class="h-priere__ar" lang="ar" dir="rtl">الفجر</span><time class="h-priere__heure" data-h-heure="fajr">--:--</time></li>
+        <li class="h-priere h-priere--lever" data-h-priere><span class="h-priere__nom">Lever du soleil<small data-h-tr lang="tr" hidden>Güneş</small></span><span class="h-priere__ar" lang="ar" dir="rtl">الشروق</span><time class="h-priere__heure" data-h-heure="lever">--:--</time></li>
+        <li class="h-priere" data-h-priere><span class="h-priere__nom">Dhuhr<small data-h-tr lang="tr" hidden>Öğle</small></span><span class="h-priere__ar" lang="ar" dir="rtl">الظهر</span><time class="h-priere__heure" data-h-heure="dhuhr">--:--</time></li>
+        <li class="h-priere" data-h-priere><span class="h-priere__nom">Asr<small data-h-tr lang="tr" hidden>İkindi</small></span><span class="h-priere__ar" lang="ar" dir="rtl">العصر</span><time class="h-priere__heure" data-h-heure="asr">--:--</time></li>
+        <li class="h-priere" data-h-priere><span class="h-priere__nom">Maghrib<small data-h-tr lang="tr" hidden>Akşam</small></span><span class="h-priere__ar" lang="ar" dir="rtl">المغرب</span><time class="h-priere__heure" data-h-heure="maghrib">--:--</time></li>
+        <li class="h-priere" data-h-priere><span class="h-priere__nom">Isha<small data-h-tr lang="tr" hidden>Yatsı</small></span><span class="h-priere__ar" lang="ar" dir="rtl">العشاء</span><time class="h-priere__heure" data-h-heure="isha">--:--</time></li>
+      </ol>
+      <noscript><p class="h-noscript">Activez JavaScript pour calculer les horaires de votre ville.</p></noscript>
+    </section>
+
+    <section class="h-carte h-reglages" aria-labelledby="h-reglages-titre">
+      <h2 id="h-reglages-titre">Ville et méthode</h2>
+      <p class="h-ville-actuelle"><span data-h-ville>Paris</span><span data-h-region>Île-de-France</span></p>
+      <label for="h-recherche">Changer de ville</label>
+      <div class="h-recherche">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+        <input id="h-recherche" type="search" inputmode="search" placeholder="Paris, Lyon, Bruxelles…" autocomplete="off" spellcheck="false"
+               role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="h-resultats" data-h-recherche>
+        <ul class="h-resultats" id="h-resultats" role="listbox" aria-label="Villes trouvées" data-h-resultats hidden></ul>
+      </div>
+      <button class="h-bouton" type="button" data-h-localiser><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="12" r="7.5"/><path d="M12 1.8v2.7M12 19.5v2.7M1.8 12h2.7M19.5 12h2.7"/></svg>Me localiser</button>
+      <p class="h-message" role="status" data-h-message hidden></p>
+      <label for="h-methode">Méthode de calcul</label>
+      <select class="h-select" id="h-methode" data-h-methode>
+          <option value="diyanet">Diyanet (DITIB)</option>
+          <option value="mdf">Musulmans de France (ex-UOIF), 12°</option>
+          <option value="lim">Ligue islamique mondiale, 18° / 17°</option>
+          <option value="isna">15° (ISNA)</option>
+          <option value="egypte">Égypte, 19,5° / 17,5°</option>
+          <option value="mecque">Umm al-Qura (La Mecque)</option>
+          <option value="karachi">Karachi, 18° / 18°</option>
+      </select>
+      <label for="h-asr">Heure de l’asr</label>
+      <select class="h-select" id="h-asr" data-h-asr>
+          <option value="standard">Standard (majorité des écoles)</option>
+          <option value="hanafite">Hanafite</option>
+      </select>
+      <p class="h-info" data-h-info></p>
+    </section>
+  </div>
+
+  <section class="conteneur h-mois" aria-labelledby="h-mois-titre">
+    <div class="h-mois__tete">
+      <button class="icone-btn" type="button" data-h-mois="-1" aria-label="Mois précédent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <h2 id="h-mois-titre" data-h-mois-titre aria-live="polite">Ce mois-ci</h2>
+      <button class="icone-btn" type="button" data-h-mois="1" aria-label="Mois suivant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="h-mois__actions">
+        <button class="h-bouton" type="button" data-h-mois="0">Ce mois-ci</button>
+        <button class="h-bouton" type="button" data-h-imprimer><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7Z"/></svg>Imprimer</button>
+      </div>
+    </div>
+    <p class="h-impression" data-h-impression></p>
+    <div class="h-tableau-zone">
+      <table class="h-tableau">
+        <thead><tr><th scope="col">Jour</th><th scope="col">Fajr</th><th scope="col">Lever</th><th scope="col">Dhuhr</th><th scope="col">Asr</th><th scope="col">Maghrib</th><th scope="col">Isha</th></tr></thead>
+        <tbody data-h-tableau></tbody>
+      </table>
+    </div>
+    <p class="h-legende" data-h-legende hidden>* Horaire estimé selon la règle d’été de la méthode choisie (voir ci-dessous).</p>
+  </section>
+
+  <section class="conteneur h-explications" aria-labelledby="h-comment">
+    <h2 id="h-comment">Comment ces horaires sont calculés</h2>
+    <p>Chaque horaire dépend de la position du soleil au-dessus de la ville choisie. Le calcul est fait par votre navigateur : la ville choisie, ou votre position si vous utilisez « Me localiser », reste sur votre appareil.</p>
+    <h3>La méthode Diyanet (DITIB)</h3>
+    <p>Elle reproduit le calendrier que la Diyanet publie pour les villes d’Europe et que suivent les mosquées DITIB. L’imsak (fajr) commence quand le soleil est à 18° sous l’horizon, la yatsı (isha) quand il est à 16°. La Diyanet ajoute des marges de précaution (temkin) : le lever du soleil est avancé de 7 minutes, le dhuhr retardé de 5 minutes, l’asr de 4 minutes et le maghrib de 7 minutes.</p>
+    <p>En été, au nord du 44,5ᵉ parallèle (Lyon, Paris, Lille, Strasbourg…), le ciel ne s’assombrit plus assez, ou très tard. La Diyanet place alors la yatsı au tiers de la nuit légale après le maghrib, et l’imsak à une distance équivalente avant le lever du soleil, allongée de l’équivalent de deux degrés. Le passage se fait en douceur, sur 20 minutes. Ce sont les critères officiels de la Diyanet, issus du Congrès international sur les horaires de prière réuni à Istanbul en 2021 avec le Conseil européen de la fatwa et de la recherche.</p>
+    <p><strong>Vérification :</strong> nous avons comparé ce calcul à 2 394 horaires officiels publiés par la Diyanet pour 2026, dans 13 villes de France, de Belgique et d’Allemagne. 95 % sont identiques à la minute près, et aucun ne s’écarte de plus d’une minute.</p>
+    <h3>Les autres méthodes</h3>
+    <p>Elles se distinguent surtout par l’angle choisi pour le fajr et l’isha. Plus l’angle est grand, plus le fajr est tôt et l’isha tard. L’écart est de quelques minutes en hiver, et peut dépasser une heure en été dans le nord de la France. Les jours d’été où le soleil ne descend pas assez bas, ces méthodes estiment le fajr et l’isha par proportion avec la latitude 45°, comme le recommande la Ligue islamique mondiale.</p>
+    <p>Pour la prière en commun, suivez les horaires de votre mosquée : beaucoup publient leur propre calendrier, avec parfois quelques minutes de précaution en plus.</p>
+    <div class="sources-coran">
+      <h2>Sources</h2>
+      <ul>
+        <li>Horaires officiels de la Diyanet, ville par ville : <a href="https://namazvakitleri.diyanet.gov.tr" target="_blank" rel="noopener">namazvakitleri.diyanet.gov.tr</a>.</li>
+        <li>Critères de calcul de la Diyanet (« Vakit Tespit Kriterleri ») : <a href="https://awqatsalah.com/sub/34/tespit-kriterleri" target="_blank" rel="noopener">awqatsalah.com</a>.</li>
+        <li>Déclaration finale du Congrès international sur les horaires de prière, Istanbul, 26-27 septembre 2021 : <a href="https://awqatsalah.com/sub/12/uluslararasi-namaz-vakitleri-kongresi-sonuc-bildirgesi" target="_blank" rel="noopener">awqatsalah.com</a>.</li>
+        <li>Ligue islamique mondiale, Conseil de jurisprudence islamique, 9ᵉ session (La Mecque, 1986) : résolution sur les horaires de prière aux hautes latitudes.</li>
+        <li>Position du soleil : formules de Jean Meeus, <em>Astronomical Algorithms</em>.</li>
+        <li>Villes et coordonnées : <a href="https://www.geonames.org" target="_blank" rel="noopener">GeoNames</a>, licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noopener">CC BY 4.0</a>.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+<footer class="pied">
+  <div class="conteneur">
+    <div class="pied__haut">
+      <div>
+        <a class="logo" href="../"><span>Islamedia</span><span class="logo__ext">.fr</span></a>
+        <p class="pied__slogan">Comprendre l’islam, sources à l’appui.</p>
+      </div>
+      <nav aria-label="Liens du pied de page">
+        <a href="../coran/">Le Coran</a>
+        <a href="../horaires/">Horaires de prière</a>
+        <a href="../#methode">Notre méthode</a>
+        <a href="../mentions-legales.html">Mentions légales</a>
+      </nav>
+    </div>
+    <p class="pied__sources">© <span data-annee>2026</span> Islamedia.fr · Horaires calculés dans votre navigateur · Méthode Diyanet reproduite d’après les <a href="https://awqatsalah.com/sub/34/tespit-kriterleri" target="_blank" rel="noopener">critères officiels</a> · Villes : <a href="https://www.geonames.org" target="_blank" rel="noopener">GeoNames</a> (licence CC BY 4.0) · Ce site n’utilise ni cookies ni traceurs.</p>
+  </div>
+</footer>
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<script src="../horaires.js" defer></script>
+<script src="../script.js" defer></script>
+</body>
+</html>

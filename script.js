@@ -59,7 +59,8 @@ const REGLAGES = {
   var hero = document.querySelector(".hero");
   function majEntete() {
     if (!entete) return;
-    var seuil = hero ? hero.offsetHeight * 0.55 : 10;
+    var contenu = hero && hero.querySelector(".hero__contenu");
+    var seuil = hero ? Math.max(10, Math.min(hero.offsetHeight * 0.55, (contenu ? contenu.offsetTop : hero.offsetHeight) - entete.offsetHeight)) : 10;
     entete.classList.toggle("est-defile", window.scrollY > seuil);
   }
   if (hero) { window.addEventListener("scroll", majEntete, { passive: true }); majEntete(); }

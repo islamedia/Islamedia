@@ -10,6 +10,8 @@ données, pas de logiciel à installer.
   index.html ............ la page d'accueil (le contenu : textes, sections)
   coran/ ................ le Coran : le sommaire (coran/index.html) et une
                           page par sourate (coran/1/ à coran/114/)
+  horaires/ ............. les horaires de prière (page et liste des villes)
+  horaires.js ........... le calcul des horaires (rien à modifier)
   style.css ............. l'apparence (couleurs, polices, animations)
   script.js ............. les animations et le bloc RÉGLAGES (tes liens)
   mentions-legales.html . la page obligatoire en France
@@ -128,7 +130,23 @@ laisser, ils ne gênent pas.
    de ces sources.
 
 
-6. METTRE À JOUR LE SITE AVEC UN NOUVEAU ZIP
+6. HORAIRES DE PRIÈRE
+---------------------
+ • La page horaires/ calcule les horaires dans le navigateur du visiteur :
+   rien n'est envoyé, et elle marche pour n'importe quelle date.
+ • Méthode par défaut : Diyanet (DITIB), calendrier européen de la Diyanet
+   (imsak 18°, yatsı 16°, temkin, règle d'été au nord de 44,5°). Le calcul a
+   été comparé à 2 394 horaires officiels de la Diyanet pour 2026, dans 13
+   villes : 95 % identiques à la minute, aucun écart de plus d'une minute.
+ • Autres méthodes au choix : Musulmans de France (12°), Ligue islamique
+   mondiale, 15° (ISNA), Égypte, Umm al-Qura, Karachi ; asr standard ou
+   hanafite. Le visiteur choisit sa ville (France, DOM, Belgique, Suisse,
+   Luxembourg, Monaco) ou se localise ; son choix reste dans son navigateur.
+ • Sans choix, la ville affichée est Paris, y compris sur l'accueil.
+ • Liste des villes : GeoNames (licence CC BY 4.0, citée sur la page).
+
+
+7. METTRE À JOUR LE SITE AVEC UN NOUVEAU ZIP
 --------------------------------------------
  • Sur GitHub, ouvre ton dépôt > « Add file » > « Upload files ».
  • Glisse tout le contenu du nouveau dossier islamedia-site : les fichiers

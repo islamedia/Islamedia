@@ -45,6 +45,7 @@
     <a class="logo" href="#haut" aria-label="Islamedia.fr, retour en haut"><span>Islamedia</span><span class="logo__ext">.fr</span></a>
     <nav class="menu" id="menu" aria-label="Navigation principale">
       <a href="coran/">Le Coran</a>
+      <a href="horaires/">Horaires</a>
       <a href="#verset">Verset du jour</a>
       <a href="#series">Nos séries</a>
       <a href="#methode">Notre méthode</a>
@@ -89,6 +90,27 @@
     </div>
     <a class="defiler" href="#verset" aria-label="Descendre vers le verset du jour"></a>
     <svg class="arcades" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path class="plein" d="M0 80 L0 74 C1.8 40 30 18 45 6 C60 18 88.2 40 90 74 C91.8 40 120 18 135 6 C150 18 178.2 40 180 74 C181.8 40 210 18 225 6 C240 18 268.2 40 270 74 C271.8 40 300 18 315 6 C330 18 358.2 40 360 74 C361.8 40 390 18 405 6 C420 18 448.2 40 450 74 C451.8 40 480 18 495 6 C510 18 538.2 40 540 74 C541.8 40 570 18 585 6 C600 18 628.2 40 630 74 C631.8 40 660 18 675 6 C690 18 718.2 40 720 74 C721.8 40 750 18 765 6 C780 18 808.2 40 810 74 C811.8 40 840 18 855 6 C870 18 898.2 40 900 74 C901.8 40 930 18 945 6 C960 18 988.2 40 990 74 C991.8 40 1020 18 1035 6 C1050 18 1078.2 40 1080 74 C1081.8 40 1110 18 1125 6 C1140 18 1168.2 40 1170 74 C1171.8 40 1200 18 1215 6 C1230 18 1258.2 40 1260 74 C1261.8 40 1290 18 1305 6 C1320 18 1348.2 40 1350 74 C1351.8 40 1380 18 1395 6 C1410 18 1438.2 40 1440 74 L1440 80 Z"/><path class="filet" d="M0 74 C1.8 40 30 18 45 6 C60 18 88.2 40 90 74 C91.8 40 120 18 135 6 C150 18 178.2 40 180 74 C181.8 40 210 18 225 6 C240 18 268.2 40 270 74 C271.8 40 300 18 315 6 C330 18 358.2 40 360 74 C361.8 40 390 18 405 6 C420 18 448.2 40 450 74 C451.8 40 480 18 495 6 C510 18 538.2 40 540 74 C541.8 40 570 18 585 6 C600 18 628.2 40 630 74 C631.8 40 660 18 675 6 C690 18 718.2 40 720 74 C721.8 40 750 18 765 6 C780 18 808.2 40 810 74 C811.8 40 840 18 855 6 C870 18 898.2 40 900 74 C901.8 40 930 18 945 6 C960 18 988.2 40 990 74 C991.8 40 1020 18 1035 6 C1050 18 1078.2 40 1080 74 C1081.8 40 1110 18 1125 6 C1140 18 1168.2 40 1170 74 C1171.8 40 1200 18 1215 6 C1230 18 1258.2 40 1260 74 C1261.8 40 1290 18 1305 6 C1320 18 1348.2 40 1350 74 C1351.8 40 1380 18 1395 6 C1410 18 1438.2 40 1440 74"/></svg>
+  </section>
+
+  <!-- ===================== HORAIRES DU JOUR =====================
+       Rempli par horaires.js (ville choisie sur la page « Horaires », Paris par défaut). -->
+  <section class="bande-horaires" aria-label="Horaires de prière du jour" data-horaires-accueil hidden>
+    <div class="conteneur bande-horaires__in">
+      <div>
+        <p class="surtitre">Horaires de prière</p>
+        <p class="bande-horaires__ville"><span data-h-ville>Paris</span> <small>· <span data-h-methode-nom>Diyanet (DITIB)</span></small></p>
+        <p class="bande-horaires__prochaine" aria-live="polite" data-h-prochaine></p>
+      </div>
+      <ol class="bande-horaires__liste">
+        <li data-h-priere><span>Fajr</span><time data-h-heure="fajr">--:--</time></li>
+        <li class="h-priere--lever" data-h-priere><span>Lever</span><time data-h-heure="lever">--:--</time></li>
+        <li data-h-priere><span>Dhuhr</span><time data-h-heure="dhuhr">--:--</time></li>
+        <li data-h-priere><span>Asr</span><time data-h-heure="asr">--:--</time></li>
+        <li data-h-priere><span>Maghrib</span><time data-h-heure="maghrib">--:--</time></li>
+        <li data-h-priere><span>Isha</span><time data-h-heure="isha">--:--</time></li>
+      </ol>
+      <a class="btn btn--or" href="horaires/">Tous les horaires</a>
+    </div>
   </section>
 
   <!-- ===================== VERSET DU JOUR ===================== -->
@@ -227,9 +249,9 @@
         <li class="carte prochain prochain--dispo" data-reveal><span class="badge badge--dispo">Disponible</span>
           <div class="prochain__ico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 8.5c4-1.5 8-1.3 12 1 4-2.3 8-2.5 12-1v13c-4-1.5-8-1.3-12 1-4-2.3-8-2.5-12-1Z"/><path d="M16 9.5v13"/><path d="M8 28.5 24 23M24 28.5 8 23"/></svg></div>
           <h3><a class="lien-carte" href="coran/">Le Coran en ligne</a></h3><p>Les 114 sourates en arabe, avec la traduction du sens en français.</p></li>
-        <li class="carte prochain" data-reveal style="--delai:.06s"><span class="badge">Bientôt</span>
+        <li class="carte prochain prochain--dispo" data-reveal style="--delai:.06s"><span class="badge badge--dispo">Disponible</span>
           <div class="prochain__ico" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="15" cy="17.5" r="10"/><path d="M15 12v5.5l3.8 2.4"/><path d="M24.4 2.8a4.6 4.6 0 1 0 4.7 6.3 3.6 3.6 0 1 1-4.7-6.3Z"/></svg></div>
-          <h3>Horaires de prière</h3><p>Calculés selon la méthode de la Diyanet, pour votre ville.</p></li>
+          <h3><a class="lien-carte" href="horaires/">Horaires de prière</a></h3><p>Pour votre ville, selon la méthode de la Diyanet (DITIB) ou celle de votre choix.</p></li>
         <li class="carte prochain" data-reveal style="--delai:.12s"><span class="badge">Bientôt</span>
           <div class="prochain__ico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 6h15a3 3 0 0 1 3 3v17H10a3 3 0 0 1-3-3Z"/><path d="M11 11.5h10M11 15.5h10M11 19.5h6"/></svg></div>
           <h3>Histoires des prophètes</h3><p>Racontées étape par étape, avec leurs sources.</p></li>
@@ -272,6 +294,7 @@
       </div>
       <nav aria-label="Liens du pied de page">
         <a href="coran/">Le Coran</a>
+        <a href="horaires/">Horaires de prière</a>
         <a href="#series">Nos séries</a>
         <a href="#methode">Notre méthode</a>
         <a href="mentions-legales.html">Mentions légales</a>
@@ -284,6 +307,7 @@
 <!-- Versets affichés dans « Verset du jour » : texte arabe Tanzil vérifié, traduction QuranEnc.
      Ne les modifie pas à la main : il faut ajouter un verset à partir d'une source vérifiée. -->
 <script type="application/json" id="donnees-versets">[{"ar": "ٱقْرَأْ بِٱسْمِ رَبِّكَ ٱلَّذِى خَلَقَ", "fr": "Lis, au nom de ton Seigneur qui a créé,", "ref": "Sourate Al‑‘Alaq (96), verset 1"}, {"ar": "فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا", "fr": "A côté de la difficulté est, certes, une facilité!", "ref": "Sourate Ash‑Sharh (94), verset 5"}, {"ar": "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ", "fr": "Lequel donc des bienfaits de votre Seigneur nierez-vous?", "ref": "Sourate Ar‑Rahman (55), verset 13"}, {"ar": "وَأَوْحَىٰ رَبُّكَ إِلَى ٱلنَّحْلِ أَنِ ٱتَّخِذِى مِنَ ٱلْجِبَالِ بُيُوتًا وَمِنَ ٱلشَّجَرِ وَمِمَّا يَعْرِشُونَ", "fr": "[Et voilà] ce que ton Seigneur révéla aux abeilles: «Prenez des demeures dans les montagnes, les arbres, et les treillages que [les hommes] font.", "ref": "Sourate An‑Nahl (16), verset 68"}]</script>
+<script src="horaires.js" defer></script>
 <script src="script.js" defer></script>
 </body>
 </html>
