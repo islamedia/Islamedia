@@ -8,6 +8,8 @@ données, pas de logiciel à installer.
 1. CE QU'IL Y A DANS LE DOSSIER
 -------------------------------
   index.html ............ la page d'accueil (le contenu : textes, sections)
+  coran/ ................ le Coran : le sommaire (coran/index.html) et une
+                          page par sourate (coran/1/ à coran/114/)
   style.css ............. l'apparence (couleurs, polices, animations)
   script.js ............. les animations et le bloc RÉGLAGES (tes liens)
   mentions-legales.html . la page obligatoire en France
@@ -115,10 +117,13 @@ laisser, ils ne gênent pas.
    partout ; 2 petits signes de lecture diffèrent (2:72 et 17:7). Les signes
    de pause (waqf) ne sont pas affichés dans cette version.
    Licence Tanzil : texte non modifié, source citée, lien vers tanzil.net.
- • Traduction du sens : Rachid Maach, QuranEnc.com, version 1.0.3.
-   QuranEnc autorise la republication sans modification, avec la mention de
-   la source et du numéro de version. Pense à vérifier de temps en temps
-   s'il existe une version plus récente.
+ • Traduction du sens : Muhammad Hamidullah, fichier fr.hamidullah de
+   Tanzil.net (mise à jour du 18 juillet 2011), reproduit sans modification.
+   Les 6 236 versets ont été contrôlés un par un contre une seconde copie du
+   même fichier. Tanzil réserve ses traductions à un usage non commercial :
+   c'est le cas du site (ni publicité, ni vente). Si un jour le site devient
+   commercial, il faudra l'accord de l'éditeur de la traduction, ou passer à
+   la version de QuranEnc, qui autorise la republication.
  • Pour ajouter un verset, ne le tape jamais à la main : demande-le à partir
    de ces sources.
 
@@ -129,8 +134,13 @@ laisser, ils ne gênent pas.
  • Glisse tout le contenu du nouveau dossier islamedia-site : les fichiers
    qui portent le même nom sont remplacés, les autres restent. « Commit
    changes ». Le site se met à jour en une à deux minutes.
- • GitHub accepte au plus 100 fichiers par envoi. Si un ZIP en contient plus,
-   il sera livré en plusieurs parties à envoyer l'une après l'autre.
+ • GitHub accepte au plus 100 fichiers par envoi. Le site complet en compte
+   plus, il est donc livré en 2 parties :
+     - partie 1 : glisse tout le contenu du dossier islamedia-site, puis
+       « Commit changes » ;
+     - partie 2 : ouvre son dossier islamedia-site et glisse uniquement le
+       dossier coran, puis « Commit changes ». Il complète le dossier coran
+       envoyé avec la partie 1.
  • Le fond animé de l'accueil s'appelle « Mosquée de nuit ». Deux autres fonds
    existent (« Zellige doré » et « Moucharabieh ») : demande-les si tu
    préfères en changer.

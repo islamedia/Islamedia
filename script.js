@@ -214,7 +214,8 @@ const REGLAGES = {
       b.addEventListener("click", function () {
         var l = b.getAttribute("data-langue");
         reglages[l] = !reglages[l];
-        if (!reglages.ar && !reglages.fr && !reglages.tr) reglages[l] = true; /* au moins une langue */
+        var presentes = tous("[data-langue]").map(function (x) { return x.getAttribute("data-langue"); });
+        if (!presentes.some(function (x) { return reglages[x]; })) reglages[l] = true; /* au moins une langue visible */
         appliquer(true);
       });
     });

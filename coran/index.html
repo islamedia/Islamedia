@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Le Coran en ligne — arabe et français · Islamedia.fr</title>
+<meta name="description" content="Les 114 sourates du Coran : texte arabe Uthmani vérifié (Tanzil) et traduction française de Muhammad Hamidullah, verset par verset.">
+<meta name="theme-color" content="#123B2F">
+<link rel="canonical" href="https://islamedia.fr/coran/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Islamedia.fr">
+<meta property="og:url" content="https://islamedia.fr/coran/">
+<meta property="og:title" content="Le Coran en ligne — arabe et français · Islamedia.fr">
+<meta property="og:description" content="Les 114 sourates du Coran : texte arabe Uthmani vérifié (Tanzil) et traduction française de Muhammad Hamidullah, verset par verset.">
+<meta property="og:image" content="https://islamedia.fr/images/apercu-partage.jpg">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<link rel="preload" href="../polices/scheherazade-new.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css">
+<script>
+  (function () {
+    var d = document.documentElement, t = null, r = null;
+    d.classList.add("js");
+    try { t = localStorage.getItem("islamedia-theme"); r = JSON.parse(localStorage.getItem("islamedia-coran") || "null"); } catch (e) {}
+    if (t !== "clair" && t !== "sombre") t = (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches) ? "sombre" : "clair";
+    d.setAttribute("data-theme", t);
+    if (r) { ["ar", "fr", "tr"].forEach(function (l) { if (r[l] === false) d.classList.add("sans-" + l); });
+             if (typeof r.taille === "number") d.style.setProperty("--taille-ar", r.taille); }
+  })();
+</script>
+</head>
+<body class="page-coran">
+<a class="saut" href="#contenu">Aller au contenu</a>
+<header class="entete est-defile entete--fixe">
+  <div class="entete__in">
+    <a class="logo" href="../" aria-label="Islamedia.fr, accueil"><span>Islamedia</span><span class="logo__ext">.fr</span></a>
+    <nav class="menu" id="menu" aria-label="Navigation principale">
+      <a href="../coran/" aria-current="page">Le Coran</a>
+      <a href="../#verset">Verset du jour</a>
+      <a href="../#series">Nos séries</a>
+      <a href="../#methode">Notre méthode</a>
+      <a href="../#contact">Contact</a>
+    </nav>
+    <div class="entete__actions">
+      <button class="icone-btn" type="button" data-theme-bascule aria-label="Passer en mode sombre" aria-pressed="false">
+        <svg class="ico-lune" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A8.6 8.6 0 1 1 9.7 3.5a6.9 6.9 0 0 0 10.8 10.8Z"/></svg>
+        <svg class="ico-soleil" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+      </button>
+      <button class="icone-btn burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Ouvrir le menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<main id="contenu" class="coran">
+  <section class="coran-tete">
+    <div class="conteneur">
+      <p class="surtitre">Le Saint Coran</p>
+      <h1 class="coran-tete__titre">Lire le Coran</h1>
+      <p class="coran-tete__intro">Les 114 sourates en arabe, avec la traduction du sens en français. Choisissez une sourate.</p>
+      
+      <label class="recherche-sourate"><span class="sr-only">Chercher une sourate</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        <input type="search" data-recherche-sourate placeholder="Nom ou numéro de sourate (ex. 36, Yasin, Mulk)" autocomplete="off">
+      </label>
+    </div>
+  </section>
+  <div class="conteneur">
+    <ol class="liste-sourates" data-liste-sourates>
+      <li data-recherche="1 al-fatiha l’ouverture الفاتحة"><a class="sourate-carte" href="1/">
+        <span class="num-etoile" aria-hidden="true"><span>1</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Fatiha</span><span class="sourate-carte__sens">L’Ouverture</span>
+          <span class="sourate-carte__meta">7 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الفاتحة</span></a></li>
+      <li data-recherche="2 al-baqara la vache البقرة"><a class="sourate-carte" href="2/">
+        <span class="num-etoile" aria-hidden="true"><span>2</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Baqara</span><span class="sourate-carte__sens">La Vache</span>
+          <span class="sourate-carte__meta">286 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">البقرة</span></a></li>
+      <li data-recherche="3 al ‘imran la famille d’imran آل عمران"><a class="sourate-carte" href="3/">
+        <span class="num-etoile" aria-hidden="true"><span>3</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al ‘Imran</span><span class="sourate-carte__sens">La Famille d’Imran</span>
+          <span class="sourate-carte__meta">200 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">آل عمران</span></a></li>
+      <li data-recherche="4 an-nisa les femmes النساء"><a class="sourate-carte" href="4/">
+        <span class="num-etoile" aria-hidden="true"><span>4</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">An-Nisa</span><span class="sourate-carte__sens">Les Femmes</span>
+          <span class="sourate-carte__meta">176 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النساء</span></a></li>
+      <li data-recherche="5 al-ma’ida la table servie المائدة"><a class="sourate-carte" href="5/">
+        <span class="num-etoile" aria-hidden="true"><span>5</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Ma’ida</span><span class="sourate-carte__sens">La Table servie</span>
+          <span class="sourate-carte__meta">120 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المائدة</span></a></li>
+      <li data-recherche="6 al-an‘am les bestiaux الأنعام"><a class="sourate-carte" href="6/">
+        <span class="num-etoile" aria-hidden="true"><span>6</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-An‘am</span><span class="sourate-carte__sens">Les Bestiaux</span>
+          <span class="sourate-carte__meta">165 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الأنعام</span></a></li>
+      <li data-recherche="7 al-a‘raf les hauteurs الأعراف"><a class="sourate-carte" href="7/">
+        <span class="num-etoile" aria-hidden="true"><span>7</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-A‘raf</span><span class="sourate-carte__sens">Les Hauteurs</span>
+          <span class="sourate-carte__meta">206 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الأعراف</span></a></li>
+      <li data-recherche="8 al-anfal le butin الأنفال"><a class="sourate-carte" href="8/">
+        <span class="num-etoile" aria-hidden="true"><span>8</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Anfal</span><span class="sourate-carte__sens">Le Butin</span>
+          <span class="sourate-carte__meta">75 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الأنفال</span></a></li>
+      <li data-recherche="9 at-tawba le repentir التوبة"><a class="sourate-carte" href="9/">
+        <span class="num-etoile" aria-hidden="true"><span>9</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">At-Tawba</span><span class="sourate-carte__sens">Le Repentir</span>
+          <span class="sourate-carte__meta">129 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">التوبة</span></a></li>
+      <li data-recherche="10 yunus jonas يونس"><a class="sourate-carte" href="10/">
+        <span class="num-etoile" aria-hidden="true"><span>10</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Yunus</span><span class="sourate-carte__sens">Jonas</span>
+          <span class="sourate-carte__meta">109 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">يونس</span></a></li>
+      <li data-recherche="11 hud هود"><a class="sourate-carte" href="11/">
+        <span class="num-etoile" aria-hidden="true"><span>11</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Hud</span>
+          <span class="sourate-carte__meta">123 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">هود</span></a></li>
+      <li data-recherche="12 yusuf joseph يوسف"><a class="sourate-carte" href="12/">
+        <span class="num-etoile" aria-hidden="true"><span>12</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Yusuf</span><span class="sourate-carte__sens">Joseph</span>
+          <span class="sourate-carte__meta">111 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">يوسف</span></a></li>
+      <li data-recherche="13 ar-ra‘d le tonnerre الرعد"><a class="sourate-carte" href="13/">
+        <span class="num-etoile" aria-hidden="true"><span>13</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ar-Ra‘d</span><span class="sourate-carte__sens">Le Tonnerre</span>
+          <span class="sourate-carte__meta">43 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الرعد</span></a></li>
+      <li data-recherche="14 ibrahim abraham ابراهيم"><a class="sourate-carte" href="14/">
+        <span class="num-etoile" aria-hidden="true"><span>14</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ibrahim</span><span class="sourate-carte__sens">Abraham</span>
+          <span class="sourate-carte__meta">52 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">ابراهيم</span></a></li>
+      <li data-recherche="15 al-hijr الحجر"><a class="sourate-carte" href="15/">
+        <span class="num-etoile" aria-hidden="true"><span>15</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Hijr</span>
+          <span class="sourate-carte__meta">99 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الحجر</span></a></li>
+      <li data-recherche="16 an-nahl les abeilles النحل"><a class="sourate-carte" href="16/">
+        <span class="num-etoile" aria-hidden="true"><span>16</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">An-Nahl</span><span class="sourate-carte__sens">Les Abeilles</span>
+          <span class="sourate-carte__meta">128 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النحل</span></a></li>
+      <li data-recherche="17 al-isra le voyage nocturne الإسراء"><a class="sourate-carte" href="17/">
+        <span class="num-etoile" aria-hidden="true"><span>17</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Isra</span><span class="sourate-carte__sens">Le Voyage nocturne</span>
+          <span class="sourate-carte__meta">111 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الإسراء</span></a></li>
+      <li data-recherche="18 al-kahf la caverne الكهف"><a class="sourate-carte" href="18/">
+        <span class="num-etoile" aria-hidden="true"><span>18</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Kahf</span><span class="sourate-carte__sens">La Caverne</span>
+          <span class="sourate-carte__meta">110 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الكهف</span></a></li>
+      <li data-recherche="19 maryam marie مريم"><a class="sourate-carte" href="19/">
+        <span class="num-etoile" aria-hidden="true"><span>19</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Maryam</span><span class="sourate-carte__sens">Marie</span>
+          <span class="sourate-carte__meta">98 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">مريم</span></a></li>
+      <li data-recherche="20 ta-ha طه"><a class="sourate-carte" href="20/">
+        <span class="num-etoile" aria-hidden="true"><span>20</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ta-Ha</span>
+          <span class="sourate-carte__meta">135 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">طه</span></a></li>
+      <li data-recherche="21 al-anbiya les prophètes الأنبياء"><a class="sourate-carte" href="21/">
+        <span class="num-etoile" aria-hidden="true"><span>21</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Anbiya</span><span class="sourate-carte__sens">Les Prophètes</span>
+          <span class="sourate-carte__meta">112 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الأنبياء</span></a></li>
+      <li data-recherche="22 al-hajj le pèlerinage الحج"><a class="sourate-carte" href="22/">
+        <span class="num-etoile" aria-hidden="true"><span>22</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Hajj</span><span class="sourate-carte__sens">Le Pèlerinage</span>
+          <span class="sourate-carte__meta">78 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الحج</span></a></li>
+      <li data-recherche="23 al-mu’minun les croyants المؤمنون"><a class="sourate-carte" href="23/">
+        <span class="num-etoile" aria-hidden="true"><span>23</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Mu’minun</span><span class="sourate-carte__sens">Les Croyants</span>
+          <span class="sourate-carte__meta">118 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المؤمنون</span></a></li>
+      <li data-recherche="24 an-nur la lumière النور"><a class="sourate-carte" href="24/">
+        <span class="num-etoile" aria-hidden="true"><span>24</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">An-Nur</span><span class="sourate-carte__sens">La Lumière</span>
+          <span class="sourate-carte__meta">64 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النور</span></a></li>
+      <li data-recherche="25 al-furqan le discernement الفرقان"><a class="sourate-carte" href="25/">
+        <span class="num-etoile" aria-hidden="true"><span>25</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Furqan</span><span class="sourate-carte__sens">Le Discernement</span>
+          <span class="sourate-carte__meta">77 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الفرقان</span></a></li>
+      <li data-recherche="26 ash-shu‘ara les poètes الشعراء"><a class="sourate-carte" href="26/">
+        <span class="num-etoile" aria-hidden="true"><span>26</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ash-Shu‘ara</span><span class="sourate-carte__sens">Les Poètes</span>
+          <span class="sourate-carte__meta">227 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الشعراء</span></a></li>
+      <li data-recherche="27 an-naml les fourmis النمل"><a class="sourate-carte" href="27/">
+        <span class="num-etoile" aria-hidden="true"><span>27</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">An-Naml</span><span class="sourate-carte__sens">Les Fourmis</span>
+          <span class="sourate-carte__meta">93 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النمل</span></a></li>
+      <li data-recherche="28 al-qasas le récit القصص"><a class="sourate-carte" href="28/">
+        <span class="num-etoile" aria-hidden="true"><span>28</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Qasas</span><span class="sourate-carte__sens">Le Récit</span>
+          <span class="sourate-carte__meta">88 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">القصص</span></a></li>
+      <li data-recherche="29 al-‘ankabut l’araignée العنكبوت"><a class="sourate-carte" href="29/">
+        <span class="num-etoile" aria-hidden="true"><span>29</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-‘Ankabut</span><span class="sourate-carte__sens">L’Araignée</span>
+          <span class="sourate-carte__meta">69 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">العنكبوت</span></a></li>
+      <li data-recherche="30 ar-rum les romains الروم"><a class="sourate-carte" href="30/">
+        <span class="num-etoile" aria-hidden="true"><span>30</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ar-Rum</span><span class="sourate-carte__sens">Les Romains</span>
+          <span class="sourate-carte__meta">60 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الروم</span></a></li>
+      <li data-recherche="31 luqman لقمان"><a class="sourate-carte" href="31/">
+        <span class="num-etoile" aria-hidden="true"><span>31</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Luqman</span>
+          <span class="sourate-carte__meta">34 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">لقمان</span></a></li>
+      <li data-recherche="32 as-sajda la prosternation السجدة"><a class="sourate-carte" href="32/">
+        <span class="num-etoile" aria-hidden="true"><span>32</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">As-Sajda</span><span class="sourate-carte__sens">La Prosternation</span>
+          <span class="sourate-carte__meta">30 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">السجدة</span></a></li>
+      <li data-recherche="33 al-ahzab les coalisés الأحزاب"><a class="sourate-carte" href="33/">
+        <span class="num-etoile" aria-hidden="true"><span>33</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Ahzab</span><span class="sourate-carte__sens">Les Coalisés</span>
+          <span class="sourate-carte__meta">73 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الأحزاب</span></a></li>
+      <li data-recherche="34 saba سبإ"><a class="sourate-carte" href="34/">
+        <span class="num-etoile" aria-hidden="true"><span>34</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Saba</span>
+          <span class="sourate-carte__meta">54 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">سبإ</span></a></li>
+      <li data-recherche="35 fatir le créateur فاطر"><a class="sourate-carte" href="35/">
+        <span class="num-etoile" aria-hidden="true"><span>35</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Fatir</span><span class="sourate-carte__sens">Le Créateur</span>
+          <span class="sourate-carte__meta">45 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">فاطر</span></a></li>
+      <li data-recherche="36 ya-sin يس"><a class="sourate-carte" href="36/">
+        <span class="num-etoile" aria-hidden="true"><span>36</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ya-Sin</span>
+          <span class="sourate-carte__meta">83 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">يس</span></a></li>
+      <li data-recherche="37 as-saffat les rangés الصافات"><a class="sourate-carte" href="37/">
+        <span class="num-etoile" aria-hidden="true"><span>37</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">As-Saffat</span><span class="sourate-carte__sens">Les Rangés</span>
+          <span class="sourate-carte__meta">182 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الصافات</span></a></li>
+      <li data-recherche="38 sad ص"><a class="sourate-carte" href="38/">
+        <span class="num-etoile" aria-hidden="true"><span>38</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Sad</span>
+          <span class="sourate-carte__meta">88 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">ص</span></a></li>
+      <li data-recherche="39 az-zumar les groupes الزمر"><a class="sourate-carte" href="39/">
+        <span class="num-etoile" aria-hidden="true"><span>39</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Az-Zumar</span><span class="sourate-carte__sens">Les Groupes</span>
+          <span class="sourate-carte__meta">75 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الزمر</span></a></li>
+      <li data-recherche="40 ghafir le pardonneur غافر"><a class="sourate-carte" href="40/">
+        <span class="num-etoile" aria-hidden="true"><span>40</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ghafir</span><span class="sourate-carte__sens">Le Pardonneur</span>
+          <span class="sourate-carte__meta">85 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">غافر</span></a></li>
+      <li data-recherche="41 fussilat les versets détaillés فصلت"><a class="sourate-carte" href="41/">
+        <span class="num-etoile" aria-hidden="true"><span>41</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Fussilat</span><span class="sourate-carte__sens">Les Versets détaillés</span>
+          <span class="sourate-carte__meta">54 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">فصلت</span></a></li>
+      <li data-recherche="42 ash-shura la consultation الشورى"><a class="sourate-carte" href="42/">
+        <span class="num-etoile" aria-hidden="true"><span>42</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ash-Shura</span><span class="sourate-carte__sens">La Consultation</span>
+          <span class="sourate-carte__meta">53 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الشورى</span></a></li>
+      <li data-recherche="43 az-zukhruf l’ornement الزخرف"><a class="sourate-carte" href="43/">
+        <span class="num-etoile" aria-hidden="true"><span>43</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Az-Zukhruf</span><span class="sourate-carte__sens">L’Ornement</span>
+          <span class="sourate-carte__meta">89 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الزخرف</span></a></li>
+      <li data-recherche="44 ad-dukhan la fumée الدخان"><a class="sourate-carte" href="44/">
+        <span class="num-etoile" aria-hidden="true"><span>44</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ad-Dukhan</span><span class="sourate-carte__sens">La Fumée</span>
+          <span class="sourate-carte__meta">59 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الدخان</span></a></li>
+      <li data-recherche="45 al-jathiya l’agenouillée الجاثية"><a class="sourate-carte" href="45/">
+        <span class="num-etoile" aria-hidden="true"><span>45</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Jathiya</span><span class="sourate-carte__sens">L’Agenouillée</span>
+          <span class="sourate-carte__meta">37 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الجاثية</span></a></li>
+      <li data-recherche="46 al-ahqaf les dunes الأحقاف"><a class="sourate-carte" href="46/">
+        <span class="num-etoile" aria-hidden="true"><span>46</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Ahqaf</span><span class="sourate-carte__sens">Les Dunes</span>
+          <span class="sourate-carte__meta">35 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الأحقاف</span></a></li>
+      <li data-recherche="47 muhammad محمد"><a class="sourate-carte" href="47/">
+        <span class="num-etoile" aria-hidden="true"><span>47</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Muhammad</span>
+          <span class="sourate-carte__meta">38 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">محمد</span></a></li>
+      <li data-recherche="48 al-fath la victoire éclatante الفتح"><a class="sourate-carte" href="48/">
+        <span class="num-etoile" aria-hidden="true"><span>48</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Fath</span><span class="sourate-carte__sens">La Victoire éclatante</span>
+          <span class="sourate-carte__meta">29 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الفتح</span></a></li>
+      <li data-recherche="49 al-hujurat les appartements الحجرات"><a class="sourate-carte" href="49/">
+        <span class="num-etoile" aria-hidden="true"><span>49</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Hujurat</span><span class="sourate-carte__sens">Les Appartements</span>
+          <span class="sourate-carte__meta">18 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الحجرات</span></a></li>
+      <li data-recherche="50 qaf ق"><a class="sourate-carte" href="50/">
+        <span class="num-etoile" aria-hidden="true"><span>50</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Qaf</span>
+          <span class="sourate-carte__meta">45 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">ق</span></a></li>
+      <li data-recherche="51 adh-dhariyat qui éparpillent الذاريات"><a class="sourate-carte" href="51/">
+        <span class="num-etoile" aria-hidden="true"><span>51</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Adh-Dhariyat</span><span class="sourate-carte__sens">Qui éparpillent</span>
+          <span class="sourate-carte__meta">60 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الذاريات</span></a></li>
+      <li data-recherche="52 at-tur le mont الطور"><a class="sourate-carte" href="52/">
+        <span class="num-etoile" aria-hidden="true"><span>52</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">At-Tur</span><span class="sourate-carte__sens">Le Mont</span>
+          <span class="sourate-carte__meta">49 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الطور</span></a></li>
+      <li data-recherche="53 an-najm l’étoile النجم"><a class="sourate-carte" href="53/">
+        <span class="num-etoile" aria-hidden="true"><span>53</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">An-Najm</span><span class="sourate-carte__sens">L’Étoile</span>
+          <span class="sourate-carte__meta">62 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النجم</span></a></li>
+      <li data-recherche="54 al-qamar la lune القمر"><a class="sourate-carte" href="54/">
+        <span class="num-etoile" aria-hidden="true"><span>54</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Qamar</span><span class="sourate-carte__sens">La Lune</span>
+          <span class="sourate-carte__meta">55 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">القمر</span></a></li>
+      <li data-recherche="55 ar-rahman le tout miséricordieux الرحمن"><a class="sourate-carte" href="55/">
+        <span class="num-etoile" aria-hidden="true"><span>55</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ar-Rahman</span><span class="sourate-carte__sens">Le Tout Miséricordieux</span>
+          <span class="sourate-carte__meta">78 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الرحمن</span></a></li>
+      <li data-recherche="56 al-waqi‘a l’événement الواقعة"><a class="sourate-carte" href="56/">
+        <span class="num-etoile" aria-hidden="true"><span>56</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Waqi‘a</span><span class="sourate-carte__sens">L’Événement</span>
+          <span class="sourate-carte__meta">96 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الواقعة</span></a></li>
+      <li data-recherche="57 al-hadid le fer الحديد"><a class="sourate-carte" href="57/">
+        <span class="num-etoile" aria-hidden="true"><span>57</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Hadid</span><span class="sourate-carte__sens">Le Fer</span>
+          <span class="sourate-carte__meta">29 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الحديد</span></a></li>
+      <li data-recherche="58 al-mujadala la discussion المجادلة"><a class="sourate-carte" href="58/">
+        <span class="num-etoile" aria-hidden="true"><span>58</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Mujadala</span><span class="sourate-carte__sens">La Discussion</span>
+          <span class="sourate-carte__meta">22 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المجادلة</span></a></li>
+      <li data-recherche="59 al-hashr l’exode الحشر"><a class="sourate-carte" href="59/">
+        <span class="num-etoile" aria-hidden="true"><span>59</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Hashr</span><span class="sourate-carte__sens">L’Exode</span>
+          <span class="sourate-carte__meta">24 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الحشر</span></a></li>
+      <li data-recherche="60 al-mumtahana l’éprouvée الممتحنة"><a class="sourate-carte" href="60/">
+        <span class="num-etoile" aria-hidden="true"><span>60</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Mumtahana</span><span class="sourate-carte__sens">L’Éprouvée</span>
+          <span class="sourate-carte__meta">13 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الممتحنة</span></a></li>
+      <li data-recherche="61 as-saff le rang الصف"><a class="sourate-carte" href="61/">
+        <span class="num-etoile" aria-hidden="true"><span>61</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">As-Saff</span><span class="sourate-carte__sens">Le Rang</span>
+          <span class="sourate-carte__meta">14 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الصف</span></a></li>
+      <li data-recherche="62 al-jumu‘a le vendredi الجمعة"><a class="sourate-carte" href="62/">
+        <span class="num-etoile" aria-hidden="true"><span>62</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Jumu‘a</span><span class="sourate-carte__sens">Le Vendredi</span>
+          <span class="sourate-carte__meta">11 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الجمعة</span></a></li>
+      <li data-recherche="63 al-munafiqun les hypocrites المنافقون"><a class="sourate-carte" href="63/">
+        <span class="num-etoile" aria-hidden="true"><span>63</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Munafiqun</span><span class="sourate-carte__sens">Les Hypocrites</span>
+          <span class="sourate-carte__meta">11 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المنافقون</span></a></li>
+      <li data-recherche="64 at-taghabun la grande perte التغابن"><a class="sourate-carte" href="64/">
+        <span class="num-etoile" aria-hidden="true"><span>64</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">At-Taghabun</span><span class="sourate-carte__sens">La Grande Perte</span>
+          <span class="sourate-carte__meta">18 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">التغابن</span></a></li>
+      <li data-recherche="65 at-talaq le divorce الطلاق"><a class="sourate-carte" href="65/">
+        <span class="num-etoile" aria-hidden="true"><span>65</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">At-Talaq</span><span class="sourate-carte__sens">Le Divorce</span>
+          <span class="sourate-carte__meta">12 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الطلاق</span></a></li>
+      <li data-recherche="66 at-tahrim l’interdiction التحريم"><a class="sourate-carte" href="66/">
+        <span class="num-etoile" aria-hidden="true"><span>66</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">At-Tahrim</span><span class="sourate-carte__sens">L’Interdiction</span>
+          <span class="sourate-carte__meta">12 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">التحريم</span></a></li>
+      <li data-recherche="67 al-mulk la royauté الملك"><a class="sourate-carte" href="67/">
+        <span class="num-etoile" aria-hidden="true"><span>67</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Mulk</span><span class="sourate-carte__sens">La Royauté</span>
+          <span class="sourate-carte__meta">30 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الملك</span></a></li>
+      <li data-recherche="68 al-qalam la plume القلم"><a class="sourate-carte" href="68/">
+        <span class="num-etoile" aria-hidden="true"><span>68</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Qalam</span><span class="sourate-carte__sens">La Plume</span>
+          <span class="sourate-carte__meta">52 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">القلم</span></a></li>
+      <li data-recherche="69 al-haqqa celle qui montre la vérité الحاقة"><a class="sourate-carte" href="69/">
+        <span class="num-etoile" aria-hidden="true"><span>69</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Haqqa</span><span class="sourate-carte__sens">Celle qui montre la vérité</span>
+          <span class="sourate-carte__meta">52 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الحاقة</span></a></li>
+      <li data-recherche="70 al-ma‘arij les voies d’ascension المعارج"><a class="sourate-carte" href="70/">
+        <span class="num-etoile" aria-hidden="true"><span>70</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Ma‘arij</span><span class="sourate-carte__sens">Les Voies d’ascension</span>
+          <span class="sourate-carte__meta">44 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المعارج</span></a></li>
+      <li data-recherche="71 nuh noé نوح"><a class="sourate-carte" href="71/">
+        <span class="num-etoile" aria-hidden="true"><span>71</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Nuh</span><span class="sourate-carte__sens">Noé</span>
+          <span class="sourate-carte__meta">28 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">نوح</span></a></li>
+      <li data-recherche="72 al-jinn les djinns الجن"><a class="sourate-carte" href="72/">
+        <span class="num-etoile" aria-hidden="true"><span>72</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Jinn</span><span class="sourate-carte__sens">Les Djinns</span>
+          <span class="sourate-carte__meta">28 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الجن</span></a></li>
+      <li data-recherche="73 al-muzzammil l’enveloppé المزمل"><a class="sourate-carte" href="73/">
+        <span class="num-etoile" aria-hidden="true"><span>73</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Muzzammil</span><span class="sourate-carte__sens">L’Enveloppé</span>
+          <span class="sourate-carte__meta">20 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المزمل</span></a></li>
+      <li data-recherche="74 al-muddaththir le revêtu d’un manteau المدثر"><a class="sourate-carte" href="74/">
+        <span class="num-etoile" aria-hidden="true"><span>74</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Muddaththir</span><span class="sourate-carte__sens">Le Revêtu d’un manteau</span>
+          <span class="sourate-carte__meta">56 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المدثر</span></a></li>
+      <li data-recherche="75 al-qiyama la résurrection القيامة"><a class="sourate-carte" href="75/">
+        <span class="num-etoile" aria-hidden="true"><span>75</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Qiyama</span><span class="sourate-carte__sens">La Résurrection</span>
+          <span class="sourate-carte__meta">40 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">القيامة</span></a></li>
+      <li data-recherche="76 al-insan l’homme الانسان"><a class="sourate-carte" href="76/">
+        <span class="num-etoile" aria-hidden="true"><span>76</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Insan</span><span class="sourate-carte__sens">L’Homme</span>
+          <span class="sourate-carte__meta">31 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الانسان</span></a></li>
+      <li data-recherche="77 al-mursalat les envoyés المرسلات"><a class="sourate-carte" href="77/">
+        <span class="num-etoile" aria-hidden="true"><span>77</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Mursalat</span><span class="sourate-carte__sens">Les Envoyés</span>
+          <span class="sourate-carte__meta">50 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المرسلات</span></a></li>
+      <li data-recherche="78 an-naba la nouvelle النبإ"><a class="sourate-carte" href="78/">
+        <span class="num-etoile" aria-hidden="true"><span>78</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">An-Naba</span><span class="sourate-carte__sens">La Nouvelle</span>
+          <span class="sourate-carte__meta">40 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النبإ</span></a></li>
+      <li data-recherche="79 an-nazi‘at les anges qui arrachent les âmes النازعات"><a class="sourate-carte" href="79/">
+        <span class="num-etoile" aria-hidden="true"><span>79</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">An-Nazi‘at</span><span class="sourate-carte__sens">Les Anges qui arrachent les âmes</span>
+          <span class="sourate-carte__meta">46 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النازعات</span></a></li>
+      <li data-recherche="80 ‘abasa il s’est renfrogné عبس"><a class="sourate-carte" href="80/">
+        <span class="num-etoile" aria-hidden="true"><span>80</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">‘Abasa</span><span class="sourate-carte__sens">Il s’est renfrogné</span>
+          <span class="sourate-carte__meta">42 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">عبس</span></a></li>
+      <li data-recherche="81 at-takwir l’obscurcissement التكوير"><a class="sourate-carte" href="81/">
+        <span class="num-etoile" aria-hidden="true"><span>81</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">At-Takwir</span><span class="sourate-carte__sens">L’Obscurcissement</span>
+          <span class="sourate-carte__meta">29 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">التكوير</span></a></li>
+      <li data-recherche="82 al-infitar la rupture الإنفطار"><a class="sourate-carte" href="82/">
+        <span class="num-etoile" aria-hidden="true"><span>82</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Infitar</span><span class="sourate-carte__sens">La Rupture</span>
+          <span class="sourate-carte__meta">19 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الإنفطار</span></a></li>
+      <li data-recherche="83 al-mutaffifin les fraudeurs المطففين"><a class="sourate-carte" href="83/">
+        <span class="num-etoile" aria-hidden="true"><span>83</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Mutaffifin</span><span class="sourate-carte__sens">Les Fraudeurs</span>
+          <span class="sourate-carte__meta">36 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المطففين</span></a></li>
+      <li data-recherche="84 al-inshiqaq la déchirure الإنشقاق"><a class="sourate-carte" href="84/">
+        <span class="num-etoile" aria-hidden="true"><span>84</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Inshiqaq</span><span class="sourate-carte__sens">La Déchirure</span>
+          <span class="sourate-carte__meta">25 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الإنشقاق</span></a></li>
+      <li data-recherche="85 al-buruj les constellations البروج"><a class="sourate-carte" href="85/">
+        <span class="num-etoile" aria-hidden="true"><span>85</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Buruj</span><span class="sourate-carte__sens">Les Constellations</span>
+          <span class="sourate-carte__meta">22 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">البروج</span></a></li>
+      <li data-recherche="86 at-tariq l’astre nocturne الطارق"><a class="sourate-carte" href="86/">
+        <span class="num-etoile" aria-hidden="true"><span>86</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">At-Tariq</span><span class="sourate-carte__sens">L’Astre nocturne</span>
+          <span class="sourate-carte__meta">17 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الطارق</span></a></li>
+      <li data-recherche="87 al-a‘la le très-haut الأعلى"><a class="sourate-carte" href="87/">
+        <span class="num-etoile" aria-hidden="true"><span>87</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-A‘la</span><span class="sourate-carte__sens">Le Très-Haut</span>
+          <span class="sourate-carte__meta">19 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الأعلى</span></a></li>
+      <li data-recherche="88 al-ghashiya l’enveloppante الغاشية"><a class="sourate-carte" href="88/">
+        <span class="num-etoile" aria-hidden="true"><span>88</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Ghashiya</span><span class="sourate-carte__sens">L’Enveloppante</span>
+          <span class="sourate-carte__meta">26 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الغاشية</span></a></li>
+      <li data-recherche="89 al-fajr l’aube الفجر"><a class="sourate-carte" href="89/">
+        <span class="num-etoile" aria-hidden="true"><span>89</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Fajr</span><span class="sourate-carte__sens">L’Aube</span>
+          <span class="sourate-carte__meta">30 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الفجر</span></a></li>
+      <li data-recherche="90 al-balad la cité البلد"><a class="sourate-carte" href="90/">
+        <span class="num-etoile" aria-hidden="true"><span>90</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Balad</span><span class="sourate-carte__sens">La Cité</span>
+          <span class="sourate-carte__meta">20 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">البلد</span></a></li>
+      <li data-recherche="91 ash-shams le soleil الشمس"><a class="sourate-carte" href="91/">
+        <span class="num-etoile" aria-hidden="true"><span>91</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ash-Shams</span><span class="sourate-carte__sens">Le Soleil</span>
+          <span class="sourate-carte__meta">15 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الشمس</span></a></li>
+      <li data-recherche="92 al-layl la nuit الليل"><a class="sourate-carte" href="92/">
+        <span class="num-etoile" aria-hidden="true"><span>92</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Layl</span><span class="sourate-carte__sens">La Nuit</span>
+          <span class="sourate-carte__meta">21 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الليل</span></a></li>
+      <li data-recherche="93 ad-duha le jour montant الضحى"><a class="sourate-carte" href="93/">
+        <span class="num-etoile" aria-hidden="true"><span>93</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ad-Duha</span><span class="sourate-carte__sens">Le Jour montant</span>
+          <span class="sourate-carte__meta">11 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الضحى</span></a></li>
+      <li data-recherche="94 ash-sharh l’ouverture de la poitrine الشرح"><a class="sourate-carte" href="94/">
+        <span class="num-etoile" aria-hidden="true"><span>94</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ash-Sharh</span><span class="sourate-carte__sens">L’Ouverture de la poitrine</span>
+          <span class="sourate-carte__meta">8 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الشرح</span></a></li>
+      <li data-recherche="95 at-tin le figuier التين"><a class="sourate-carte" href="95/">
+        <span class="num-etoile" aria-hidden="true"><span>95</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">At-Tin</span><span class="sourate-carte__sens">Le Figuier</span>
+          <span class="sourate-carte__meta">8 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">التين</span></a></li>
+      <li data-recherche="96 al-‘alaq l’adhérence العلق"><a class="sourate-carte" href="96/">
+        <span class="num-etoile" aria-hidden="true"><span>96</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-‘Alaq</span><span class="sourate-carte__sens">L’Adhérence</span>
+          <span class="sourate-carte__meta">19 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">العلق</span></a></li>
+      <li data-recherche="97 al-qadr la destinée القدر"><a class="sourate-carte" href="97/">
+        <span class="num-etoile" aria-hidden="true"><span>97</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Qadr</span><span class="sourate-carte__sens">La Destinée</span>
+          <span class="sourate-carte__meta">5 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">القدر</span></a></li>
+      <li data-recherche="98 al-bayyina la preuve البينة"><a class="sourate-carte" href="98/">
+        <span class="num-etoile" aria-hidden="true"><span>98</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Bayyina</span><span class="sourate-carte__sens">La Preuve</span>
+          <span class="sourate-carte__meta">8 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">البينة</span></a></li>
+      <li data-recherche="99 az-zalzala la secousse الزلزلة"><a class="sourate-carte" href="99/">
+        <span class="num-etoile" aria-hidden="true"><span>99</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Az-Zalzala</span><span class="sourate-carte__sens">La Secousse</span>
+          <span class="sourate-carte__meta">8 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الزلزلة</span></a></li>
+      <li data-recherche="100 al-‘adiyat les coursiers العاديات"><a class="sourate-carte" href="100/">
+        <span class="num-etoile" aria-hidden="true"><span>100</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-‘Adiyat</span><span class="sourate-carte__sens">Les Coursiers</span>
+          <span class="sourate-carte__meta">11 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">العاديات</span></a></li>
+      <li data-recherche="101 al-qari‘a le fracas القارعة"><a class="sourate-carte" href="101/">
+        <span class="num-etoile" aria-hidden="true"><span>101</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Qari‘a</span><span class="sourate-carte__sens">Le Fracas</span>
+          <span class="sourate-carte__meta">11 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">القارعة</span></a></li>
+      <li data-recherche="102 at-takathur la course aux richesses التكاثر"><a class="sourate-carte" href="102/">
+        <span class="num-etoile" aria-hidden="true"><span>102</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">At-Takathur</span><span class="sourate-carte__sens">La Course aux richesses</span>
+          <span class="sourate-carte__meta">8 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">التكاثر</span></a></li>
+      <li data-recherche="103 al-‘asr le temps العصر"><a class="sourate-carte" href="103/">
+        <span class="num-etoile" aria-hidden="true"><span>103</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-‘Asr</span><span class="sourate-carte__sens">Le Temps</span>
+          <span class="sourate-carte__meta">3 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">العصر</span></a></li>
+      <li data-recherche="104 al-humaza les calomniateurs الهمزة"><a class="sourate-carte" href="104/">
+        <span class="num-etoile" aria-hidden="true"><span>104</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Humaza</span><span class="sourate-carte__sens">Les Calomniateurs</span>
+          <span class="sourate-carte__meta">9 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الهمزة</span></a></li>
+      <li data-recherche="105 al-fil l’éléphant الفيل"><a class="sourate-carte" href="105/">
+        <span class="num-etoile" aria-hidden="true"><span>105</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Fil</span><span class="sourate-carte__sens">L’Éléphant</span>
+          <span class="sourate-carte__meta">5 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الفيل</span></a></li>
+      <li data-recherche="106 quraysh قريش"><a class="sourate-carte" href="106/">
+        <span class="num-etoile" aria-hidden="true"><span>106</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Quraysh</span>
+          <span class="sourate-carte__meta">4 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">قريش</span></a></li>
+      <li data-recherche="107 al-ma‘un l’ustensile الماعون"><a class="sourate-carte" href="107/">
+        <span class="num-etoile" aria-hidden="true"><span>107</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Ma‘un</span><span class="sourate-carte__sens">L’Ustensile</span>
+          <span class="sourate-carte__meta">7 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الماعون</span></a></li>
+      <li data-recherche="108 al-kawthar l’abondance الكوثر"><a class="sourate-carte" href="108/">
+        <span class="num-etoile" aria-hidden="true"><span>108</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Kawthar</span><span class="sourate-carte__sens">L’Abondance</span>
+          <span class="sourate-carte__meta">3 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الكوثر</span></a></li>
+      <li data-recherche="109 al-kafirun les mécréants الكافرون"><a class="sourate-carte" href="109/">
+        <span class="num-etoile" aria-hidden="true"><span>109</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Kafirun</span><span class="sourate-carte__sens">Les Mécréants</span>
+          <span class="sourate-carte__meta">6 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الكافرون</span></a></li>
+      <li data-recherche="110 an-nasr le secours النصر"><a class="sourate-carte" href="110/">
+        <span class="num-etoile" aria-hidden="true"><span>110</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">An-Nasr</span><span class="sourate-carte__sens">Le Secours</span>
+          <span class="sourate-carte__meta">3 versets · Médinoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النصر</span></a></li>
+      <li data-recherche="111 al-masad les fibres المسد"><a class="sourate-carte" href="111/">
+        <span class="num-etoile" aria-hidden="true"><span>111</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Masad</span><span class="sourate-carte__sens">Les Fibres</span>
+          <span class="sourate-carte__meta">5 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المسد</span></a></li>
+      <li data-recherche="112 al-ikhlas le monothéisme pur الإخلاص"><a class="sourate-carte" href="112/">
+        <span class="num-etoile" aria-hidden="true"><span>112</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Ikhlas</span><span class="sourate-carte__sens">Le Monothéisme pur</span>
+          <span class="sourate-carte__meta">4 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الإخلاص</span></a></li>
+      <li data-recherche="113 al-falaq l’aube naissante الفلق"><a class="sourate-carte" href="113/">
+        <span class="num-etoile" aria-hidden="true"><span>113</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Al-Falaq</span><span class="sourate-carte__sens">L’Aube naissante</span>
+          <span class="sourate-carte__meta">5 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الفلق</span></a></li>
+      <li data-recherche="114 an-nas les hommes الناس"><a class="sourate-carte" href="114/">
+        <span class="num-etoile" aria-hidden="true"><span>114</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">An-Nas</span><span class="sourate-carte__sens">Les Hommes</span>
+          <span class="sourate-carte__meta">6 versets · Mecquoise</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الناس</span></a></li>
+    </ol>
+    <p class="liste-vide" data-liste-vide hidden>Aucune sourate ne correspond à cette recherche.</p>
+    <section class="sources-coran" aria-labelledby="titre-sources-coran">
+      <h2 id="titre-sources-coran">Sources et vérification</h2>
+      <ul>
+        <li><strong>Texte arabe</strong> : <a href="https://tanzil.net" target="_blank" rel="noopener">Tanzil Project</a>, écriture Uthmani (version 1.1), lecture de Hafs d’après ‘Asim. Texte reproduit sans modification.</li>
+        <li><strong>Vérification</strong> : les 6 236 versets ont été comparés, lettre par lettre, au texte du Complexe du Roi Fahd (Médine) publié par QuranEnc. Les lettres sont identiques partout ; deux petits signes de lecture diffèrent (2:72 et 17:7), sans changer les lettres. Les signes de pause (waqf) ne sont pas affichés dans cette version.</li>
+        <li><strong>Traduction français</strong> : Muhammad Hamidullah, texte diffusé par <a href="https://tanzil.net/trans/" target="_blank" rel="noopener">Tanzil.net</a> (fr.hamidullah, mise à jour du 18 juillet 2011), reproduit sans modification. Tanzil réserve ses traductions à un usage non commercial, ce qui est le cas de ce site.</li>
+      </ul>
+      <p class="sources-coran__note">Une traduction rend le sens tel que l’a compris son traducteur : elle n’est pas le Coran. Seul le texte arabe est la Parole révélée.</p>
+    </section>
+  </div>
+</main>
+<footer class="pied">
+  <div class="conteneur">
+    <div class="pied__haut">
+      <div>
+        <a class="logo" href="../"><span>Islamedia</span><span class="logo__ext">.fr</span></a>
+        <p class="pied__slogan">Comprendre l’islam, sources à l’appui.</p>
+      </div>
+      <nav aria-label="Liens du pied de page">
+        <a href="../coran/">Le Coran</a>
+        <a href="../#methode">Notre méthode</a>
+        <a href="../mentions-legales.html">Mentions légales</a>
+      </nav>
+    </div>
+    <p class="pied__sources">© <span data-annee>2026</span> Islamedia.fr · Texte coranique : <a href="https://tanzil.net" target="_blank" rel="noopener">Tanzil Project</a> (Uthmani 1.1, licence CC BY 3.0, texte non modifié) · Traduction : Muhammad Hamidullah, texte de <a href="https://tanzil.net/trans/" target="_blank" rel="noopener">Tanzil.net</a> (mise à jour du 18 juillet 2011) · Ce site n’utilise ni cookies ni traceurs.</p>
+  </div>
+</footer>
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<script src="../script.js" defer></script>
+</body>
+</html>
