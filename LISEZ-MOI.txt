@@ -12,7 +12,7 @@ données, pas de logiciel à installer.
   script.js ............. les animations et le bloc RÉGLAGES (tes liens)
   mentions-legales.html . la page obligatoire en France
   404.html .............. la page affichée si une adresse n'existe pas
-  polices/ .............. Manrope, Inter et Amiri Quran (hébergées sur le site)
+  polices/ .............. Manrope, Inter et Scheherazade New (hébergées sur le site)
   images/ ............... motif, favicon, icône iPhone, aperçu de partage
   CNAME ................. indique à GitHub Pages ton adresse : islamedia.fr
   robots.txt, sitemap.xml  pour Google
@@ -109,10 +109,11 @@ laisser, ils ne gênent pas.
 5. FIABILITÉ DES VERSETS
 ------------------------
  • Texte arabe : Tanzil Project, texte uthmani 1.1 (lecture Hafs), recopié
-   automatiquement, sans saisie à la main. Chaque verset affiché a été comparé
-   lettre par lettre avec deux autres éditions (Complexe du Roi Fahd et
-   QuranEnc) : identiques. Les voyelles et signes de lecture n'ont pas été
-   comparés automatiquement : fais relire par une personne qualifiée.
+   automatiquement, sans saisie à la main. Les 6 236 versets ont été comparés
+   automatiquement, lettre par lettre puis signe par signe, au texte du
+   Complexe du Roi Fahd publié par QuranEnc : les lettres sont identiques
+   partout ; 2 petits signes de lecture diffèrent (2:72 et 17:7). Les signes
+   de pause (waqf) ne sont pas affichés dans cette version.
    Licence Tanzil : texte non modifié, source citée, lien vers tanzil.net.
  • Traduction du sens : Rachid Maach, QuranEnc.com, version 1.0.3.
    QuranEnc autorise la republication sans modification, avec la mention de
@@ -120,3 +121,17 @@ laisser, ils ne gênent pas.
    s'il existe une version plus récente.
  • Pour ajouter un verset, ne le tape jamais à la main : demande-le à partir
    de ces sources.
+
+
+6. METTRE À JOUR LE SITE AVEC UN NOUVEAU ZIP
+--------------------------------------------
+ • Sur GitHub, ouvre ton dépôt > « Add file » > « Upload files ».
+ • Glisse tout le contenu du nouveau dossier islamedia-site : les fichiers
+   qui portent le même nom sont remplacés, les autres restent. « Commit
+   changes ». Le site se met à jour en une à deux minutes.
+ • GitHub accepte au plus 100 fichiers par envoi. Si un ZIP en contient plus,
+   il sera livré en plusieurs parties à envoyer l'une après l'autre.
+ • Le fond animé de l'accueil s'appelle « Mosquée de nuit ». Deux autres fonds
+   existent (« Zellige doré » et « Moucharabieh ») : demande-les si tu
+   préfères en changer.
+

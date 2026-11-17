@@ -64,9 +64,8 @@ const REGLAGES = {
   }
   if (hero) { window.addEventListener("scroll", majEntete, { passive: true }); majEntete(); }
 
-  /* 4. Ciel étoilé ------------------------------------------------------------ */
-  var ciel = document.querySelector(".ciel");
-  if (ciel) {
+  /* 4. Ciel étoilé (ou poussière dorée avec le fond « moucharabieh ») ------------ */
+  tous(".ciel").forEach(function (ciel) {
     var nombre = Math.round(Math.min(110, Math.max(45, (window.innerWidth * window.innerHeight) / 9000)));
     var lot = document.createDocumentFragment();
     for (var n = 0; n < nombre; n++) {
@@ -80,7 +79,7 @@ const REGLAGES = {
       lot.appendChild(etoile);
     }
     ciel.appendChild(lot);
-  }
+  });
 
   /* 5. Logo : les lettres apparaissent une par une ----------------------------- */
   tous("[data-lettres]").forEach(function (el) {
@@ -194,4 +193,74 @@ const REGLAGES = {
 
   /* 10. Année du pied de page -------------------------------------------------- */
   tous("[data-annee]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+  /* 11. Le Coran : réglages de lecture, lien d'un verset, recherche de sourate --- */
+  var barresCoran = tous("[data-reglages-coran]");
+  if (barresCoran.length) {
+    var racineDoc = document.documentElement, cleCoran = "islamedia-coran";
+    var reglages = { ar: true, fr: true, tr: true, taille: 2 };
+    try {
+      var lus = JSON.parse(localStorage.getItem(cleCoran) || "null");
+      if (lus) Object.keys(reglages).forEach(function (k) { if (k in lus) reglages[k] = lus[k]; });
+    } catch (e) {}
+    var appliquer = function (memoriser) {
+      ["ar", "fr", "tr"].forEach(function (l) {
+        racineDoc.classList.toggle("sans-" + l, !reglages[l]);
+        tous('[data-langue="' + l + '"]').forEach(function (b) { b.setAttribute("aria-pressed", reglages[l] ? "true" : "false"); });
+      });
+      racineDoc.style.setProperty("--taille-ar", reglages.taille);
+      if (memoriser) { try { localStorage.setItem(cleCoran, JSON.stringify(reglages)); } catch (e) {} }
+    };
+    tous("[data-langue]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var l = b.getAttribute("data-langue");
+        reglages[l] = !reglages[l];
+        if (!reglages.ar && !reglages.fr && !reglages.tr) reglages[l] = true; /* au moins une langue */
+        appliquer(true);
+      });
+    });
+    tous("[data-taille]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        reglages.taille = Math.max(0, Math.min(5, reglages.taille + Number(b.getAttribute("data-taille"))));
+        appliquer(true);
+      });
+    });
+    var aller = document.querySelector("[data-aller-sourate]");
+    if (aller) aller.addEventListener("change", function () { window.location.href = "../" + aller.value + "/"; });
+    appliquer(false);
+  }
+
+  var toast = document.querySelector(".toast"), minuteur = null;
+  var annoncer = function (message) {
+    if (!toast) return;
+    toast.textContent = message; toast.hidden = false;
+    clearTimeout(minuteur); minuteur = setTimeout(function () { toast.hidden = true; }, 2400);
+  };
+  tous("[data-copier-verset]").forEach(function (lien) {
+    lien.addEventListener("click", function (ev) {
+      var ancre = lien.getAttribute("href");
+      var adresse = window.location.origin + window.location.pathname + ancre;
+      if (!navigator.clipboard || !window.isSecureContext) return; /* simple saut au verset */
+      ev.preventDefault();
+      if (history.replaceState) history.replaceState(null, "", ancre);
+      navigator.clipboard.writeText(adresse).then(function () {
+        annoncer("Lien du verset " + lien.getAttribute("data-copier-verset") + " copié");
+      }, function () { window.location.hash = ancre; });
+    });
+  });
+
+  var champSourate = document.querySelector("[data-recherche-sourate]");
+  if (champSourate) {
+    var simplifier = function (t) { return t.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[‘’'`\-\s.]/g, "").toLowerCase(); };
+    var lignes = tous("[data-liste-sourates] li"), vide = document.querySelector("[data-liste-vide]");
+    lignes.forEach(function (li) { li.cle = simplifier(li.getAttribute("data-recherche") || ""); });
+    champSourate.addEventListener("input", function () {
+      var q = simplifier(champSourate.value), visibles = 0;
+      lignes.forEach(function (li) {
+        var ok = !q || li.cle.indexOf(q) !== -1;
+        if (/^\d+$/.test(q)) ok = li.cle.indexOf(q) === 0;
+        li.hidden = !ok; if (ok) visibles++;
+      });
+      if (vide) vide.hidden = visibles > 0;
+    });
+  }
 })();

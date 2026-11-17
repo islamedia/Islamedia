@@ -4,7 +4,7 @@
    Charte Islamedia :
      vert profond #123B2F · ivoire #F4F0E6 · or doux #C5A15B
      vert presque noir #17241E · vert brume #DDE6DE
-   Polices : Manrope ExtraBold (titres), Inter (texte), Amiri Quran (arabe)
+   Polices : Manrope ExtraBold (titres), Inter (texte), Scheherazade New (arabe)
    Sommaire :
      1. Polices          6. Verset du jour      11. Contact
      2. Couleurs         7. Chiffres            12. Pied de page
@@ -19,7 +19,7 @@
 @font-face { font-family: "Manrope"; src: url("polices/manrope-800.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
 @font-face { font-family: "Inter"; src: url("polices/inter-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: "Inter"; src: url("polices/inter-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
-@font-face { font-family: "Amiri Quran"; src: url("polices/amiri-quran.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Scheherazade New"; src: url("polices/scheherazade-new.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 
 /* 2. COULEURS --------------------------------------------------------------
    Mode clair par défaut, mode sombre quand <html data-theme="sombre">. */
@@ -42,7 +42,7 @@
 
   --police-titre: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --police-texte: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --police-arabe: "Amiri Quran", "Amiri", "Traditional Arabic", serif;
+  --police-arabe: "Scheherazade New", "Amiri Quran", "Traditional Arabic", serif;
 
   --largeur: 1120px;
   --marge: clamp(20px, 5vw, 40px);
@@ -185,13 +185,6 @@ h1, h2, h3 { margin: 0; font-family: var(--police-titre); font-weight: 800; line
   color: var(--ivoire);
   background: radial-gradient(130% 90% at 50% 38%, #1D4C3D 0%, var(--vert) 42%, var(--nuit) 100%);
 }
-/* Motif géométrique (étoiles à 8 branches) qui glisse lentement */
-.hero__motif { position: absolute; inset: 0; z-index: -4; overflow: hidden; opacity: .11;
-  -webkit-mask-image: radial-gradient(70% 60% at 50% 46%, rgba(0, 0, 0, .25), #000 100%);
-  mask-image: radial-gradient(70% 60% at 50% 46%, rgba(0, 0, 0, .25), #000 100%); }
-.hero__motif::before { content: ""; position: absolute; inset: -80px; background: url("images/motif.svg") 0 0 / 80px 80px; animation: derive 34s linear infinite; }
-@keyframes derive { to { transform: translate3d(80px, 80px, 0); } }
-
 /* Ciel étoilé (les étoiles sont ajoutées par script.js) */
 .ciel { position: absolute; inset: 0; z-index: -3; pointer-events: none; }
 .etoile { position: absolute; width: var(--t, 2px); height: var(--t, 2px); border-radius: 50%; background: var(--ivoire); opacity: .15; animation: scintille var(--d, 4s) ease-in-out var(--r, 0s) infinite alternate; }
@@ -206,16 +199,79 @@ h1, h2, h3 { margin: 0; font-family: var(--police-titre); font-weight: 800; line
   8%, 100% { opacity: 0; transform: rotate(-28deg) translateX(-460px); }
 }
 
-/* Grande rosace dorée qui se dessine, puis tourne très lentement */
-.hero__rosace { position: absolute; z-index: -2; top: 50%; left: 50%; width: min(880px, 138vw); aspect-ratio: 1; translate: -50% -53%; opacity: .5; pointer-events: none;
-  transform: translate(calc(var(--px, 0) * -16px), calc(var(--py, 0) * -16px)); transition: transform 1.2s var(--doux); }
-.hero__rosace svg { width: 100%; height: 100%; animation: tourne 240s linear infinite; }
-.rosace .trace { fill: none; stroke: var(--or); stroke-width: .7; stroke-dasharray: 1; stroke-dashoffset: 1;
-  animation: dessine 2.6s cubic-bezier(.6, .05, .3, 1) forwards; animation-delay: calc(.2s + var(--d, 0) * .16s); }
-.rosace .grain { fill: var(--or); opacity: 0; animation: apparition 1s 1.9s ease forwards; }
+/* Animations communes aux fonds */
 @keyframes dessine { to { stroke-dashoffset: 0; } }
 @keyframes tourne { to { transform: rotate(360deg); } }
 @keyframes apparition { to { opacity: 1; } }
+
+/* ---- Fond « Zellige doré » -------------------------------------------------
+   Motif étoilé à 8 branches (zellige) qui se déploie depuis le centre, puis un
+   reflet doré le parcourt de temps en temps. */
+@property --deploie { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+.zellige { position: absolute; inset: 0; z-index: -4; overflow: hidden; pointer-events: none; --tuile: 72.43px; }
+.zellige__motif, .zellige__eclat { position: absolute; inset: 0; }
+.zellige__motif {
+  background: url("images/zellige.svg") center / var(--tuile) var(--tuile);
+  opacity: .42;
+  -webkit-mask-image: radial-gradient(circle at 50% 44%, #000 var(--deploie), transparent calc(var(--deploie) + 18%)), radial-gradient(78% 58% at 50% 44%, rgba(0, 0, 0, .1) 25%, #000 100%);
+  mask-image: radial-gradient(circle at 50% 44%, #000 var(--deploie), transparent calc(var(--deploie) + 18%)), radial-gradient(78% 58% at 50% 44%, rgba(0, 0, 0, .1) 25%, #000 100%);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+  animation: deploie 3.8s .1s cubic-bezier(.45, 0, .2, 1) forwards;
+}
+@keyframes deploie { to { --deploie: 140%; } }
+.zellige__eclat {
+  background: linear-gradient(112deg, transparent 43%, rgba(255, 238, 196, .95) 50%, transparent 57%) 115% 0 / 330% 100% no-repeat;
+  -webkit-mask-image: url("images/zellige-plein.svg"), radial-gradient(78% 58% at 50% 44%, rgba(0, 0, 0, .2) 25%, #000 100%);
+  mask-image: url("images/zellige-plein.svg"), radial-gradient(78% 58% at 50% 44%, rgba(0, 0, 0, .2) 25%, #000 100%);
+  -webkit-mask-size: var(--tuile) var(--tuile), 100% 100%; mask-size: var(--tuile) var(--tuile), 100% 100%;
+  -webkit-mask-position: center, center; mask-position: center, center;
+  -webkit-mask-repeat: repeat, no-repeat; mask-repeat: repeat, no-repeat;
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+  opacity: .75; animation: balaye 12s 3.6s ease-in-out infinite;
+}
+@keyframes balaye { 0% { background-position: 115% 0; } 40%, 100% { background-position: -15% 0; } }
+
+
+/* ---- Fond « Moucharabieh » --------------------------------------------
+   Une fenêtre en ogive au treillis étoilé s'illumine ; des rayons de lumière
+   descendent en oscillant et des grains de poussière dorée flottent. */
+.mouch { position: absolute; inset: 0; z-index: -3; pointer-events: none; overflow: hidden; }
+.mouch__rayons { position: absolute; left: 50%; top: calc(var(--entete) + 30px); width: 240vmax; height: 240vmax; margin-left: -120vmax; transform-origin: 50% 0;
+  background: repeating-conic-gradient(from 150deg at 50% 0, rgba(241, 221, 164, 0) 0deg, rgba(241, 221, 164, .16) 3deg, rgba(241, 221, 164, 0) 7deg, rgba(241, 221, 164, 0) 11deg);
+  -webkit-mask-image: radial-gradient(42% 30% at 50% 0, #000, transparent 100%); mask-image: radial-gradient(42% 30% at 50% 0, #000, transparent 100%);
+  opacity: 0; animation: apparition 2.4s 1.2s ease forwards, oscille 16s ease-in-out infinite alternate; }
+@keyframes oscille { from { transform: rotate(-5deg); } to { transform: rotate(5deg); } }
+.mouch__svg { position: absolute; left: 50%; top: calc(var(--entete) + 6px); height: min(60vh, 560px); width: auto; translate: -50% 0; overflow: visible; }
+.mouch__jour { opacity: 0; animation: illumine 2.6s .3s ease forwards, respire-jour 7s 3s ease-in-out infinite alternate; }
+@keyframes illumine { to { opacity: .5; } }
+@keyframes respire-jour { from { opacity: .5; } to { opacity: .34; } }
+.mouch__treillis { fill: none; stroke: #0E241C; stroke-width: 5.5; stroke-linecap: round; stroke-linejoin: round; }
+.mouch__cadre { fill: none; stroke: var(--or); stroke-width: 2.2; }
+.mouch__cadre--in { stroke-width: 1.2; opacity: .55; }
+.hero--moucharabieh .hero__contenu { text-shadow: 0 2px 22px rgba(8, 22, 17, .9); }
+.hero--moucharabieh .etoile { background: #F6E7BE; box-shadow: 0 0 4px rgba(246, 231, 190, .9); animation: poussiere var(--d, 6s) linear var(--r, 0s) infinite; }
+@keyframes poussiere { 0% { opacity: 0; transform: translate(0, 24px); } 25% { opacity: .85; } 100% { opacity: 0; transform: translate(14px, -70px); } }
+.hero--moucharabieh .filante { display: none; }
+
+/* ---- Fond « Mosquée de nuit » (celui du site) ------------------------------------------
+   Ciel étoilé (avec un zellige très léger) au-dessus d'une silhouette de mosquée :
+   le contour doré se trace, puis les fenêtres s'allument une à une. */
+.hero--nuit { background: radial-gradient(110% 62% at 50% 100%, #2E5D4B 0%, var(--vert) 42%, var(--nuit) 100%); padding-bottom: clamp(200px, 33vh, 340px); }
+.zellige--ciel .zellige__motif { opacity: .3;
+  -webkit-mask-image: radial-gradient(circle at 50% 44%, #000 var(--deploie), transparent calc(var(--deploie) + 18%)), linear-gradient(#000, rgba(0, 0, 0, .3) 42%, transparent 72%);
+  mask-image: radial-gradient(circle at 50% 44%, #000 var(--deploie), transparent calc(var(--deploie) + 18%)), linear-gradient(#000, rgba(0, 0, 0, .3) 42%, transparent 72%); }
+.mosquee { position: absolute; left: 0; right: 0; bottom: 0; z-index: 0; height: clamp(160px, 27vh, 300px); pointer-events: none; }
+.mosquee__svg { width: 100%; height: 100%; }
+.mosquee__plein { fill: #0D1B15; }
+.mosquee__contour { fill: none; stroke: var(--or); stroke-width: 1.7; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1;
+  animation: dessine 3.6s .3s cubic-bezier(.5, 0, .2, 1) forwards; }
+.mosquee .fen { fill: #F1DDA4; opacity: 0; animation: allume-fen .9s calc(2.6s + var(--k) * 65ms) ease forwards, vacille 4.5s calc(4s + var(--k) * 120ms) ease-in-out infinite alternate; }
+@keyframes allume-fen { to { opacity: .92; } }
+@keyframes vacille { from { opacity: .92; } to { opacity: .55; } }
+.mosquee .anneau { fill: none; stroke: var(--or); stroke-width: 1.6; opacity: .9; }
+.mosquee .alem { fill: var(--or); }
+.hero--nuit .defiler, .hero--nuit .arcades { display: none; }
+@media (max-width: 700px) { .hero--nuit .lune { top: calc(var(--entete) - 6px); } }
 
 /* Croissant de lune */
 .lune { position: absolute; z-index: -1; top: clamp(96px, 17vh, 160px); right: clamp(18px, 9vw, 150px); width: clamp(52px, 7.5vw, 100px);
@@ -456,6 +512,128 @@ h1, h2, h3 { margin: 0; font-family: var(--police-titre); font-weight: 800; line
 .page-texte ul { padding-left: 1.2em; }
 .page-texte a { color: var(--or-texte); text-underline-offset: 3px; }
 .a-completer { padding: 1px 6px; border-radius: 6px; background: rgba(197, 161, 91, .2); color: var(--texte); }
+
+/* 15. LE CORAN (sommaire et pages de sourate) ------------------------------------ */
+.page-coran { background: var(--fond); }
+.coran { padding-top: var(--entete); min-height: 70vh; }
+.menu a[aria-current="page"] { background: rgba(197, 161, 91, .18); opacity: 1; }
+
+/* Bandeau d'en-tête (sommaire) et cartouche de sourate */
+.coran-tete, .sourate-tete { position: relative; isolation: isolate; text-align: center; padding: clamp(34px, 6vw, 64px) 0 clamp(26px, 4vw, 40px); }
+.coran-tete::before, .sourate-tete::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .07; background: url("images/zellige.svg") center / 72.43px 72.43px;
+  -webkit-mask-image: linear-gradient(#000, transparent); mask-image: linear-gradient(#000, transparent); }
+[data-theme="sombre"] .coran-tete::before, [data-theme="sombre"] .sourate-tete::before { opacity: .14; }
+.coran-tete__titre, .sourate-tete__titre { margin-top: 12px; font-size: clamp(1.9rem, 5vw, 2.9rem); text-wrap: balance; }
+.coran-tete__intro { margin: 14px auto 0; max-width: 52ch; color: var(--texte-doux); text-wrap: pretty; }
+.bandeau-provisoire { margin: 18px auto 0; max-width: 620px; padding: 10px 16px; border-radius: 14px; font-size: .9rem; line-height: 1.5;
+  background: rgba(197, 161, 91, .16); box-shadow: inset 0 0 0 1px rgba(197, 161, 91, .55); color: var(--texte); }
+
+.recherche-sourate { position: relative; display: block; max-width: 520px; margin: 26px auto 0; }
+.recherche-sourate svg { position: absolute; left: 16px; top: 50%; width: 20px; height: 20px; translate: 0 -50%; fill: none; stroke: var(--or-texte); stroke-width: 1.8; stroke-linecap: round; pointer-events: none; }
+.recherche-sourate input { width: 100%; height: 52px; padding: 0 18px 0 46px; border: 0; border-radius: 999px; font: inherit; font-size: 1rem; color: var(--texte);
+  background: var(--carte); box-shadow: inset 0 0 0 1px var(--bord), var(--ombre); -webkit-appearance: none; appearance: none; }
+.recherche-sourate input:focus { outline: none; box-shadow: inset 0 0 0 2px var(--or), var(--ombre); }
+
+.liste-sourates { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 12px; }
+.sourate-carte { display: flex; align-items: center; gap: 14px; height: 100%; padding: 14px 16px; border-radius: 18px; text-decoration: none; color: var(--texte);
+  background: var(--carte); box-shadow: inset 0 0 0 1px var(--bord); transition: box-shadow .25s, transform .25s var(--doux); }
+.sourate-carte:hover, .sourate-carte:focus-visible { box-shadow: inset 0 0 0 1.5px var(--or), var(--ombre); transform: translateY(-2px); }
+.num-etoile { position: relative; display: grid; place-items: center; flex: none; width: 46px; height: 46px; font: 700 .86rem/1 var(--police-texte); color: var(--texte); }
+.num-etoile::before, .num-etoile::after { content: ""; position: absolute; inset: 7px; border: 1.5px solid var(--or); border-radius: 3px; }
+.num-etoile::after { transform: rotate(45deg); }
+.num-etoile span { position: relative; }
+.sourate-carte__noms { display: grid; min-width: 0; line-height: 1.3; }
+.sourate-carte__nom { font: 800 1.05rem/1.25 var(--police-titre); letter-spacing: -.01em; }
+.sourate-carte__sens { color: var(--texte-doux); font-size: .92rem; }
+.sourate-carte__meta { margin-top: 3px; font-size: .78rem; letter-spacing: .02em; color: var(--or-texte); }
+.sourate-carte__ar { margin-left: auto; font-size: 1.55rem; line-height: 1.4; color: var(--texte); white-space: nowrap; }
+.liste-vide { margin: 26px 0; text-align: center; color: var(--texte-doux); }
+
+.cartouche-sourate { position: relative; max-width: 440px; margin: 18px auto 0; padding: 14px 40px 18px; }
+.cartouche-sourate__cadre { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.cartouche-sourate__cadre path { fill: none; stroke: var(--or); stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+.cartouche-sourate__cadre path + path { opacity: .5; }
+.cartouche-sourate__ar { position: relative; font-size: clamp(2rem, 7vw, 2.8rem); line-height: 1.6; color: var(--texte); }
+.fil { font-size: .85rem; color: var(--texte-doux); }
+.fil a { color: var(--or-texte); font-weight: 600; text-decoration: none; }
+.sourate-tete__titre { font-size: clamp(1.6rem, 4.6vw, 2.4rem); }
+.sourate-tete__num { color: var(--or-texte); }
+.sourate-tete__sens { font-weight: 800; color: var(--texte-doux); }
+.sourate-tete__meta { margin-top: 10px; font-size: .92rem; color: var(--texte-doux); }
+
+/* Barre de réglages (collée sous l'en-tête) */
+.barre-lecture { position: sticky; top: var(--entete); z-index: 20; background: var(--fond); background: color-mix(in srgb, var(--fond) 92%, transparent);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--bord), 0 -1px 0 var(--bord); }
+.barre-lecture__in { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 14px; padding-block: 10px; }
+.langues, .taille { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--fond-alt); }
+.langues button, .taille button { min-width: 44px; height: 36px; padding: 0 12px; border: 0; border-radius: 999px; font: 600 .88rem/1 var(--police-texte); color: var(--texte-doux);
+  background: transparent; cursor: pointer; transition: background-color .2s, color .2s; }
+.langues button [lang="ar"] { font-size: 1.15rem; font-family: var(--police-arabe); }
+.langues button[aria-pressed="true"] { background: var(--vert); color: var(--ivoire); }
+[data-theme="sombre"] .langues button[aria-pressed="true"] { background: var(--or); color: var(--nuit); }
+.taille button { font-size: 1rem; }
+.aller select { height: 44px; max-width: 210px; padding: 0 34px 0 14px; border: 0; border-radius: 999px; font: 600 .88rem var(--police-texte); color: var(--texte);
+  background: var(--fond-alt) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%23C5A15B' stroke-width='1.6'/%3E%3C/svg%3E") right 14px center / 12px no-repeat;
+  -webkit-appearance: none; appearance: none; }
+.sourate-tete .aller { display: inline-block; margin-top: 16px; }
+.sourate-tete .aller select { max-width: 280px; }
+@media (max-width: 520px) {
+  .barre-lecture__in { flex-wrap: nowrap; gap: 8px; padding-block: 8px; }
+  .langues button { min-width: 0; padding: 0 10px; }
+  .taille button { min-width: 38px; padding: 0 8px; }
+}
+
+/* Versets */
+.lecture { max-width: 860px; padding-bottom: 30px; }
+.basmala-sourate { margin: 26px 0 8px; padding: 18px 0 22px; text-align: center; border-bottom: 1px solid var(--bord); }
+.basmala-sourate .ar { font-size: calc(1.7rem + var(--taille-ar, 2) * .22rem); line-height: 2; }
+.basmala-sourate .fr, .basmala-sourate .tr { margin-top: 4px; font-size: .95rem; color: var(--texte-doux); }
+.v { padding: 18px 0 22px; border-bottom: 1px solid var(--bord); scroll-margin-top: calc(var(--entete) + 76px); }
+.v:target { background: linear-gradient(90deg, transparent, rgba(197, 161, 91, .12), transparent); }
+.v__tete { display: flex; align-items: center; gap: 10px; }
+.num { display: inline-flex; align-items: center; height: 28px; padding: 0 11px; border-radius: 999px; font: 700 .8rem/1 var(--police-texte); letter-spacing: .02em;
+  color: var(--or-texte); text-decoration: none; box-shadow: inset 0 0 0 1px rgba(197, 161, 91, .55); }
+.num:hover { background: rgba(197, 161, 91, .14); }
+.sajda { display: inline-flex; align-items: center; gap: 5px; height: 28px; padding: 0 11px; border-radius: 999px; font-size: .8rem; font-weight: 600;
+  color: var(--ivoire); background: var(--vert); }
+.sajda span { font-family: var(--police-arabe); font-size: 1.1rem; }
+.v .ar { margin-top: 8px; font-size: calc(1.55rem + var(--taille-ar, 2) * .3rem); line-height: 2.2; text-align: right; color: var(--texte); }
+.fin-ayah { color: var(--or-texte); white-space: nowrap; }
+.v .fr, .v .tr { margin-top: 10px; font-size: 1.04rem; line-height: 1.7; color: var(--texte); text-wrap: pretty; }
+.v .tr { color: var(--texte-doux); padding-left: 14px; border-left: 2px solid rgba(197, 161, 91, .55); }
+.note { margin-top: 8px; font-size: .86rem; line-height: 1.55; color: var(--texte-doux); }
+.note::before { content: "Note\00a0: "; font-weight: 600; color: var(--or-texte); }
+.note--tr::before { content: "Not\00a0: "; }
+.sans-ar .lecture .ar, .sans-fr .lecture .fr, .sans-tr .lecture .tr,
+.sans-fr .lecture .note--fr, .sans-tr .lecture .note--tr { display: none; }
+.repere-juz { display: flex; align-items: center; gap: 14px; margin: 26px 0 6px; font-size: .78rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--or-texte); }
+.repere-juz::before, .repere-juz::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--or)); }
+.repere-juz::after { transform: scaleX(-1); }
+@media (min-width: 900px) { .v .ar { font-size: calc(1.8rem + var(--taille-ar, 2) * .32rem); } }
+
+.voisins { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 34px 0 10px; }
+.voisin { display: grid; gap: 4px; padding: 16px 18px; border-radius: 18px; text-decoration: none; color: var(--texte); background: var(--carte); box-shadow: inset 0 0 0 1px var(--bord); }
+.voisin:hover { box-shadow: inset 0 0 0 1.5px var(--or); }
+.voisin--suiv { text-align: right; grid-column: 2; }
+.voisin__dir { font-size: .78rem; font-weight: 600; letter-spacing: .06em; color: var(--or-texte); }
+.voisin__nom { font: 800 1.02rem/1.25 var(--police-titre); }
+.prochain--dispo { box-shadow: inset 0 0 0 1.5px var(--or), var(--ombre); }
+.badge--dispo { background: var(--vert); color: var(--ivoire); }
+.lien-carte { color: inherit; text-decoration: none; }
+.lien-carte::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+
+.sources-coran { margin: 30px 0 46px; padding: 22px 22px 18px; border-radius: 20px; background: var(--fond-alt); font-size: .9rem; line-height: 1.6; }
+.sources-coran h2 { font-size: 1.12rem; }
+.sources-coran ul { margin: 12px 0 0; padding-left: 1.1em; display: grid; gap: 8px; }
+.sources-coran a { color: var(--or-texte); }
+.sources-coran__note { margin-top: 14px; font-style: italic; color: var(--texte-doux); }
+
+.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom)); z-index: 80; translate: -50% 0; padding: 12px 18px; border-radius: 999px;
+  background: var(--vert); color: var(--ivoire); font-size: .92rem; font-weight: 600; box-shadow: 0 14px 30px -12px rgba(0, 0, 0, .5); }
+
+/* Accueil : bloc « Lire le Coran » */
+.coran-accueil { text-align: center; }
+.coran-accueil__ar { font-family: var(--police-arabe); font-size: clamp(2rem, 6vw, 3rem); line-height: 1.7; color: var(--texte); }
 
 /* 13. APPARITIONS AU DÉFILEMENT ------------------------------------------------
    script.js ajoute la classe « visible » quand un bloc entre à l'écran. */
