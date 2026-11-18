@@ -21,7 +21,10 @@ données, pas de logiciel à installer.
   script.js ............. les animations et le bloc RÉGLAGES (tes liens)
   mentions-legales.html . la page obligatoire en France
   404.html .............. la page affichée si une adresse n'existe pas
-  polices/ .............. Manrope, Inter et Scheherazade New (hébergées sur le site)
+  polices/ .............. Manrope, Inter et Scheherazade New (hébergées sur le site).
+                          Pour l'arabe : Scheherazade New 4.400 de SIL, réglée pour
+                          écrire la kasra sous la lettre quand il y a une chadda
+                          (ٱلدِّينِ).
   images/ ............... motif, favicon, icône iPhone, aperçu de partage
   CNAME ................. indique à GitHub Pages ton adresse : islamedia.fr
   robots.txt, sitemap.xml  pour Google
@@ -182,7 +185,10 @@ laisser, ils ne gênent pas.
    modifies un texte français de l'accueil ou des mentions légales, demande
    aussi sa traduction, sinon la fabrication du site s'arrête (c'est voulu :
    la page turque ne peut pas rester en retard).
- • Les vidéos restent en français : la page turque le dit.
+ • Les vidéos n'existent qu'en français : la version turque n'a donc pas
+   la rubrique « Nos séries » (ni dans le menu, ni sur l'accueil).
+ • Le menu est le même sur toutes les pages (y compris les mentions
+   légales) : il est fabriqué à un seul endroit (outils/coran.py).
  • Les mentions légales turques sont une traduction pour information : c'est
    la version française qui fait foi.
  • Fais relire les textes turcs par une personne dont c'est la langue
