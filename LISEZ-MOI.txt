@@ -179,15 +179,17 @@ laisser, ils ne gênent pas.
  • Liste des villes : GeoNames (licence CC BY 4.0, citée sur la page).
    Genève et Anvers y figurent depuis le 18/11/2026 (elles manquaient).
  • Impression (depuis le 18/11/2026) : le bouton « Imprimer » donne une
-   feuille A4 aux couleurs d'Islamedia (logo, zellige doré) : le mois
-   affiché pour la ville et la méthode du visiteur, une barre qui montre la
-   journée (nuit, jour, prières), et en bas @islamedia.fr et un QR code vers
-   la page des horaires. Même feuille en turc sur la version turque.
+   feuille A4 « enluminure » aux couleurs d'Islamedia : cadre doré à
+   étoiles, logo serti dans le cadre, le mois affiché pour la ville et la
+   méthode du visiteur, et en bas un bandeau vert au zellige avec
+   @islamedia.fr et un QR code vers la page des horaires. Même feuille en
+   turc sur la version turque.
  • Ramadan : 40 jours avant et pendant le mois, un encart « Ramadan » apparaît
    en haut de la page des horaires, avec un bouton pour imprimer le
-   calendrier du Ramadan (Fajr et Maghrib en gras, durée du jeûne chaque
-   jour, dix derniers jours marqués, date de l'Aïd). L'accueil affiche aussi
-   un lien « Calendrier du Ramadan à imprimer ».
+   calendrier du Ramadan (arc et lanternes, Fajr et Maghrib mis en avant,
+   dix derniers jours marqués, date de l'Aïd, début du verset 2:185 en
+   arabe et en traduction). L'accueil affiche aussi un lien « Calendrier
+   du Ramadan à imprimer ».
    Les dates sont calculées (calendrier Umm al-Qura) et notées « à
    confirmer ». Dès l'annonce officielle, remplis dans script.js, bloc
    RÉGLAGES : ramadan_debut (1er jour) et aid_al_fitr (jour de l'Aïd), au

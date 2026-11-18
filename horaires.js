@@ -324,41 +324,48 @@
   var PARIS = { nom: "Paris", dep: "75", lat: 48.8534, lon: 2.3488, tz: "Europe/Paris" };
 
   /* 5. RAMADAN ET FEUILLE IMPRIMÉE ---------------------------------------------- */
-  /* Textes de la feuille A4 (mois affiché ou Ramadan) et de l'encart « Ramadan » */
+  /* Textes de la feuille A4 « enluminure » (mois affiché ou Ramadan) et de l'encart « Ramadan » */
   var F = TR ? {
-    surMois: function (m) { return "Namaz vakitleri, " + m; },
-    surRamadan: function (an) { return an ? "Ramazan " + an + " imsakiyesi" : "Ramazan imsakiyesi"; },
-    colonnes: ["İmsak", "Güneş", "Öğle", "İkindi", "Akşam", "Yatsı"], jour: "Gün", date: "Tarih", journee: "Gün boyu", jeune: "Oruç süresi",
-    heure: "", et: "ve", ar: "مواقيت الصلاة",
-    legende: ["gece", "gündüz", "vakitler"], legendeRamadan: ["oruç, imsaktan akşama", "gece", "imsak, akşam, yatsı", "son on gün"],
-    estime: "* tahminî vakit (yaz kuralı)",
-    periode: function (d1, d2) { return d1 + " – " + d2; },
-    aid: function (d) { return "Ramazan Bayramı: " + d; },
-    aConfirmer: "Tarihler resmî duyuruyla kesinleşir.",
+    colonnes: ["İmsak", "Güneş", "Öğle", "İkindi", "Akşam", "Yatsı"], jour: "Gün", date: "Tarih",
+    debutJeune: "oruç başlar", ruptureJeune: "iftar", et: "ve",
+    noteMois: "Cuma günleri renklidir. Cuma namazının saatini her cami kendisi belirler.",
+    estime: "* Tahminî vakit (yaz kuralı).",
+    noteRamadan: function (aid, confirme) {
+      return "Ramazan’ın son on günü. Ramazan Bayramı: " + aid + "." + (confirme ? "" : " Tarihler resmî duyuruyla kesinleşir.");
+    },
+    titreRamadan: function (lieu) { return lieu.position ? "Ramazan İmsakiyesi" : nomAffiche(lieu) + " Ramazan İmsakiyesi"; },
+    datesRamadan: function (d1, d2, an) { return (an ? "Ramazan " + an + ": " : "") + d1 + " – " + d2; },
+    jourLong: { day: "numeric", month: "long" }, aidLong: { day: "numeric", month: "long", year: "numeric", weekday: "long" },
     methode: function (cle, nom, hanafite) {
       return (cle === "diyanet" ? "Diyanet (DİTİB) yöntemi, resmî takvimleriyle karşılaştırılmıştır." : "Yöntem: " + nom + ".") + (hanafite ? " İkindi: asr-ı sânî (Hanefî)." : "");
     },
     carteTitre: function (an) { return an ? "Ramazan " + an : "Ramazan"; },
     carteTexte: function (periode, confirme) {
-      return periode + (confirme ? "" : " (tahminî tarihler, resmî duyuruyla kesinleşir)") + ". Şehrinizin imsakiyesini, her günün oruç süresiyle tek sayfada yazdırın.";
+      return periode + (confirme ? "" : " (tahminî tarihler, resmî duyuruyla kesinleşir)") +
+        ". Şehrinizin imsakiyesini tek sayfada yazdırın: her gün imsak ve iftar vakti, son on gün ve bayram tarihi.";
     },
     nord: "K", sud: "G", est: "D", ouest: "B"
   } : {
-    surMois: function (m) { return "Horaires de prière, " + m; },
-    surRamadan: function (an) { return an ? "Calendrier du Ramadan " + an : "Calendrier du Ramadan"; },
-    colonnes: ["Fajr", "Lever", "Dhuhr", "Asr", "Maghrib", "Isha"], jour: "Jour", date: "Date", journee: "La journée", jeune: "Durée du jeûne",
-    heure: " h", et: "et", ar: "مواقيت الصلاة",
-    legende: ["nuit", "jour", "prières"], legendeRamadan: ["jeûne, du fajr au maghrib", "nuit", "fajr, maghrib, isha", "les dix derniers jours"],
-    estime: "* horaire estimé (règle d’été)",
-    periode: function (d1, d2) { return "Du " + d1 + " au " + d2; },
-    aid: function (d) { return "Aïd al-Fitr le " + d; },
-    aConfirmer: "Dates à confirmer à l’annonce officielle.",
+    colonnes: ["Fajr", "Lever", "Dhuhr", "Asr", "Maghrib", "Isha"], jour: "Jour", date: "Date",
+    debutJeune: "début du jeûne", ruptureJeune: "rupture du jeûne", et: "et",
+    noteMois: "Les vendredis sont teintés. L’heure de la prière du vendredi est fixée par chaque mosquée.",
+    estime: "* Horaire estimé (règle d’été).",
+    noteRamadan: function (aid, confirme) {
+      return "Les dix derniers jours du Ramadan. Aïd al-Fitr : " + aid + "." + (confirme ? "" : " Dates à confirmer à l’annonce officielle.");
+    },
+    titreRamadan: function (lieu, an) {
+      var r = "Ramadan" + (an ? " " + an : "");
+      return lieu.position ? r : lieu.pres ? r + " près de " + lieu.nom : r + " à " + lieu.nom;
+    },
+    datesRamadan: function (d1, d2) { return "Du " + d1 + " au " + d2; },
+    jourLong: { weekday: "long", day: "numeric", month: "long" }, aidLong: { weekday: "long", day: "numeric", month: "long", year: "numeric" },
     methode: function (cle, nom, hanafite) {
       return (cle === "diyanet" ? "Méthode Diyanet (DITIB), comparée à ses calendriers officiels." : "Méthode : " + nom + ".") + (hanafite ? " Asr selon l’école hanafite." : "");
     },
     carteTitre: function (an) { return an ? "Ramadan " + an : "Ramadan"; },
     carteTexte: function (periode, confirme) {
-      return periode + (confirme ? "" : " (dates à confirmer à l’annonce officielle)") + ". Imprimez le calendrier de votre ville sur une page, avec la durée du jeûne de chaque jour.";
+      return periode + (confirme ? "" : " (dates à confirmer à l’annonce officielle)") +
+        ". Imprimez le calendrier de votre ville sur une page : début et rupture du jeûne chaque jour, dix derniers jours et date de l’Aïd.";
     },
     nord: "N", sud: "S", est: "E", ouest: "O"
   };
@@ -366,8 +373,6 @@
   var MOIS_HIJRI = TR
     ? ["Muharrem", "Safer", "Rebiülevvel", "Rebiülahir", "Cemaziyelevvel", "Cemaziyelahir", "Recep", "Şaban", "Ramazan", "Şevval", "Zilkade", "Zilhicce"]
     : ["Mouharram", "Safar", "Rabi al-Awwal", "Rabi ath-Thani", "Joumada al-Oula", "Joumada ath-Thania", "Rajab", "Chaabane", "Ramadan", "Chawwal", "Dhou al-Qi’da", "Dhou al-Hijja"];
-  var CHIFFRES_AR = "٠١٢٣٤٥٦٧٨٩";
-  var COULEURS = { vert: "#123B2F", or: "#C5A15B", brume: "#DDE6DE", jour: "#F4E5BC" };
   var fmtHijri = null;
   try {
     fmtHijri = new Intl.DateTimeFormat("en-u-ca-islamic-umalqura", { day: "numeric", month: "numeric", year: "numeric", timeZone: "UTC" });
@@ -383,7 +388,6 @@
     fmtHijri.formatToParts(new Date(n * 86400000)).forEach(function (x) { p[x.type] = x.value; });
     return { a: parseInt(p.year, 10), m: parseInt(p.month, 10), j: parseInt(p.day, 10) };
   }
-  function chiffresArabes(n) { return String(n).replace(/[0-9]/g, function (c) { return CHIFFRES_AR.charAt(+c); }); }
   function echapperHTML(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   /* Réglages du site (bloc RÉGLAGES de script.js, chargé après ce fichier) */
   function reglagesSite() { return typeof REGLAGES !== "undefined" && REGLAGES ? REGLAGES : {}; }
@@ -418,56 +422,41 @@
     var a = jourNum({ a: m.a, m: m.m, j: 1 }), b = a + new Date(Date.UTC(m.a, m.m, 0)).getUTCDate() - 1;
     return a <= ram.fin && b >= ram.debut;
   }
-  function dateLongue(n, avecAnnee) {
-    var o = { day: "numeric", month: "long", timeZone: "UTC" };
-    if (avecAnnee) o.year = "numeric";
+  /* Date en toutes lettres ; en français, « 1er » pour le premier du mois. */
+  function dateTexte(n, options) {
+    var o = { timeZone: "UTC" };
+    for (var k in options) o[k] = options[k];
     var t = new Intl.DateTimeFormat(LOCALE, o).format(new Date(n * 86400000));
-    return TR ? t : t.replace(/^1 /, "1er ");
+    return TR ? t : t.replace(/(^|\s)1 /, "$11er ");
   }
   function periodeRamadan(ram) {
-    return F.periode(dateLongue(ram.debut, numJour(ram.debut).a !== numJour(ram.fin).a), dateLongue(ram.fin, true));
+    var annee = numJour(ram.debut).a !== numJour(ram.fin).a;
+    return (TR ? function (a, b) { return a + " – " + b; } : F.datesRamadan)(
+      dateTexte(ram.debut, annee ? { day: "numeric", month: "long", year: "numeric" } : { day: "numeric", month: "long" }),
+      dateTexte(ram.fin, { day: "numeric", month: "long", year: "numeric" }));
   }
   function moisHijriTexte(n1, n2) {
     if (!fmtHijri) return "";
     var liste = [], dernier = "";
     for (var n = n1; n <= n2; n++) { var h = hijri(n), c = h.a + "-" + h.m; if (c !== dernier) { liste.push(h); dernier = c; } }
     var noms = liste.map(function (h, i) { var s = liste[i + 1]; return MOIS_HIJRI[h.m - 1] + (!s || s.a !== h.a ? " " + h.a : ""); });
-    return noms.length === 1 ? noms[0] : noms.slice(0, -1).join(", ") + "<br>" + F.et + " " + noms[noms.length - 1];
+    return noms.length === 1 ? noms[0] : noms.slice(0, -1).join(", ") + " " + F.et + " " + noms[noms.length - 1];
   }
   function coordonnees(l) {
     var f = new Intl.NumberFormat(LOCALE, { maximumFractionDigits: 2 });
     return f.format(Math.abs(l.lat)) + "° " + (l.lat >= 0 ? F.nord : F.sud) + ", " + f.format(Math.abs(l.lon)) + "° " + (l.lon >= 0 ? F.est : F.ouest);
   }
-  function minutes(x) { return x === null || x === undefined || isNaN(x) ? null : Math.floor(x + 0.5); }
-  function pastille(couleur, rond) {
-    return '<svg class="fi__pastille" viewBox="0 0 10 5" aria-hidden="true">' +
-      (rond ? '<circle cx="5" cy="2.5" r="1.7" fill="' + couleur + '"/>' : '<rect y="0.4" width="10" height="4.2" rx="2.1" fill="' + couleur + '"/>') + "</svg>";
-  }
-  /* La journée en une ligne : nuit, jour (du lever au coucher), prières ; en Ramadan, le jeûne en or. */
-  function barreJour(r, debut, fin, largeur, ramadan) {
-    var pos = function (m) { return Math.max(0, Math.min(largeur, (m - debut) / (fin - debut) * largeur)); }, x = function (v) { return v.toFixed(2); };
-    var fajr = minutes(r.fajr), lever = minutes(r.lever), maghrib = minutes(r.maghrib), isha = minutes(r.isha);
-    if (isha !== null && maghrib !== null && isha < maghrib) isha += 1440;
-    var s = '<svg class="fi__barre" viewBox="0 0 ' + largeur + ' 4" aria-hidden="true"><rect y="0.6" width="' + largeur + '" height="2.8" rx="1.4" fill="' + COULEURS.brume + '"/>';
-    if (lever !== null && maghrib !== null) s += '<rect x="' + x(pos(lever)) + '" y="0.6" width="' + x(pos(maghrib) - pos(lever)) + '" height="2.8" fill="' + COULEURS.jour + '"/>';
-    if (ramadan && fajr !== null && maghrib !== null) s += '<rect x="' + x(pos(fajr)) + '" y="1.05" width="' + x(pos(maghrib) - pos(fajr)) + '" height="1.9" rx="0.95" fill="' + COULEURS.or + '"/>';
-    (ramadan ? ["fajr", "maghrib", "isha"] : ["fajr", "dhuhr", "asr", "maghrib", "isha"]).forEach(function (k) {
-      var v = k === "isha" ? isha : minutes(r[k]);
-      if (v !== null && v >= debut && v <= fin) s += '<circle cx="' + x(pos(v)) + '" cy="2" r="0.85" fill="' + COULEURS.vert + '"/>';
-    });
-    return s + "</svg>";
-  }
-  /* Taille du nom de la ville : 44 pt, réduite pour les noms longs (110 mm de large au plus). */
+  /* Taille d'un titre de la feuille : réduite pour les noms longs, sans descendre sous « min » (au-delà, il passe à la ligne). */
   var mesureur = null;
-  function ajusterVille(el) {
-    var taille = 44, max = 110 / 25.4 * 96, texte = el.textContent;
+  function ajuster(el, taille, maxMm, min) {
+    var max = maxMm / 25.4 * 96, texte = el.textContent, t = taille;
     try {
       mesureur = mesureur || document.createElement("canvas").getContext("2d");
       mesureur.font = "800 " + taille + "pt Manrope, sans-serif";
       var l = mesureur.measureText(texte).width;
-      if (l > max) taille = Math.max(20, Math.floor(taille * max / l));
-    } catch (e) { if (texte.length > 12) taille = Math.max(20, Math.floor(44 * 12 / texte.length)); }
-    el.style.fontSize = taille + "pt";
+      if (l > max) t = Math.max(min, Math.floor(taille * max / l * 2) / 2);
+    } catch (e) { if (texte.length > 14) t = Math.max(min, Math.floor(taille * 14 / texte.length)); }
+    el.style.fontSize = t + "pt";
   }
   /* Remplit la feuille imprimée : mode « mois » (le mois affiché) ou « ramadan ». Renvoie le mode retenu. */
   function remplirFeuille(f, mode, reglages, mois) {
@@ -478,63 +467,48 @@
       var m = mois || { a: auj.a, m: auj.m }, n0 = jourNum({ a: m.a, m: m.m, j: 1 }), nb = new Date(Date.UTC(m.a, m.m, 0)).getUTCDate();
       for (k = 0; k < nb; k++) jours.push(n0 + k);
     }
-    var lignes = jours.map(function (n) { var d = numJour(n); return { n: n, d: d, r: calculer(lieu, d.a, d.m, d.j, reglages) }; });
-    var bas = Infinity, haut = -Infinity;
-    lignes.forEach(function (l) {
-      if (!l.r) return;
-      var f0 = minutes(l.r.fajr), i0 = minutes(l.r.isha), m0 = minutes(l.r.maghrib);
-      if (f0 !== null) bas = Math.min(bas, f0);
-      if (i0 !== null) { if (m0 !== null && i0 < m0) i0 += 1440; haut = Math.max(haut, i0); }
-    });
-    if (!isFinite(bas)) bas = 300;
-    if (!isFinite(haut)) haut = 1320;
-    var debut = Math.max(0, Math.floor((bas - 40) / 60) * 60), fin = Math.min(1560, Math.ceil((haut + 40) / 60) * 60);
-    var largeur = ram ? 44 : 50, pas = ram || fin - debut > 15 * 60 ? 6 : 3, grad = ""; /* graduations assez espacées pour rester lisibles */
-    for (var h = Math.floor(debut / 60) + 1; h * 60 < fin; h++) {
-      if (h % pas === 0) grad += '<span style="left:' + ((h * 60 - debut) / (fin - debut) * 100).toFixed(2) + '%">' + (h % 24) + F.heure + "</span>";
-    }
     var fmtSem = new Intl.DateTimeFormat(LOCALE, { weekday: "short", timeZone: "UTC" }), fmtMois = new Intl.DateTimeFormat(LOCALE, { month: "short", timeZone: "UTC" });
     var cols = ["fajr", "lever", "dhuhr", "asr", "maghrib", "isha"], estime = false;
     var fort = function (c) { return ram && (c === "fajr" || c === "maghrib") ? ' class="fort"' : ""; };
     var entetes = "<tr>" + (ram ? '<th class="c-jour">' + F.jour + '</th><th class="c-date">' + F.date + "</th>" : '<th class="c-date">' + F.jour + "</th>") +
-      cols.map(function (c, i) { return "<th" + fort(c) + ">" + F.colonnes[i] + "</th>"; }).join("") +
-      '<th class="c-barre">' + (ram ? F.jeune : F.journee) + '<div class="fi__grad">' + grad + "</div></th></tr>";
-    var corps = lignes.map(function (l, i) {
-      var r = l.r, dt = new Date(l.n * 86400000), sem = fmtSem.format(dt);
+      cols.map(function (c, i) {
+        var sous = ram ? (c === "fajr" ? "<small>" + F.debutJeune + "</small>" : c === "maghrib" ? "<small>" + F.ruptureJeune + "</small>" : "")
+          : '<small lang="ar" dir="rtl">' + PRIERES[i].ar + "</small>";
+        return "<th" + fort(c) + ">" + F.colonnes[i] + sous + "</th>";
+      }).join("") + "</tr>";
+    var corps = jours.map(function (n, i) {
+      var d = numJour(n), r = calculer(lieu, d.a, d.m, d.j, reglages), dt = new Date(n * 86400000);
       var cases = cols.map(function (c) {
         var e = !!(r && r.estime && r.estime[c]);
         if (e) estime = true;
         return "<td" + fort(c) + ">" + (r ? hm(r[c]) : "—") + (e ? "*" : "") + "</td>";
       }).join("");
-      var duree = "";
-      if (ram && r && minutes(r.fajr) !== null && minutes(r.maghrib) !== null) {
-        var dm = minutes(r.maghrib) - minutes(r.fajr);
-        duree = '<span class="fi__duree">' + T.duree(Math.floor(dm / 60), dm % 60) + "</span>";
-      }
-      return "<tr" + (l.d.sem === 5 ? ' class="ven"' : "") + ">" +
-        (ram ? '<td class="c-jour"><span' + (i >= 20 ? ' class="fin"' : "") + ">" + (i + 1) + "</span></td>" : "") +
-        '<td class="c-date">' + sem + " " + (ram && !TR && l.d.j === 1 ? "1er" : l.d.j) + (ram ? " " + fmtMois.format(dt) : "") + "</td>" + cases +
-        '<td class="c-barre"><div class="fi__ligne">' + (r ? barreJour(r, debut, fin, largeur, !!ram) : "") + duree + "</div></td></tr>";
+      var date = fmtSem.format(dt) + " " + (ram && !TR && d.j === 1 ? "1er" : d.j) + (ram ? " " + fmtMois.format(dt) : "");
+      return "<tr" + (d.sem === 5 ? ' class="ven"' : "") + ">" +
+        (ram ? '<td class="c-jour"><span class="fi__nj' + (i >= 20 ? " fi__nj--fin" : "") + '">' + (i + 1) + "</span></td>" : "") +
+        '<td class="c-date">' + date + "</td>" + cases + "</tr>";
     }).join("");
-    var legende = ram
-      ? [pastille(COULEURS.or) + F.legendeRamadan[0], pastille(COULEURS.brume) + F.legendeRamadan[1], pastille(COULEURS.vert, true) + F.legendeRamadan[2], "<b>21</b>" + F.legendeRamadan[3]]
-      : [pastille(COULEURS.brume) + F.legende[0], pastille(COULEURS.jour) + F.legende[1], pastille(COULEURS.vert, true) + F.legende[2]];
-    if (estime) legende.push(F.estime);
 
-    var ville = un("[data-fi-ville]", f);
-    un("[data-fi-sur]", f).textContent = ram ? F.surRamadan(ram.annee) :
-      F.surMois(new Intl.DateTimeFormat(LOCALE, { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(jours[0] * 86400000)));
-    ville.textContent = nomAffiche(lieu);
-    ajusterVille(ville);
-    un("[data-fi-region]", f).textContent = lieu.position ? coordonnees(lieu) : nomRegion(lieu);
-    un("[data-fi-ar]", f).textContent = ram ? "رمضان" + (ram.annee ? " " + chiffresArabes(ram.annee) : "") : F.ar;
-    un("[data-fi-dates]", f).innerHTML = ram
-      ? echapperHTML(periodeRamadan(ram)) + "<br>" + echapperHTML(F.aid(dateLongue(ram.aid, false))) +
-        (ram.confirme ? "" : '<br><span class="fi__petit">' + echapperHTML(F.aConfirmer) + "</span>")
-      : moisHijriTexte(jours[0], jours[jours.length - 1]);
+    if (ram) {
+      var titre = un("[data-fi-titre]", f);
+      titre.textContent = F.titreRamadan(lieu, ram.annee);
+      ajuster(titre, 20, 98, 13);
+      var deuxAns = numJour(ram.debut).a !== numJour(ram.fin).a, avecAn = { day: "numeric", month: "long", year: "numeric" };
+      un("[data-fi-dates]", f).textContent = TR ? F.datesRamadan(dateTexte(ram.debut, deuxAns ? avecAn : F.jourLong), dateTexte(ram.fin, avecAn), ram.annee)
+        : F.datesRamadan(dateTexte(ram.debut, deuxAns ? F.aidLong : F.jourLong), dateTexte(ram.fin, F.aidLong));
+      un("[data-fi-note]", f).innerHTML = '<span class="fi__nj fi__nj--fin">21</span><span>' +
+        echapperHTML(F.noteRamadan(dateTexte(ram.aid, F.aidLong), ram.confirme) + (estime ? " " + F.estime : "")) + "</span>";
+    } else {
+      var ville = un("[data-fi-ville]", f), titreMois = new Intl.DateTimeFormat(LOCALE, { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(jours[0] * 86400000));
+      ville.textContent = nomAffiche(lieu);
+      ajuster(ville, 28, 150, 16);
+      un("[data-fi-region]", f).textContent = lieu.position ? coordonnees(lieu) : nomRegion(lieu);
+      un("[data-fi-mois]", f).textContent = titreMois.charAt(0).toLocaleUpperCase(LOCALE) + titreMois.slice(1);
+      un("[data-fi-hijri]", f).textContent = moisHijriTexte(jours[0], jours[jours.length - 1]);
+      un("[data-fi-note]", f).textContent = F.noteMois + (estime ? " " + F.estime : "");
+    }
     un("[data-fi-entetes]", f).innerHTML = entetes;
     un("[data-fi-corps]", f).innerHTML = corps;
-    un("[data-fi-legende]", f).innerHTML = legende.map(function (x) { return "<span>" + x + "</span>"; }).join("");
     un("[data-fi-methode]", f).textContent = F.methode(reglages.methode, methode(reglages.methode).nom, reglages.asr === "hanafite");
     f.classList.toggle("fi--ramadan", !!ram);
     return ram ? "ramadan" : "mois";
