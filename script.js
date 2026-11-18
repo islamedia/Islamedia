@@ -20,6 +20,19 @@ const REGLAGES = {
 
   var racine = document.documentElement;
   var reduit = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* Langue de la page : français par défaut, turc sur les pages tr/ du site */
+  var TR = racine.lang === "tr";
+  var TEXTES = TR ? {
+    clair: "Açık moda geç", sombre: "Koyu moda geç", ouvrir: "Menüyü aç", fermer: "Menüyü kapat", nombres: "tr-TR",
+    copie: function (ref) { return ref + (ref.indexOf("–") > -1 ? " ayetlerinin" : " ayetinin") + " bağlantısı kopyalandı"; },
+    verset: function (nom, v) { return nom + " Suresi, " + v + ". ayet"; }, aller: "Ayete git",
+    trop: function (nom, nb) { return nom + " Suresi " + nb + " ayettir."; }, sourates: "Kur’an’da 114 sure vardır."
+  } : {
+    clair: "Passer en mode clair", sombre: "Passer en mode sombre", ouvrir: "Ouvrir le menu", fermer: "Fermer le menu", nombres: "fr-FR",
+    copie: function (ref) { return (ref.indexOf("–") > -1 ? "Lien des versets " : "Lien du verset ") + ref + " copié"; },
+    verset: function (nom, v) { return "Sourate " + nom + ", verset " + v; }, aller: "Aller au verset",
+    trop: function (nom, nb) { return "La sourate " + nom + " compte " + nb + " versets."; }, sourates: "Le Coran compte 114 sourates."
+  };
   function tous(sel, zone) { return Array.prototype.slice.call((zone || document).querySelectorAll(sel)); }
   function propre(cle) { return String(REGLAGES[cle] || "").trim(); }
 
@@ -29,7 +42,7 @@ const REGLAGES = {
     racine.setAttribute("data-theme", theme);
     if (boutonTheme) {
       boutonTheme.setAttribute("aria-pressed", theme === "sombre" ? "true" : "false");
-      boutonTheme.setAttribute("aria-label", theme === "sombre" ? "Passer en mode clair" : "Passer en mode sombre");
+      boutonTheme.setAttribute("aria-label", theme === "sombre" ? TEXTES.clair : TEXTES.sombre);
     }
     if (memoriser) { try { localStorage.setItem("islamedia-theme", theme); } catch (e) {} }
   }
@@ -46,7 +59,7 @@ const REGLAGES = {
   function basculerMenu(ouvrir) {
     if (!burger || !menu) return;
     burger.setAttribute("aria-expanded", ouvrir ? "true" : "false");
-    burger.setAttribute("aria-label", ouvrir ? "Fermer le menu" : "Ouvrir le menu");
+    burger.setAttribute("aria-label", ouvrir ? TEXTES.fermer : TEXTES.ouvrir);
     menu.classList.toggle("ouvert", ouvrir);
     document.body.classList.toggle("menu-ouvert", ouvrir);
   }
@@ -107,7 +120,7 @@ const REGLAGES = {
   /* 7. Apparitions au défilement + compteurs ----------------------------------- */
   function compter(el) {
     var cible = parseInt(el.getAttribute("data-compteur"), 10) || 0;
-    var format = new Intl.NumberFormat("fr-FR");
+    var format = new Intl.NumberFormat(TEXTES.nombres);
     if (reduit) { el.textContent = format.format(cible); return; }
     var debut = null, duree = 1700;
     function pas(t) {
@@ -157,7 +170,7 @@ const REGLAGES = {
         zoneAr.appendChild(s);
         zoneAr.appendChild(document.createTextNode(" "));
       });
-      zoneFr.textContent = v.fr;
+      zoneFr.textContent = v.t;
       zoneRef.textContent = v.ref;
       if (points) tous("span", points).forEach(function (p, i) { p.classList.toggle("actif", i === indice); });
     }
@@ -204,6 +217,8 @@ const REGLAGES = {
       if (lus) Object.keys(reglages).forEach(function (k) { if (k in lus) reglages[k] = lus[k]; });
     } catch (e) {}
     var appliquer = function (memoriser) {
+      var presentes = tous("[data-langue]").map(function (x) { return x.getAttribute("data-langue"); });
+      if (presentes.length && !presentes.some(function (x) { return reglages[x]; })) presentes.forEach(function (x) { reglages[x] = true; });
       ["ar", "fr", "tr"].forEach(function (l) {
         racineDoc.classList.toggle("sans-" + l, !reglages[l]);
         tous('[data-langue="' + l + '"]').forEach(function (b) { b.setAttribute("aria-pressed", reglages[l] ? "true" : "false"); });
@@ -245,24 +260,78 @@ const REGLAGES = {
       ev.preventDefault();
       if (history.replaceState) history.replaceState(null, "", ancre);
       navigator.clipboard.writeText(adresse).then(function () {
-        annoncer("Lien du verset " + lien.getAttribute("data-copier-verset") + " copié");
+        annoncer(TEXTES.copie(lien.getAttribute("data-copier-verset")));
       }, function () { window.location.hash = ancre; });
     });
   });
 
+  /* Recherche d'une sourate (nom ou numéro) ou d'un verset (« 3:13 », « 3/13 », « Baqara 255 ») */
   var champSourate = document.querySelector("[data-recherche-sourate]");
   if (champSourate) {
-    var simplifier = function (t) { return t.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[‘’'`\-\s.]/g, "").toLowerCase(); };
+    var simplifier = function (t) {
+      return t.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i").replace(/[‘’ʿʾ'`\-\s.:\/,]/g, "").toLowerCase();
+    };
+    /* nom sans l'article (« An-Nas » → « nas ») */
+    var nomCourt = function (li) { return simplifier((li.getAttribute("data-nom") || "").replace(/^(?:adh|ash|a[dlnrstz])[\s\-‘’]+/i, "")); };
     var lignes = tous("[data-liste-sourates] li"), vide = document.querySelector("[data-liste-vide]");
+    var zoneVerset = document.querySelector("[data-resultat-verset]"), cibleVerset = null;
     lignes.forEach(function (li) { li.cle = simplifier(li.getAttribute("data-recherche") || ""); });
+    var ligneDe = function (n) { return lignes.filter(function (li) { return +li.getAttribute("data-sourate") === n; })[0] || null; };
+    /* Référence de verset : { s: sourate, v: verset, li } ou null */
+    var reference = function (brut) {
+      var t = brut.trim().replace(/[٠-٩]/g, function (c) { return String(c.charCodeAt(0) - 1632); });
+      var m = t.match(/^(\d{1,3})\s*[:.\/,\s]\s*(\d{1,3})(?:\s*[-–]\s*\d{1,3})?$/);
+      if (m) return { s: +m[1], v: +m[2], li: ligneDe(+m[1]) };
+      m = t.match(/^(.*\D)\s*(\d{1,3})(?:\s*[-–]\s*\d{1,3})?$/);
+      if (m) {
+        var q = simplifier(m[1].replace(/[:\/,]+\s*$/, ""));
+        if (q.length < 2 || /^\d/.test(q)) return null;
+        var trouvees = lignes.filter(function (li) { return li.cle.indexOf(q) !== -1; });
+        if (trouvees.length > 1) trouvees = trouvees.filter(function (li) { return nomCourt(li) === q || simplifier(li.getAttribute("data-nom") || "") === q; });
+        if (trouvees.length === 1) return { s: +trouvees[0].getAttribute("data-sourate"), v: +m[2], li: trouvees[0] };
+      }
+      return null;
+    };
+    var montrerVerset = function (r) {
+      cibleVerset = null;
+      if (!zoneVerset) return;
+      zoneVerset.textContent = "";
+      zoneVerset.hidden = !r;
+      if (!r) return;
+      if (!r.li) { zoneVerset.textContent = TEXTES.sourates; return; }
+      var nom = r.li.getAttribute("data-nom"), nb = +r.li.getAttribute("data-versets");
+      if (r.v < 1 || r.v > nb) { zoneVerset.textContent = TEXTES.trop(nom, nb); return; }
+      var lien = document.createElement("a");
+      lien.href = r.s + "/#v" + r.v;
+      var fort = document.createElement("strong"), action = document.createElement("span");
+      fort.textContent = TEXTES.verset(nom, r.v) + " (" + r.s + ":" + r.v + ")";
+      action.textContent = TEXTES.aller + " →";
+      lien.appendChild(fort); lien.appendChild(action);
+      zoneVerset.appendChild(lien);
+      cibleVerset = lien.href;
+    };
     champSourate.addEventListener("input", function () {
-      var q = simplifier(champSourate.value), visibles = 0;
+      var r = reference(champSourate.value), q = simplifier(champSourate.value), visibles = 0;
+      montrerVerset(r);
       lignes.forEach(function (li) {
-        var ok = !q || li.cle.indexOf(q) !== -1;
-        if (/^\d+$/.test(q)) ok = li.cle.indexOf(q) === 0;
+        var ok = r ? li === r.li : (!q || li.cle.indexOf(q) !== -1);
+        if (!r && /^\d+$/.test(q)) ok = li.cle.indexOf(q) === 0;
         li.hidden = !ok; if (ok) visibles++;
       });
-      if (vide) vide.hidden = visibles > 0;
+      if (vide) vide.hidden = visibles > 0 || !!r;
+    });
+    champSourate.addEventListener("keydown", function (ev) {
+      if (ev.key !== "Enter") return;
+      var visibles = lignes.filter(function (li) { return !li.hidden; });
+      var cible = cibleVerset || (champSourate.value.trim() && visibles.length === 1 ? visibles[0].querySelector("a").href : null);
+      if (cible) { ev.preventDefault(); window.location.href = cible; }
     });
   }
+
+  /* Bouton de langue : garder le verset affiché (#v13) en changeant de langue */
+  tous("[data-lien-langue]").forEach(function (a) {
+    a.addEventListener("click", function () {
+      if (/^#v\d+$/.test(window.location.hash)) a.href = a.href.split("#")[0] + window.location.hash;
+    });
+  });
 })();

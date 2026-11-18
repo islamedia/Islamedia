@@ -16,9 +16,13 @@
 /* 1. POLICES ---------------------------------------------------------------
    Les polices sont dans le dossier « polices » du site : aucune connexion à
    Google ou à un autre service, donc rien à déclarer côté RGPD. */
-@font-face { font-family: "Manrope"; src: url("polices/manrope-800.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
-@font-face { font-family: "Inter"; src: url("polices/inter-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Inter"; src: url("polices/inter-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Manrope"; src: url("polices/manrope-800.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Inter"; src: url("polices/inter-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Inter"; src: url("polices/inter-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+/* Lettres turques (ğ, ş, İ…) et autres lettres latines accentuées : téléchargées seulement si la page en contient */
+@font-face { font-family: "Manrope"; src: url("polices/manrope-800-ext.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Inter"; src: url("polices/inter-400-ext.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Inter"; src: url("polices/inter-600-ext.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
 @font-face { font-family: "Scheherazade New"; src: url("polices/scheherazade-new.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 
 /* 2. COULEURS --------------------------------------------------------------
@@ -155,6 +159,9 @@ h1, h2, h3 { margin: 0; font-family: var(--police-titre); font-weight: 800; line
 .ico-soleil { opacity: 0; transform: rotate(-90deg) scale(.4); }
 [data-theme="sombre"] .ico-lune { opacity: 0; transform: rotate(90deg) scale(.4); }
 [data-theme="sombre"] .ico-soleil { opacity: 1; transform: none; }
+/* Bouton de langue (FR / TR) */
+.lien-langue { font: 700 .8rem/1 var(--police-texte); letter-spacing: .06em; text-decoration: none; box-shadow: inset 0 0 0 1.5px rgba(197, 161, 91, .6); }
+.lien-langue:hover { box-shadow: inset 0 0 0 1.5px var(--or); }
 .burger { display: none; }
 .burger span { grid-area: 1 / 1; width: 20px; height: 1.8px; border-radius: 2px; background: currentColor; transition: transform .35s var(--doux); }
 .burger span:first-child { transform: translateY(-4px); }
@@ -162,7 +169,7 @@ h1, h2, h3 { margin: 0; font-family: var(--police-titre); font-weight: 800; line
 .burger[aria-expanded="true"] span:first-child { transform: rotate(45deg); }
 .burger[aria-expanded="true"] span:last-child { transform: rotate(-45deg); }
 
-@media (max-width: 1080px) {
+@media (max-width: 1100px) {
   .burger { display: grid; }
   .entete__actions { margin-left: auto; }
   .menu {
@@ -548,6 +555,12 @@ h1, h2, h3 { margin: 0; font-family: var(--police-titre); font-weight: 800; line
 .sourate-carte__meta { margin-top: 3px; font-size: .78rem; letter-spacing: .02em; color: var(--or-texte); }
 .sourate-carte__ar { margin-left: auto; font-size: 1.55rem; line-height: 1.4; color: var(--texte); white-space: nowrap; }
 .liste-vide { margin: 26px 0; text-align: center; color: var(--texte-doux); }
+/* Résultat de la recherche d'un verset (« 3:13 ») */
+.resultat-verset { max-width: 520px; margin: 12px auto 0; color: var(--texte-doux); font-size: .95rem; text-wrap: pretty; }
+.resultat-verset a { display: flex; align-items: center; justify-content: space-between; gap: 6px 14px; flex-wrap: wrap; padding: 14px 20px; border-radius: 18px;
+  text-align: left; text-decoration: none; color: var(--texte); background: var(--carte); box-shadow: inset 0 0 0 1.5px var(--or), var(--ombre); }
+.resultat-verset a span { font-weight: 600; color: var(--or-texte); white-space: nowrap; }
+.resultat-verset a:hover { transform: translateY(-1px); }
 
 .cartouche-sourate { position: relative; max-width: 440px; margin: 18px auto 0; padding: 14px 40px 18px; }
 .cartouche-sourate__cadre { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
@@ -590,6 +603,9 @@ h1, h2, h3 { margin: 0; font-family: var(--police-titre); font-weight: 800; line
 .basmala-sourate .fr, .basmala-sourate .tr { margin-top: 4px; font-size: .95rem; color: var(--texte-doux); }
 .v { padding: 18px 0 22px; border-bottom: 1px solid var(--bord); scroll-margin-top: calc(var(--entete) + 76px); }
 .v:target { background: linear-gradient(90deg, transparent, rgba(197, 161, 91, .12), transparent); }
+/* Versets traduits ensemble (meal de la Diyanet) : un bloc, l'arabe de chaque verset puis la traduction */
+.ayet { scroll-margin-top: calc(var(--entete) + 76px); border-radius: 8px; transition: background-color .4s; }
+.ayet:target { background: rgba(197, 161, 91, .2); box-shadow: 0 0 0 4px rgba(197, 161, 91, .2); }
 .v__tete { display: flex; align-items: center; gap: 10px; }
 .num { display: inline-flex; align-items: center; height: 28px; padding: 0 11px; border-radius: 999px; font: 700 .8rem/1 var(--police-texte); letter-spacing: .02em;
   color: var(--or-texte); text-decoration: none; box-shadow: inset 0 0 0 1px rgba(197, 161, 91, .55); }
@@ -600,7 +616,6 @@ h1, h2, h3 { margin: 0; font-family: var(--police-titre); font-weight: 800; line
 .v .ar { margin-top: 8px; font-size: calc(1.55rem + var(--taille-ar, 2) * .3rem); line-height: 2.2; text-align: right; color: var(--texte); }
 .fin-ayah { color: var(--or-texte); white-space: nowrap; }
 .v .fr, .v .tr { margin-top: 10px; font-size: 1.04rem; line-height: 1.7; color: var(--texte); text-wrap: pretty; }
-.v .tr { color: var(--texte-doux); padding-left: 14px; border-left: 2px solid rgba(197, 161, 91, .55); }
 .note { margin-top: 8px; font-size: .86rem; line-height: 1.55; color: var(--texte-doux); }
 .note::before { content: "Note\00a0: "; font-weight: 600; color: var(--or-texte); }
 .note--tr::before { content: "Not\00a0: "; }
@@ -745,6 +760,8 @@ h1, h2, h3 { margin: 0; font-family: var(--police-titre); font-weight: 800; line
 .bande-horaires__ville small { font: 400 .86rem var(--police-texte); color: rgba(244, 240, 230, .72); }
 .bande-horaires__prochaine { margin-top: 4px; font-size: .9rem; color: var(--or-clair); }
 .bande-horaires__prochaine:not(:empty)::before { content: "Prochaine prière\00a0: "; color: rgba(244, 240, 230, .72); }
+/* en turc, le texte se suffit à lui-même (« Öğle vaktine 1 sa 20 dk kaldı ») */
+:lang(tr) .bande-horaires__prochaine::before { content: none; }
 .bande-horaires__liste { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
 .bande-horaires__liste li { display: grid; justify-items: center; gap: 4px; padding: 10px 4px; border-radius: 14px; background: rgba(244, 240, 230, .06); box-shadow: inset 0 0 0 1px rgba(244, 240, 230, .1); }
 .bande-horaires__liste span { font-size: .74rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(244, 240, 230, .75); }

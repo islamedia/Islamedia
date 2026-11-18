@@ -11,6 +11,9 @@ données, pas de logiciel à installer.
   coran/ ................ le Coran : le sommaire (coran/index.html) et une
                           page par sourate (coran/1/ à coran/114/)
   horaires/ ............. les horaires de prière (page et liste des villes)
+  tr/ ................... la version turque du site : accueil (tr/index.html),
+                          Kur’an (tr/kuran/), namaz vakitleri
+                          (tr/namaz-vakitleri/), yasal bilgiler
   horaires.js ........... le calcul des horaires (rien à modifier)
   style.css ............. l'apparence (couleurs, polices, animations)
   script.js ............. les animations et le bloc RÉGLAGES (tes liens)
@@ -126,6 +129,18 @@ laisser, ils ne gênent pas.
    c'est le cas du site (ni publicité, ni vente). Si un jour le site devient
    commercial, il faudra l'accord de l'éditeur de la traduction, ou passer à
    la version de QuranEnc, qui autorise la republication.
+ • Traduction turque (version turque du site) : traduction de la Diyanet
+   İşleri Başkanlığı, fichier tr.diyanet de Tanzil.net (mise à jour du
+   27 décembre 2011), reproduit sans modification. Contrôles : le fichier a
+   exactement la même empreinte (SHA-256) que celui téléchargé sur tanzil.net
+   le 3 novembre 2026 par un autre projet, et ses mots sont identiques, verset
+   par verset, à ceux d'une autre copie publiée (quran-json). Mêmes
+   conditions que Hamidullah : usage non commercial.
+   La Diyanet traduit parfois plusieurs versets d'un bloc (570 fois, par
+   exemple Nâs 1 à 6) : ces versets sont affichés ensemble, l'arabe de chaque
+   verset puis la traduction une seule fois.
+ • Recherche : dans le sommaire du Coran, taper « 3:13 » (ou « 3/13 »,
+   « Baqara 255 ») mène directement à la sourate 3, verset 13.
  • Pour ajouter un verset, ne le tape jamais à la main : demande-le à partir
    de ces sources.
 
@@ -146,9 +161,26 @@ laisser, ils ne gênent pas.
    choix reste dans son navigateur.
  • Sans choix, la ville affichée est Paris, y compris sur l'accueil.
  • Liste des villes : GeoNames (licence CC BY 4.0, citée sur la page).
+   Genève et Anvers y figurent depuis le 18/11/2026 (elles manquaient).
 
 
-7. METTRE À JOUR LE SITE AVEC UN NOUVEAU ZIP
+7. VERSION TURQUE (tr/)
+-----------------------
+ • Chaque page existe en français et en turc. Le bouton « TR » (ou « FR »),
+   en haut de chaque page, ouvre la même page dans l'autre langue, au même
+   verset sur les pages du Coran.
+ • Les pages turques sont fabriquées à partir des pages françaises : si tu
+   modifies un texte français de l'accueil ou des mentions légales, demande
+   aussi sa traduction, sinon la fabrication du site s'arrête (c'est voulu :
+   la page turque ne peut pas rester en retard).
+ • Les vidéos restent en français : la page turque le dit.
+ • Les mentions légales turques sont une traduction pour information : c'est
+   la version française qui fait foi.
+ • Fais relire les textes turcs par une personne dont c'est la langue
+   maternelle (menus, explications, horaires).
+
+
+8. METTRE À JOUR LE SITE AVEC UN NOUVEAU ZIP
 --------------------------------------------
  • Sur GitHub, ouvre ton dépôt > « Add file » > « Upload files ».
  • Glisse tout le contenu du nouveau dossier islamedia-site : les fichiers

@@ -7,6 +7,9 @@
 <meta name="description" content="Horaires de prière pour votre ville en France, en Belgique et en Suisse : méthode de la Diyanet (DITIB), vérifiée sur ses calendriers officiels, ou Musulmans de France, Ligue islamique mondiale et autres méthodes.">
 <meta name="theme-color" content="#123B2F">
 <link rel="canonical" href="https://islamedia.fr/horaires/">
+<link rel="alternate" hreflang="fr" href="https://islamedia.fr/horaires/">
+<link rel="alternate" hreflang="tr" href="https://islamedia.fr/tr/namaz-vakitleri/">
+<link rel="alternate" hreflang="x-default" href="https://islamedia.fr/horaires/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Islamedia.fr">
@@ -25,7 +28,8 @@
     try { t = localStorage.getItem("islamedia-theme"); r = JSON.parse(localStorage.getItem("islamedia-coran") || "null"); } catch (e) {}
     if (t !== "clair" && t !== "sombre") t = (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches) ? "sombre" : "clair";
     d.setAttribute("data-theme", t);
-    if (r) { ["ar", "fr", "tr"].forEach(function (l) { if (r[l] === false) d.classList.add("sans-" + l); });
+    if (r) { if (r.ar === false && r[d.lang === "tr" ? "tr" : "fr"] === false) r.ar = true;
+             ["ar", "fr", "tr"].forEach(function (l) { if (r[l] === false) d.classList.add("sans-" + l); });
              if (typeof r.taille === "number") d.style.setProperty("--taille-ar", r.taille); }
   })();
 </script>
@@ -44,6 +48,7 @@
       <a href="../#contact">Contact</a>
     </nav>
     <div class="entete__actions">
+      <a class="icone-btn lien-langue" href="../tr/namaz-vakitleri/" hreflang="tr" lang="tr" title="Türkçe" data-lien-langue><span aria-hidden="true">TR</span><span class="sr-only">Türkçe</span></a>
       <button class="icone-btn" type="button" data-theme-bascule aria-label="Passer en mode sombre" aria-pressed="false">
         <svg class="ico-lune" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A8.6 8.6 0 1 1 9.7 3.5a6.9 6.9 0 0 0 10.8 10.8Z"/></svg>
         <svg class="ico-soleil" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
@@ -138,7 +143,7 @@
     <h3>La méthode Diyanet (DITIB)</h3>
     <p>Elle reproduit le calendrier que la Diyanet publie pour les villes d’Europe et que suivent les mosquées DITIB. L’imsak (fajr) commence quand le soleil est à 18° sous l’horizon, la yatsı (isha) quand il est à 16°. La Diyanet ajoute des marges de précaution (temkin) : le lever du soleil est avancé de 7 minutes, le dhuhr retardé de 5 minutes, l’asr de 4 minutes et le maghrib de 7 minutes.</p>
     <p>En été, au nord du 44,5ᵉ parallèle (Lyon, Paris, Lille, Strasbourg…), le ciel ne s’assombrit plus assez, ou très tard. La Diyanet place alors la yatsı au tiers de la nuit légale après le maghrib, et l’imsak à une distance équivalente avant le lever du soleil, allongée de l’équivalent de deux degrés. Le passage se fait en douceur, sur 20 minutes. Ce sont les critères officiels de la Diyanet, issus du Congrès international sur les horaires de prière réuni à Istanbul en 2021 avec le Conseil européen de la fatwa et de la recherche.</p>
-    <p><strong>Vérification :</strong> nous avons comparé ce calcul à 2 394 horaires officiels publiés par la Diyanet pour 2026, dans 13 villes de France, de Belgique et d’Allemagne. 95 % sont identiques à la minute près, et aucun ne s’écarte de plus d’une minute.</p>
+    <p><strong>Vérification :</strong> nous avons comparé ce calcul à 2 394 horaires officiels publiés par la Diyanet pour 2026, dans 13 villes de France, de Belgique et d’Allemagne. 95 % sont identiques à la minute près, et aucun ne s’écarte de plus d’une minute.</p>
     <h3>Les autres méthodes</h3>
     <p>Elles se distinguent surtout par l’angle choisi pour le fajr et l’isha. Plus l’angle est grand, plus le fajr est tôt et l’isha tard. L’écart est de quelques minutes en hiver, et peut dépasser une heure en été dans le nord de la France. Les jours d’été où le soleil ne descend pas assez bas, ces méthodes estiment le fajr et l’isha par proportion avec la latitude 45°, comme le recommande la Ligue islamique mondiale.</p>
     <p>Pour la prière en commun, suivez les horaires de votre mosquée : beaucoup publient leur propre calendrier, avec parfois quelques minutes de précaution en plus.</p>
@@ -167,6 +172,7 @@
         <a href="../horaires/">Horaires de prière</a>
         <a href="../#methode">Notre méthode</a>
         <a href="../mentions-legales.html">Mentions légales</a>
+        <a href="../tr/namaz-vakitleri/" hreflang="tr" lang="tr" data-lien-langue>Türkçe</a>
       </nav>
     </div>
     <p class="pied__sources">© <span data-annee>2026</span> Islamedia.fr · Horaires calculés dans votre navigateur · Méthode Diyanet reproduite d’après les <a href="https://awqatsalah.com/sub/34/tespit-kriterleri" target="_blank" rel="noopener">critères officiels</a> · Villes : <a href="https://www.geonames.org" target="_blank" rel="noopener">GeoNames</a> (licence CC BY 4.0) · Ce site n’utilise ni cookies ni traceurs.</p>

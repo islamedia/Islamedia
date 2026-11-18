@@ -228,6 +228,9 @@
   if (typeof document === "undefined") return;
 
   /* 4. AFFICHAGE --------------------------------------------------------------- */
+  /* Langue de la page : français par défaut, turc sur les pages tr/ du site. */
+  var TR = document.documentElement.lang === "tr";
+  var LOCALE = TR ? "tr-TR" : "fr-FR";
   var CLE = "islamedia-horaires";
   var PRIERES = [
     { id: "fajr", nom: "Fajr", ar: "الفجر", tr: "İmsak" },
@@ -237,6 +240,62 @@
     { id: "maghrib", nom: "Maghrib", ar: "المغرب", tr: "Akşam" },
     { id: "isha", nom: "Isha", ar: "العشاء", tr: "Yatsı" }
   ];
+  if (TR) PRIERES.forEach(function (p) { p.nom = p.tr; });
+
+  var METHODES_TR = {
+    diyanet: { nom: "Diyanet (DİTİB)", court: "Diyanet (DİTİB)",
+      detail: "Diyanet’in DİTİB camilerince uygulanan Avrupa takvimi: imsak, güneş ufkun 18° altındayken; yatsı, 16° altındayken; Diyanet’in temkin payları (güneş −7 dk, öğle +5 dk, ikindi +4 dk, akşam +7 dk). Yazın 44,5° enleminin kuzeyinde imsak ve yatsı, resmî takvimde olduğu gibi gecenin üçte biri kuralına göre belirlenir." },
+    mdf: { nom: "Musulmans de France (eski UOIF), 12°", court: "Musulmans de France (12°)",
+      detail: "İmsak ve yatsı, güneş ufkun 12° altındayken. Fransa’da birçok caminin uyduğu Musulmans de France (eski UOIF) yöntemidir." },
+    lim: { nom: "Dünya İslam Birliği, 18° / 17°", court: "Dünya İslam Birliği",
+      detail: "İmsak ufkun 18°, yatsı 17° altında; açılar Dünya İslam Birliği Fıkıh Konseyi tarafından belirlenmiştir." },
+    isna: { nom: "15° (ISNA)", court: "15° (ISNA)",
+      detail: "İmsak ve yatsı ufkun 15° altında: Kuzey Amerika’daki ISNA’nın yöntemi. Fransa’daki bazı camiler de kullanır." },
+    egypte: { nom: "Mısır, 19,5° / 17,5°", court: "Mısır",
+      detail: "İmsak ufkun 19,5°, yatsı 17,5° altında: Mısır Genel Ölçme Kurumu’nun yöntemi." },
+    mecque: { nom: "Ümmü’l-Kurâ (Mekke)", court: "Ümmü’l-Kurâ",
+      detail: "İmsak ufkun 18,5° altında; yatsı akşamdan 90 dakika sonra, Suudi Arabistan’ın resmî takviminde olduğu gibi." },
+    karachi: { nom: "Karaçi, 18° / 18°", court: "Karaçi",
+      detail: "İmsak ve yatsı ufkun 18° altında: Karaçi İslami Bilimler Üniversitesi’nin yöntemi." }
+  };
+  function methode(cle) { return TR ? METHODES_TR[cle] : METHODES[cle]; }
+
+  var T = TR ? {
+    commun: "Öğle: güneşin en yüksek noktadan geçişinden 1 dakika sonra. Güneşin ufkun yeterince altına inmediği yaz günlerinde imsak ve yatsı, Dünya İslam Birliği’nin tavsiye ettiği gibi 45° enlemine oranlanarak tahmin edilir: bu vakitler yıldız işaretiyle gösterilir.",
+    hanafite: " İkindi (asr-ı sânî): bir cismin gölgesi, öğle vaktindeki gölgesine ek olarak boyunun iki katı olduğunda (Hanefî görüşü).",
+    position: "Konumunuz",
+    pres: function (n) { return n + " civarı"; },
+    titre: function (v) { return v.position ? "Konumunuza göre namaz vakitleri" : nomAffiche(v) + " namaz vakitleri"; },
+    prochaine: function (nom, demain, duree) { return (demain ? "Yarınki " : "") + nom + " vaktine " + duree + " kaldı"; },
+    duree: function (h, mn) { return h ? h + " sa " + String(mn).padStart(2, "0") + " dk" : mn + " dk"; },
+    impression: function (lieu, region, m, hanafite) {
+      return lieu + (region ? ", " + region : "") + " · yöntem: " + m + (hanafite ? " · asr-ı sânî" : "") + " · islamedia.fr/tr/namaz-vakitleri";
+    },
+    aucune: "Şehir bulunamadı. “Konumumu bul” düğmesini deneyin.",
+    erreurListe: "Şehir listesi yüklenemedi. Bağlantınızı kontrol edin.",
+    recherche: "Konumunuz aranıyor…",
+    refus: "Konum izni verilmedi. Şehrinizi listeden arayın.",
+    introuvable: "Konumunuz bulunamadı. Şehrinizi listeden arayın.",
+    nord: "60. enlemin ötesinde hesaplama yöntemleri pek uygulanamaz: caminize danışın."
+  } : {
+    commun: "Dhuhr : 1 minute après le passage du soleil au plus haut. Les jours d’été où le soleil ne descend pas assez bas sous l’horizon, fajr et isha sont estimés par proportion avec la latitude 45°, comme le recommande la Ligue islamique mondiale : ces horaires sont marqués d’un astérisque.",
+    hanafite: " Asr : quand l’ombre d’un objet vaut deux fois sa longueur, plus l’ombre de midi (école hanafite).",
+    position: "Ma position",
+    pres: function (n) { return "Près de " + n; },
+    titre: function (v) { return "Horaires de prière " + (v.position ? "à votre position" : v.pres ? "près de " + v.nom : "à " + v.nom); },
+    prochaine: function (nom, demain, duree) { return nom + (demain ? " demain" : "") + " dans " + duree; },
+    duree: function (h, mn) { return h ? h + " h " + String(mn).padStart(2, "0") : mn + " min"; },
+    impression: function (lieu, region, m, hanafite) {
+      return lieu + (region ? ", " + region : "") + " · méthode : " + m + (hanafite ? " · asr hanafite" : "") + " · islamedia.fr/horaires";
+    },
+    aucune: "Aucune ville trouvée. Essayez « Me localiser ».",
+    erreurListe: "La liste des villes n’a pas pu être chargée. Vérifiez votre connexion.",
+    recherche: "Recherche de votre position…",
+    refus: "La localisation a été refusée. Cherchez votre ville dans la liste.",
+    introuvable: "Votre position n’a pas pu être trouvée. Cherchez votre ville dans la liste.",
+    nord: "Au-delà du 60ᵉ parallèle, les méthodes de calcul ne s’appliquent plus vraiment : renseignez-vous auprès de votre mosquée."
+  };
+
   var REGIONS = {
     "11": "Île-de-France", "24": "Centre-Val de Loire", "27": "Bourgogne-Franche-Comté", "28": "Normandie", "32": "Hauts-de-France",
     "44": "Grand Est", "52": "Pays de la Loire", "53": "Bretagne", "75": "Nouvelle-Aquitaine", "76": "Occitanie",
@@ -244,6 +303,13 @@
     GP: "Guadeloupe", MQ: "Martinique", GF: "Guyane", RE: "La Réunion", YT: "Mayotte",
     BE: "Belgique", CH: "Suisse", LU: "Luxembourg", MC: "Monaco"
   };
+  if (TR) {
+    REGIONS.MQ = "Martinik"; REGIONS.GF = "Fransız Guyanası"; REGIONS.RE = "Réunion";
+    REGIONS.BE = "Belçika"; REGIONS.CH = "İsviçre"; REGIONS.LU = "Lüksemburg"; REGIONS.MC = "Monako";
+  }
+  /* Noms turcs de quelques villes, pour la recherche (version turque) */
+  var NOMS_TR = { "Bruxelles": "Brüksel", "Genève": "Cenevre", "Strasbourg": "Strazburg", "Marseille": "Marsilya", "Luxembourg": "Lüksemburg",
+    "Monaco": "Monako", "Zurich": "Zürih", "Lausanne": "Lozan", "Bâle": "Basel", "Berne": "Bern", "Gand": "Gent" };
   var FUSEAUX = { GP: "America/Guadeloupe", MQ: "America/Martinique", GF: "America/Cayenne", RE: "Indian/Reunion", YT: "Indian/Mayotte",
     BE: "Europe/Brussels", CH: "Europe/Zurich", LU: "Europe/Luxembourg", MC: "Europe/Monaco" };
   var DEPARTEMENTS = { "01": "Ain", "02": "Aisne", "03": "Allier", "04": "Alpes-de-Haute-Provence", "05": "Hautes-Alpes",
@@ -270,7 +336,13 @@
     try {
       var l = JSON.parse(localStorage.getItem(CLE) || "null");
       if (l) {
-        if (l.ville && typeof l.ville.lat === "number" && typeof l.ville.lon === "number") r.ville = l.ville;
+        if (l.ville && typeof l.ville.lat === "number" && typeof l.ville.lon === "number") {
+          r.ville = l.ville;
+          if (typeof r.ville.nom !== "string") r.ville.nom = "";
+          /* réglages enregistrés par l'ancienne version : « Près de X », « Ma position » */
+          if (/^Près de /.test(r.ville.nom)) { r.ville.nom = r.ville.nom.slice(8); r.ville.pres = true; }
+          else if (r.ville.nom === "Ma position") { r.ville.nom = ""; r.ville.position = true; }
+        }
         if (METHODES[l.methode]) r.methode = l.methode;
         if (l.asr === "hanafite") r.asr = "hanafite";
       }
@@ -279,6 +351,7 @@
   }
   function ecrire(r) { try { localStorage.setItem(CLE, JSON.stringify(r)); } catch (e) {} }
 
+  function nomAffiche(v) { return v.position ? T.position : v.pres ? T.pres(v.nom) : v.nom; }
   function hm(x) {
     if (x === null || x === undefined || isNaN(x)) return "—";
     var t = ((Math.floor(x + 0.5) % 1440) + 1440) % 1440;
@@ -297,8 +370,8 @@
   function fuseauDe(code) { return FUSEAUX[code] || "Europe/Paris"; }
 
   function dureeTexte(ms) {
-    var min = Math.max(1, Math.round(ms / 60000)), h = Math.floor(min / 60), mn = min % 60;
-    return h ? h + "\u00a0h\u00a0" + String(mn).padStart(2, "0") : mn + "\u00a0min";
+    var min = Math.max(1, Math.round(ms / 60000));
+    return T.duree(Math.floor(min / 60), min % 60);
   }
 
   /* Prochaine prière (le lever du soleil n'en est pas une). */
@@ -323,16 +396,16 @@
     if (!chargement) {
       chargement = fetch(base + "horaires/villes.json").then(function (r) { return r.json(); }).then(function (liste) {
         villes = liste.map(function (v) {
-          var dep = DEPARTEMENTS[v[1]] ? v[1] : "";
-          return { nom: v[0], dep: dep, region: dep ? "" : v[1], lat: v[2], lon: v[3], autre: v[4] || "", tz: fuseauDe(v[1]),
-                   cle: simplifier(v[0] + " " + (v[4] || "")) };
+          var dep = DEPARTEMENTS[v[1]] ? v[1] : "", autre = (TR && NOMS_TR[v[0]]) || v[4] || "";
+          return { nom: v[0], dep: dep, region: dep ? "" : v[1], lat: v[2], lon: v[3], autre: autre, tz: fuseauDe(v[1]),
+                   cle: simplifier(v[0] + " " + (v[4] || "") + " " + (NOMS_TR[v[0]] || "")) };
         });
         return villes;
       });
     }
     return chargement;
   }
-  function simplifier(t) { return t.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[’'`.\-]/g, " ").replace(/\s+/g, " ").trim().toLowerCase(); }
+  function simplifier(t) { return t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ı/g, "i").replace(/[’'`.\-/]/g, " ").replace(/\s+/g, " ").trim().toLowerCase(); }
   function plusProche(lat, lon) {
     var best = null, dmin = Infinity;
     (villes || []).forEach(function (v) {
@@ -357,13 +430,13 @@
     });
     tous("[data-h-tr]", zone).forEach(function (el) { el.hidden = !diyanet; });
     tous("[data-h-prochaine]", zone).forEach(function (el) {
-      el.textContent = pro ? (pro.priere.nom + (pro.demain ? " demain" : "") + " dans " + dureeTexte(pro.dans)) : "";
+      el.textContent = pro ? T.prochaine(pro.priere.nom, pro.demain, dureeTexte(pro.dans)) : "";
     });
-    tous("[data-h-ville]", zone).forEach(function (el) { el.textContent = lieu.nom; });
+    tous("[data-h-ville]", zone).forEach(function (el) { el.textContent = nomAffiche(lieu); });
     tous("[data-h-region]", zone).forEach(function (el) { el.textContent = nomRegion(lieu); });
-    tous("[data-h-methode-nom]", zone).forEach(function (el) { el.textContent = METHODES[reglages.methode].court; });
+    tous("[data-h-methode-nom]", zone).forEach(function (el) { el.textContent = methode(reglages.methode).court; });
     tous("[data-h-date]", zone).forEach(function (el) {
-      el.textContent = new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })
+      el.textContent = new Intl.DateTimeFormat(LOCALE, { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })
         .format(new Date(Date.UTC(jour.a, jour.m - 1, jour.j)));
     });
   }
@@ -389,23 +462,21 @@
     function afficherMessage(t) { if (message) { message.textContent = t || ""; message.hidden = !t; } }
 
     function majTitre() {
-      var n = reglages.ville.nom, lieu = /^Près de /.test(n) ? "près de " + n.slice(8) : n === "Ma position" ? "à votre position" : "à " + n;
-      var titre = un("[data-h-titre]");
-      if (titre) titre.textContent = "Horaires de prière " + lieu;
-      document.title = "Horaires de prière " + lieu + " · Islamedia.fr";
+      var texte = T.titre(reglages.ville), titre = un("[data-h-titre]");
+      if (titre) titre.textContent = texte;
+      document.title = texte + " · Islamedia.fr";
     }
     function majInfo() {
       if (!info) return;
-      var m = METHODES[reglages.methode];
-      info.textContent = m.detail + (reglages.methode === "diyanet" ? "" : " " + COMMUN) +
-        (reglages.asr === "hanafite" ? " Asr\u00a0: quand l’ombre d’un objet vaut deux fois sa longueur, plus l’ombre de midi (école hanafite)." : "");
+      info.textContent = methode(reglages.methode).detail + (reglages.methode === "diyanet" ? "" : " " + T.commun) +
+        (reglages.asr === "hanafite" ? T.hanafite : "");
     }
     function rendreMois() {
       var lieu = reglages.ville, corps = un("[data-h-tableau]", zone);
       var auj = aujourdhui(lieu.tz);
       if (!mois) mois = { a: auj.a, m: auj.m };
       var nbJours = new Date(Date.UTC(mois.a, mois.m, 0)).getUTCDate();
-      var fmtJour = new Intl.DateTimeFormat("fr-FR", { weekday: "short", timeZone: "UTC" });
+      var fmtJour = new Intl.DateTimeFormat(LOCALE, { weekday: "short", timeZone: "UTC" });
       var html = "", estime = false;
       for (var j = 1; j <= nbJours; j++) {
         var r = calculer(lieu, mois.a, mois.m, j, reglages);
@@ -420,12 +491,11 @@
         html += "</tr>";
       }
       corps.innerHTML = html;
-      var titre = new Intl.DateTimeFormat("fr-FR", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(mois.a, mois.m - 1, 1)));
-      tous("[data-h-mois-titre]", zone).forEach(function (el) { el.textContent = titre.charAt(0).toUpperCase() + titre.slice(1); });
+      var titre = new Intl.DateTimeFormat(LOCALE, { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(mois.a, mois.m - 1, 1)));
+      tous("[data-h-mois-titre]", zone).forEach(function (el) { el.textContent = titre.charAt(0).toLocaleUpperCase(LOCALE) + titre.slice(1); });
       tous("[data-h-legende]", zone).forEach(function (el) { el.hidden = !estime; });
       tous("[data-h-impression]", zone).forEach(function (el) {
-        el.textContent = lieu.nom + (nomRegion(lieu) ? ", " + nomRegion(lieu) : "") + " · méthode\u00a0: " + METHODES[reglages.methode].court +
-          (reglages.asr === "hanafite" ? " · asr hanafite" : "") + " · islamedia.fr/horaires";
+        el.textContent = T.impression(nomAffiche(lieu), nomRegion(lieu), methode(reglages.methode).court, reglages.asr === "hanafite");
       });
     }
     function tout() {
@@ -434,10 +504,12 @@
       if (selMethode) selMethode.value = reglages.methode;
       if (selAsr) selAsr.value = reglages.asr;
       var nord = reglages.ville.lat > 60 || reglages.ville.lat < -60;
-      afficherMessage(nord ? "Au-delà du 60ᵉ parallèle, les méthodes de calcul ne s’appliquent plus vraiment\u00a0: renseignez-vous auprès de votre mosquée." : "");
+      afficherMessage(nord ? T.nord : "");
     }
     function choisir(v) {
       reglages.ville = { nom: v.nom, dep: v.dep || "", region: v.region || "", lat: v.lat, lon: v.lon, tz: v.tz };
+      if (v.pres) reglages.ville.pres = true;
+      if (v.position) reglages.ville.position = true;
       ecrire(reglages); mois = null; tout(); fermer();
       if (champ) { champ.value = ""; champ.blur(); }
     }
@@ -456,7 +528,7 @@
         }
         resultats = debut.concat(dedans).slice(0, 8);
         if (!resultats.length) {
-          liste.innerHTML = '<li class="h-vide" role="option" aria-disabled="true">Aucune ville trouvée. Essayez «\u00a0Me localiser\u00a0».</li>';
+          liste.innerHTML = '<li class="h-vide" role="option" aria-disabled="true">' + echapper(T.aucune) + "</li>";
         } else {
           liste.innerHTML = resultats.map(function (v, i) {
             return '<li role="option" id="h-option-' + i + '" data-index="' + i + '"><span class="h-option__nom">' + echapper(v.nom) +
@@ -465,7 +537,7 @@
           }).join("");
         }
         liste.hidden = false; champ.setAttribute("aria-expanded", "true"); actif = -1; champ.removeAttribute("aria-activedescendant");
-      }, function () { afficherMessage("La liste des villes n’a pas pu être chargée. Vérifiez votre connexion."); });
+      }, function () { afficherMessage(T.erreurListe); });
     }
     function echapper(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
     function surligner(i) {
@@ -495,7 +567,7 @@
     if (boutonGeo) {
       if (!("geolocation" in navigator)) boutonGeo.hidden = true;
       boutonGeo.addEventListener("click", function () {
-        afficherMessage("Recherche de votre position…");
+        afficherMessage(T.recherche);
         boutonGeo.disabled = true;
         navigator.geolocation.getCurrentPosition(function (pos) {
           var lat = Math.round(pos.coords.latitude * 100) / 100, lon = Math.round(pos.coords.longitude * 100) / 100;
@@ -503,12 +575,13 @@
           try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || tz; } catch (e) {}
           chargerVilles(base).catch(function () { return null; }).then(function () {
             var proche = plusProche(lat, lon);
-            choisir({ nom: proche ? "Près de " + proche.nom : "Ma position", dep: proche ? proche.dep : "", region: proche ? proche.region : "", lat: lat, lon: lon, tz: tz });
+            choisir({ nom: proche ? proche.nom : "", pres: !!proche, position: !proche, dep: proche ? proche.dep : "", region: proche ? proche.region : "",
+                      lat: lat, lon: lon, tz: tz });
             afficherMessage(""); boutonGeo.disabled = false;
           });
         }, function (err) {
           boutonGeo.disabled = false;
-          afficherMessage(err && err.code === 1 ? "La localisation a été refusée. Cherchez votre ville dans la liste." : "Votre position n’a pas pu être trouvée. Cherchez votre ville dans la liste.");
+          afficherMessage(err && err.code === 1 ? T.refus : T.introuvable);
         }, { enableHighAccuracy: false, timeout: 15000, maximumAge: 600000 });
       });
     }

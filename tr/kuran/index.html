@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kur’an-ı Kerim — Arapça metin ve Türkçe meal · Islamedia.fr</title>
+<meta name="description" content="Kur’an-ı Kerim’in 114 suresi: Resm-i Osmânî imlasıyla doğrulanmış Arapça metin (Tanzil) ve Diyanet İşleri’nin Türkçe meali, ayet ayet.">
+<meta name="theme-color" content="#123B2F">
+<link rel="canonical" href="https://islamedia.fr/tr/kuran/">
+<link rel="alternate" hreflang="fr" href="https://islamedia.fr/coran/">
+<link rel="alternate" hreflang="tr" href="https://islamedia.fr/tr/kuran/">
+<link rel="alternate" hreflang="x-default" href="https://islamedia.fr/coran/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Islamedia.fr">
+<meta property="og:url" content="https://islamedia.fr/tr/kuran/">
+<meta property="og:title" content="Kur’an-ı Kerim — Arapça metin ve Türkçe meal · Islamedia.fr">
+<meta property="og:description" content="Kur’an-ı Kerim’in 114 suresi: Resm-i Osmânî imlasıyla doğrulanmış Arapça metin (Tanzil) ve Diyanet İşleri’nin Türkçe meali, ayet ayet.">
+<meta property="og:image" content="https://islamedia.fr/images/apercu-partage.jpg">
+<link rel="icon" href="../../images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+<link rel="preload" href="../../polices/scheherazade-new.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../style.css">
+<script>
+  (function () {
+    var d = document.documentElement, t = null, r = null;
+    d.classList.add("js");
+    try { t = localStorage.getItem("islamedia-theme"); r = JSON.parse(localStorage.getItem("islamedia-coran") || "null"); } catch (e) {}
+    if (t !== "clair" && t !== "sombre") t = (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches) ? "sombre" : "clair";
+    d.setAttribute("data-theme", t);
+    if (r) { if (r.ar === false && r[d.lang === "tr" ? "tr" : "fr"] === false) r.ar = true;
+             ["ar", "fr", "tr"].forEach(function (l) { if (r[l] === false) d.classList.add("sans-" + l); });
+             if (typeof r.taille === "number") d.style.setProperty("--taille-ar", r.taille); }
+  })();
+</script>
+</head>
+<body class="page-coran">
+<a class="saut" href="#contenu">İçeriğe geç</a>
+<header class="entete est-defile entete--fixe">
+  <div class="entete__in">
+    <a class="logo" href="../../tr/" aria-label="Islamedia.fr, ana sayfa"><span>Islamedia</span><span class="logo__ext">.fr</span></a>
+    <nav class="menu" id="menu" aria-label="Ana menü">
+      <a href="../../tr/kuran/" aria-current="page">Kur’an</a>
+      <a href="../../tr/namaz-vakitleri/">Namaz vakitleri</a>
+      <a href="../../tr/#verset">Günün ayeti</a>
+      <a href="../../tr/#series">Serilerimiz</a>
+      <a href="../../tr/#methode">Yöntemimiz</a>
+      <a href="../../tr/#contact">İletişim</a>
+    </nav>
+    <div class="entete__actions">
+      <a class="icone-btn lien-langue" href="../../coran/" hreflang="fr" lang="fr" title="Français" data-lien-langue><span aria-hidden="true">FR</span><span class="sr-only">Français</span></a>
+      <button class="icone-btn" type="button" data-theme-bascule aria-label="Koyu moda geç" aria-pressed="false">
+        <svg class="ico-lune" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A8.6 8.6 0 1 1 9.7 3.5a6.9 6.9 0 0 0 10.8 10.8Z"/></svg>
+        <svg class="ico-soleil" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+      </button>
+      <button class="icone-btn burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Menüyü aç"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<main id="contenu" class="coran">
+  <section class="coran-tete">
+    <div class="conteneur">
+      <p class="surtitre">Kur’an-ı Kerim</p>
+      <h1 class="coran-tete__titre">Kur’an’ı okuyun</h1>
+      <p class="coran-tete__intro">114 sure Arapça olarak, Türkçe mealiyle. Bir sure seçin ya da bir ayete gitmek için 3:13 gibi bir numara yazın.</p>
+      
+      <label class="recherche-sourate"><span class="sr-only">Sure ya da ayet ara</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        <input type="search" data-recherche-sourate placeholder="Sure adı, numarası ya da ayet (ör. 36, Yâsîn, 3:13)" autocomplete="off" enterkeyhint="go">
+      </label>
+      <div class="resultat-verset" data-resultat-verset aria-live="polite" hidden></div>
+    </div>
+  </section>
+  <div class="conteneur">
+    <ol class="liste-sourates" data-liste-sourates>
+      <li data-recherche="1 fâtiha al-fatiha الفاتحة" data-sourate="1" data-versets="7" data-nom="Fâtiha"><a class="sourate-carte" href="1/">
+        <span class="num-etoile" aria-hidden="true"><span>1</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Fâtiha</span>
+          <span class="sourate-carte__meta">7 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الفاتحة</span></a></li>
+      <li data-recherche="2 bakara al-baqara البقرة" data-sourate="2" data-versets="286" data-nom="Bakara"><a class="sourate-carte" href="2/">
+        <span class="num-etoile" aria-hidden="true"><span>2</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Bakara</span>
+          <span class="sourate-carte__meta">286 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">البقرة</span></a></li>
+      <li data-recherche="3 âl-i i̇mrân al ‘imran آل عمران" data-sourate="3" data-versets="200" data-nom="Âl-i İmrân"><a class="sourate-carte" href="3/">
+        <span class="num-etoile" aria-hidden="true"><span>3</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Âl-i İmrân</span>
+          <span class="sourate-carte__meta">200 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">آل عمران</span></a></li>
+      <li data-recherche="4 nisâ an-nisa النساء" data-sourate="4" data-versets="176" data-nom="Nisâ"><a class="sourate-carte" href="4/">
+        <span class="num-etoile" aria-hidden="true"><span>4</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Nisâ</span>
+          <span class="sourate-carte__meta">176 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النساء</span></a></li>
+      <li data-recherche="5 mâide al-ma’ida المائدة" data-sourate="5" data-versets="120" data-nom="Mâide"><a class="sourate-carte" href="5/">
+        <span class="num-etoile" aria-hidden="true"><span>5</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Mâide</span>
+          <span class="sourate-carte__meta">120 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المائدة</span></a></li>
+      <li data-recherche="6 en&#x27;âm al-an‘am الأنعام" data-sourate="6" data-versets="165" data-nom="En&#x27;âm"><a class="sourate-carte" href="6/">
+        <span class="num-etoile" aria-hidden="true"><span>6</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">En&#x27;âm</span>
+          <span class="sourate-carte__meta">165 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الأنعام</span></a></li>
+      <li data-recherche="7 a&#x27;râf al-a‘raf الأعراف" data-sourate="7" data-versets="206" data-nom="A&#x27;râf"><a class="sourate-carte" href="7/">
+        <span class="num-etoile" aria-hidden="true"><span>7</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">A&#x27;râf</span>
+          <span class="sourate-carte__meta">206 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الأعراف</span></a></li>
+      <li data-recherche="8 enfâl al-anfal الأنفال" data-sourate="8" data-versets="75" data-nom="Enfâl"><a class="sourate-carte" href="8/">
+        <span class="num-etoile" aria-hidden="true"><span>8</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Enfâl</span>
+          <span class="sourate-carte__meta">75 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الأنفال</span></a></li>
+      <li data-recherche="9 tevbe at-tawba التوبة" data-sourate="9" data-versets="129" data-nom="Tevbe"><a class="sourate-carte" href="9/">
+        <span class="num-etoile" aria-hidden="true"><span>9</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Tevbe</span>
+          <span class="sourate-carte__meta">129 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">التوبة</span></a></li>
+      <li data-recherche="10 yûnus yunus يونس" data-sourate="10" data-versets="109" data-nom="Yûnus"><a class="sourate-carte" href="10/">
+        <span class="num-etoile" aria-hidden="true"><span>10</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Yûnus</span>
+          <span class="sourate-carte__meta">109 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">يونس</span></a></li>
+      <li data-recherche="11 hûd hud هود" data-sourate="11" data-versets="123" data-nom="Hûd"><a class="sourate-carte" href="11/">
+        <span class="num-etoile" aria-hidden="true"><span>11</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Hûd</span>
+          <span class="sourate-carte__meta">123 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">هود</span></a></li>
+      <li data-recherche="12 yûsuf yusuf يوسف" data-sourate="12" data-versets="111" data-nom="Yûsuf"><a class="sourate-carte" href="12/">
+        <span class="num-etoile" aria-hidden="true"><span>12</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Yûsuf</span>
+          <span class="sourate-carte__meta">111 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">يوسف</span></a></li>
+      <li data-recherche="13 ra&#x27;d ar-ra‘d الرعد" data-sourate="13" data-versets="43" data-nom="Ra&#x27;d"><a class="sourate-carte" href="13/">
+        <span class="num-etoile" aria-hidden="true"><span>13</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ra&#x27;d</span>
+          <span class="sourate-carte__meta">43 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الرعد</span></a></li>
+      <li data-recherche="14 i̇brâhîm ibrahim ابراهيم" data-sourate="14" data-versets="52" data-nom="İbrâhîm"><a class="sourate-carte" href="14/">
+        <span class="num-etoile" aria-hidden="true"><span>14</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">İbrâhîm</span>
+          <span class="sourate-carte__meta">52 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">ابراهيم</span></a></li>
+      <li data-recherche="15 hicr al-hijr الحجر" data-sourate="15" data-versets="99" data-nom="Hicr"><a class="sourate-carte" href="15/">
+        <span class="num-etoile" aria-hidden="true"><span>15</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Hicr</span>
+          <span class="sourate-carte__meta">99 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الحجر</span></a></li>
+      <li data-recherche="16 nahl an-nahl النحل" data-sourate="16" data-versets="128" data-nom="Nahl"><a class="sourate-carte" href="16/">
+        <span class="num-etoile" aria-hidden="true"><span>16</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Nahl</span>
+          <span class="sourate-carte__meta">128 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النحل</span></a></li>
+      <li data-recherche="17 i̇srâ al-isra الإسراء" data-sourate="17" data-versets="111" data-nom="İsrâ"><a class="sourate-carte" href="17/">
+        <span class="num-etoile" aria-hidden="true"><span>17</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">İsrâ</span>
+          <span class="sourate-carte__meta">111 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الإسراء</span></a></li>
+      <li data-recherche="18 kehf al-kahf الكهف" data-sourate="18" data-versets="110" data-nom="Kehf"><a class="sourate-carte" href="18/">
+        <span class="num-etoile" aria-hidden="true"><span>18</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Kehf</span>
+          <span class="sourate-carte__meta">110 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الكهف</span></a></li>
+      <li data-recherche="19 meryem maryam مريم" data-sourate="19" data-versets="98" data-nom="Meryem"><a class="sourate-carte" href="19/">
+        <span class="num-etoile" aria-hidden="true"><span>19</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Meryem</span>
+          <span class="sourate-carte__meta">98 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">مريم</span></a></li>
+      <li data-recherche="20 tâhâ ta-ha طه" data-sourate="20" data-versets="135" data-nom="Tâhâ"><a class="sourate-carte" href="20/">
+        <span class="num-etoile" aria-hidden="true"><span>20</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Tâhâ</span>
+          <span class="sourate-carte__meta">135 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">طه</span></a></li>
+      <li data-recherche="21 enbiyâ al-anbiya الأنبياء" data-sourate="21" data-versets="112" data-nom="Enbiyâ"><a class="sourate-carte" href="21/">
+        <span class="num-etoile" aria-hidden="true"><span>21</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Enbiyâ</span>
+          <span class="sourate-carte__meta">112 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الأنبياء</span></a></li>
+      <li data-recherche="22 hac al-hajj الحج" data-sourate="22" data-versets="78" data-nom="Hac"><a class="sourate-carte" href="22/">
+        <span class="num-etoile" aria-hidden="true"><span>22</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Hac</span>
+          <span class="sourate-carte__meta">78 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الحج</span></a></li>
+      <li data-recherche="23 mü&#x27;minûn al-mu’minun المؤمنون" data-sourate="23" data-versets="118" data-nom="Mü&#x27;minûn"><a class="sourate-carte" href="23/">
+        <span class="num-etoile" aria-hidden="true"><span>23</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Mü&#x27;minûn</span>
+          <span class="sourate-carte__meta">118 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المؤمنون</span></a></li>
+      <li data-recherche="24 nûr an-nur النور" data-sourate="24" data-versets="64" data-nom="Nûr"><a class="sourate-carte" href="24/">
+        <span class="num-etoile" aria-hidden="true"><span>24</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Nûr</span>
+          <span class="sourate-carte__meta">64 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النور</span></a></li>
+      <li data-recherche="25 furkân al-furqan الفرقان" data-sourate="25" data-versets="77" data-nom="Furkân"><a class="sourate-carte" href="25/">
+        <span class="num-etoile" aria-hidden="true"><span>25</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Furkân</span>
+          <span class="sourate-carte__meta">77 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الفرقان</span></a></li>
+      <li data-recherche="26 şuarâ ash-shu‘ara الشعراء" data-sourate="26" data-versets="227" data-nom="Şuarâ"><a class="sourate-carte" href="26/">
+        <span class="num-etoile" aria-hidden="true"><span>26</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Şuarâ</span>
+          <span class="sourate-carte__meta">227 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الشعراء</span></a></li>
+      <li data-recherche="27 neml an-naml النمل" data-sourate="27" data-versets="93" data-nom="Neml"><a class="sourate-carte" href="27/">
+        <span class="num-etoile" aria-hidden="true"><span>27</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Neml</span>
+          <span class="sourate-carte__meta">93 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النمل</span></a></li>
+      <li data-recherche="28 kasas al-qasas القصص" data-sourate="28" data-versets="88" data-nom="Kasas"><a class="sourate-carte" href="28/">
+        <span class="num-etoile" aria-hidden="true"><span>28</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Kasas</span>
+          <span class="sourate-carte__meta">88 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">القصص</span></a></li>
+      <li data-recherche="29 ankebût al-‘ankabut العنكبوت" data-sourate="29" data-versets="69" data-nom="Ankebût"><a class="sourate-carte" href="29/">
+        <span class="num-etoile" aria-hidden="true"><span>29</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ankebût</span>
+          <span class="sourate-carte__meta">69 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">العنكبوت</span></a></li>
+      <li data-recherche="30 rûm ar-rum الروم" data-sourate="30" data-versets="60" data-nom="Rûm"><a class="sourate-carte" href="30/">
+        <span class="num-etoile" aria-hidden="true"><span>30</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Rûm</span>
+          <span class="sourate-carte__meta">60 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الروم</span></a></li>
+      <li data-recherche="31 lokmân luqman لقمان" data-sourate="31" data-versets="34" data-nom="Lokmân"><a class="sourate-carte" href="31/">
+        <span class="num-etoile" aria-hidden="true"><span>31</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Lokmân</span>
+          <span class="sourate-carte__meta">34 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">لقمان</span></a></li>
+      <li data-recherche="32 secde as-sajda السجدة" data-sourate="32" data-versets="30" data-nom="Secde"><a class="sourate-carte" href="32/">
+        <span class="num-etoile" aria-hidden="true"><span>32</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Secde</span>
+          <span class="sourate-carte__meta">30 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">السجدة</span></a></li>
+      <li data-recherche="33 ahzâb al-ahzab الأحزاب" data-sourate="33" data-versets="73" data-nom="Ahzâb"><a class="sourate-carte" href="33/">
+        <span class="num-etoile" aria-hidden="true"><span>33</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ahzâb</span>
+          <span class="sourate-carte__meta">73 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الأحزاب</span></a></li>
+      <li data-recherche="34 sebe&#x27; saba سبإ" data-sourate="34" data-versets="54" data-nom="Sebe&#x27;"><a class="sourate-carte" href="34/">
+        <span class="num-etoile" aria-hidden="true"><span>34</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Sebe&#x27;</span>
+          <span class="sourate-carte__meta">54 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">سبإ</span></a></li>
+      <li data-recherche="35 fâtır fatir فاطر" data-sourate="35" data-versets="45" data-nom="Fâtır"><a class="sourate-carte" href="35/">
+        <span class="num-etoile" aria-hidden="true"><span>35</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Fâtır</span>
+          <span class="sourate-carte__meta">45 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">فاطر</span></a></li>
+      <li data-recherche="36 yâsîn ya-sin يس" data-sourate="36" data-versets="83" data-nom="Yâsîn"><a class="sourate-carte" href="36/">
+        <span class="num-etoile" aria-hidden="true"><span>36</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Yâsîn</span>
+          <span class="sourate-carte__meta">83 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">يس</span></a></li>
+      <li data-recherche="37 sâffât as-saffat الصافات" data-sourate="37" data-versets="182" data-nom="Sâffât"><a class="sourate-carte" href="37/">
+        <span class="num-etoile" aria-hidden="true"><span>37</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Sâffât</span>
+          <span class="sourate-carte__meta">182 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الصافات</span></a></li>
+      <li data-recherche="38 sâd sad ص" data-sourate="38" data-versets="88" data-nom="Sâd"><a class="sourate-carte" href="38/">
+        <span class="num-etoile" aria-hidden="true"><span>38</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Sâd</span>
+          <span class="sourate-carte__meta">88 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">ص</span></a></li>
+      <li data-recherche="39 zümer az-zumar الزمر" data-sourate="39" data-versets="75" data-nom="Zümer"><a class="sourate-carte" href="39/">
+        <span class="num-etoile" aria-hidden="true"><span>39</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Zümer</span>
+          <span class="sourate-carte__meta">75 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الزمر</span></a></li>
+      <li data-recherche="40 mü&#x27;min ghafir غافر" data-sourate="40" data-versets="85" data-nom="Mü&#x27;min"><a class="sourate-carte" href="40/">
+        <span class="num-etoile" aria-hidden="true"><span>40</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Mü&#x27;min</span>
+          <span class="sourate-carte__meta">85 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">غافر</span></a></li>
+      <li data-recherche="41 fussilet fussilat فصلت" data-sourate="41" data-versets="54" data-nom="Fussilet"><a class="sourate-carte" href="41/">
+        <span class="num-etoile" aria-hidden="true"><span>41</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Fussilet</span>
+          <span class="sourate-carte__meta">54 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">فصلت</span></a></li>
+      <li data-recherche="42 şûrâ ash-shura الشورى" data-sourate="42" data-versets="53" data-nom="Şûrâ"><a class="sourate-carte" href="42/">
+        <span class="num-etoile" aria-hidden="true"><span>42</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Şûrâ</span>
+          <span class="sourate-carte__meta">53 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الشورى</span></a></li>
+      <li data-recherche="43 zuhruf az-zukhruf الزخرف" data-sourate="43" data-versets="89" data-nom="Zuhruf"><a class="sourate-carte" href="43/">
+        <span class="num-etoile" aria-hidden="true"><span>43</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Zuhruf</span>
+          <span class="sourate-carte__meta">89 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الزخرف</span></a></li>
+      <li data-recherche="44 duhân ad-dukhan الدخان" data-sourate="44" data-versets="59" data-nom="Duhân"><a class="sourate-carte" href="44/">
+        <span class="num-etoile" aria-hidden="true"><span>44</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Duhân</span>
+          <span class="sourate-carte__meta">59 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الدخان</span></a></li>
+      <li data-recherche="45 câsiye al-jathiya الجاثية" data-sourate="45" data-versets="37" data-nom="Câsiye"><a class="sourate-carte" href="45/">
+        <span class="num-etoile" aria-hidden="true"><span>45</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Câsiye</span>
+          <span class="sourate-carte__meta">37 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الجاثية</span></a></li>
+      <li data-recherche="46 ahkâf al-ahqaf الأحقاف" data-sourate="46" data-versets="35" data-nom="Ahkâf"><a class="sourate-carte" href="46/">
+        <span class="num-etoile" aria-hidden="true"><span>46</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Ahkâf</span>
+          <span class="sourate-carte__meta">35 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الأحقاف</span></a></li>
+      <li data-recherche="47 muhammed muhammad محمد" data-sourate="47" data-versets="38" data-nom="Muhammed"><a class="sourate-carte" href="47/">
+        <span class="num-etoile" aria-hidden="true"><span>47</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Muhammed</span>
+          <span class="sourate-carte__meta">38 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">محمد</span></a></li>
+      <li data-recherche="48 fetih al-fath الفتح" data-sourate="48" data-versets="29" data-nom="Fetih"><a class="sourate-carte" href="48/">
+        <span class="num-etoile" aria-hidden="true"><span>48</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Fetih</span>
+          <span class="sourate-carte__meta">29 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الفتح</span></a></li>
+      <li data-recherche="49 hucurât al-hujurat الحجرات" data-sourate="49" data-versets="18" data-nom="Hucurât"><a class="sourate-carte" href="49/">
+        <span class="num-etoile" aria-hidden="true"><span>49</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Hucurât</span>
+          <span class="sourate-carte__meta">18 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الحجرات</span></a></li>
+      <li data-recherche="50 kâf qaf ق" data-sourate="50" data-versets="45" data-nom="Kâf"><a class="sourate-carte" href="50/">
+        <span class="num-etoile" aria-hidden="true"><span>50</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Kâf</span>
+          <span class="sourate-carte__meta">45 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">ق</span></a></li>
+      <li data-recherche="51 zâriyât adh-dhariyat الذاريات" data-sourate="51" data-versets="60" data-nom="Zâriyât"><a class="sourate-carte" href="51/">
+        <span class="num-etoile" aria-hidden="true"><span>51</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Zâriyât</span>
+          <span class="sourate-carte__meta">60 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الذاريات</span></a></li>
+      <li data-recherche="52 tûr at-tur الطور" data-sourate="52" data-versets="49" data-nom="Tûr"><a class="sourate-carte" href="52/">
+        <span class="num-etoile" aria-hidden="true"><span>52</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Tûr</span>
+          <span class="sourate-carte__meta">49 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الطور</span></a></li>
+      <li data-recherche="53 necm an-najm النجم" data-sourate="53" data-versets="62" data-nom="Necm"><a class="sourate-carte" href="53/">
+        <span class="num-etoile" aria-hidden="true"><span>53</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Necm</span>
+          <span class="sourate-carte__meta">62 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النجم</span></a></li>
+      <li data-recherche="54 kamer al-qamar القمر" data-sourate="54" data-versets="55" data-nom="Kamer"><a class="sourate-carte" href="54/">
+        <span class="num-etoile" aria-hidden="true"><span>54</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Kamer</span>
+          <span class="sourate-carte__meta">55 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">القمر</span></a></li>
+      <li data-recherche="55 rahmân ar-rahman الرحمن" data-sourate="55" data-versets="78" data-nom="Rahmân"><a class="sourate-carte" href="55/">
+        <span class="num-etoile" aria-hidden="true"><span>55</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Rahmân</span>
+          <span class="sourate-carte__meta">78 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الرحمن</span></a></li>
+      <li data-recherche="56 vâkıa al-waqi‘a الواقعة" data-sourate="56" data-versets="96" data-nom="Vâkıa"><a class="sourate-carte" href="56/">
+        <span class="num-etoile" aria-hidden="true"><span>56</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Vâkıa</span>
+          <span class="sourate-carte__meta">96 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الواقعة</span></a></li>
+      <li data-recherche="57 hadîd al-hadid الحديد" data-sourate="57" data-versets="29" data-nom="Hadîd"><a class="sourate-carte" href="57/">
+        <span class="num-etoile" aria-hidden="true"><span>57</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Hadîd</span>
+          <span class="sourate-carte__meta">29 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الحديد</span></a></li>
+      <li data-recherche="58 mücâdele al-mujadala المجادلة" data-sourate="58" data-versets="22" data-nom="Mücâdele"><a class="sourate-carte" href="58/">
+        <span class="num-etoile" aria-hidden="true"><span>58</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Mücâdele</span>
+          <span class="sourate-carte__meta">22 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المجادلة</span></a></li>
+      <li data-recherche="59 haşr al-hashr الحشر" data-sourate="59" data-versets="24" data-nom="Haşr"><a class="sourate-carte" href="59/">
+        <span class="num-etoile" aria-hidden="true"><span>59</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Haşr</span>
+          <span class="sourate-carte__meta">24 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الحشر</span></a></li>
+      <li data-recherche="60 mümtehine al-mumtahana الممتحنة" data-sourate="60" data-versets="13" data-nom="Mümtehine"><a class="sourate-carte" href="60/">
+        <span class="num-etoile" aria-hidden="true"><span>60</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Mümtehine</span>
+          <span class="sourate-carte__meta">13 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الممتحنة</span></a></li>
+      <li data-recherche="61 saf as-saff الصف" data-sourate="61" data-versets="14" data-nom="Saf"><a class="sourate-carte" href="61/">
+        <span class="num-etoile" aria-hidden="true"><span>61</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Saf</span>
+          <span class="sourate-carte__meta">14 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الصف</span></a></li>
+      <li data-recherche="62 cuma al-jumu‘a الجمعة" data-sourate="62" data-versets="11" data-nom="Cuma"><a class="sourate-carte" href="62/">
+        <span class="num-etoile" aria-hidden="true"><span>62</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Cuma</span>
+          <span class="sourate-carte__meta">11 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الجمعة</span></a></li>
+      <li data-recherche="63 münâfikûn al-munafiqun المنافقون" data-sourate="63" data-versets="11" data-nom="Münâfikûn"><a class="sourate-carte" href="63/">
+        <span class="num-etoile" aria-hidden="true"><span>63</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Münâfikûn</span>
+          <span class="sourate-carte__meta">11 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المنافقون</span></a></li>
+      <li data-recherche="64 tegâbün at-taghabun التغابن" data-sourate="64" data-versets="18" data-nom="Tegâbün"><a class="sourate-carte" href="64/">
+        <span class="num-etoile" aria-hidden="true"><span>64</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Tegâbün</span>
+          <span class="sourate-carte__meta">18 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">التغابن</span></a></li>
+      <li data-recherche="65 talâk at-talaq الطلاق" data-sourate="65" data-versets="12" data-nom="Talâk"><a class="sourate-carte" href="65/">
+        <span class="num-etoile" aria-hidden="true"><span>65</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Talâk</span>
+          <span class="sourate-carte__meta">12 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الطلاق</span></a></li>
+      <li data-recherche="66 tahrîm at-tahrim التحريم" data-sourate="66" data-versets="12" data-nom="Tahrîm"><a class="sourate-carte" href="66/">
+        <span class="num-etoile" aria-hidden="true"><span>66</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Tahrîm</span>
+          <span class="sourate-carte__meta">12 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">التحريم</span></a></li>
+      <li data-recherche="67 mülk al-mulk الملك" data-sourate="67" data-versets="30" data-nom="Mülk"><a class="sourate-carte" href="67/">
+        <span class="num-etoile" aria-hidden="true"><span>67</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Mülk</span>
+          <span class="sourate-carte__meta">30 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الملك</span></a></li>
+      <li data-recherche="68 kalem al-qalam القلم" data-sourate="68" data-versets="52" data-nom="Kalem"><a class="sourate-carte" href="68/">
+        <span class="num-etoile" aria-hidden="true"><span>68</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Kalem</span>
+          <span class="sourate-carte__meta">52 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">القلم</span></a></li>
+      <li data-recherche="69 hâkka al-haqqa الحاقة" data-sourate="69" data-versets="52" data-nom="Hâkka"><a class="sourate-carte" href="69/">
+        <span class="num-etoile" aria-hidden="true"><span>69</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Hâkka</span>
+          <span class="sourate-carte__meta">52 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الحاقة</span></a></li>
+      <li data-recherche="70 meâric al-ma‘arij المعارج" data-sourate="70" data-versets="44" data-nom="Meâric"><a class="sourate-carte" href="70/">
+        <span class="num-etoile" aria-hidden="true"><span>70</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Meâric</span>
+          <span class="sourate-carte__meta">44 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المعارج</span></a></li>
+      <li data-recherche="71 nûh nuh نوح" data-sourate="71" data-versets="28" data-nom="Nûh"><a class="sourate-carte" href="71/">
+        <span class="num-etoile" aria-hidden="true"><span>71</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Nûh</span>
+          <span class="sourate-carte__meta">28 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">نوح</span></a></li>
+      <li data-recherche="72 cin al-jinn الجن" data-sourate="72" data-versets="28" data-nom="Cin"><a class="sourate-carte" href="72/">
+        <span class="num-etoile" aria-hidden="true"><span>72</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Cin</span>
+          <span class="sourate-carte__meta">28 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الجن</span></a></li>
+      <li data-recherche="73 müzzemmil al-muzzammil المزمل" data-sourate="73" data-versets="20" data-nom="Müzzemmil"><a class="sourate-carte" href="73/">
+        <span class="num-etoile" aria-hidden="true"><span>73</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Müzzemmil</span>
+          <span class="sourate-carte__meta">20 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المزمل</span></a></li>
+      <li data-recherche="74 müddessir al-muddaththir المدثر" data-sourate="74" data-versets="56" data-nom="Müddessir"><a class="sourate-carte" href="74/">
+        <span class="num-etoile" aria-hidden="true"><span>74</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Müddessir</span>
+          <span class="sourate-carte__meta">56 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المدثر</span></a></li>
+      <li data-recherche="75 kıyâmet al-qiyama القيامة" data-sourate="75" data-versets="40" data-nom="Kıyâmet"><a class="sourate-carte" href="75/">
+        <span class="num-etoile" aria-hidden="true"><span>75</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Kıyâmet</span>
+          <span class="sourate-carte__meta">40 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">القيامة</span></a></li>
+      <li data-recherche="76 i̇nsân al-insan الانسان" data-sourate="76" data-versets="31" data-nom="İnsân"><a class="sourate-carte" href="76/">
+        <span class="num-etoile" aria-hidden="true"><span>76</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">İnsân</span>
+          <span class="sourate-carte__meta">31 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الانسان</span></a></li>
+      <li data-recherche="77 mürselât al-mursalat المرسلات" data-sourate="77" data-versets="50" data-nom="Mürselât"><a class="sourate-carte" href="77/">
+        <span class="num-etoile" aria-hidden="true"><span>77</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Mürselât</span>
+          <span class="sourate-carte__meta">50 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المرسلات</span></a></li>
+      <li data-recherche="78 nebe an-naba النبإ" data-sourate="78" data-versets="40" data-nom="Nebe"><a class="sourate-carte" href="78/">
+        <span class="num-etoile" aria-hidden="true"><span>78</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Nebe</span>
+          <span class="sourate-carte__meta">40 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النبإ</span></a></li>
+      <li data-recherche="79 naziât an-nazi‘at النازعات" data-sourate="79" data-versets="46" data-nom="Naziât"><a class="sourate-carte" href="79/">
+        <span class="num-etoile" aria-hidden="true"><span>79</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Naziât</span>
+          <span class="sourate-carte__meta">46 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النازعات</span></a></li>
+      <li data-recherche="80 abese ‘abasa عبس" data-sourate="80" data-versets="42" data-nom="Abese"><a class="sourate-carte" href="80/">
+        <span class="num-etoile" aria-hidden="true"><span>80</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Abese</span>
+          <span class="sourate-carte__meta">42 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">عبس</span></a></li>
+      <li data-recherche="81 tekvîr at-takwir التكوير" data-sourate="81" data-versets="29" data-nom="Tekvîr"><a class="sourate-carte" href="81/">
+        <span class="num-etoile" aria-hidden="true"><span>81</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Tekvîr</span>
+          <span class="sourate-carte__meta">29 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">التكوير</span></a></li>
+      <li data-recherche="82 i̇nfitâr al-infitar الإنفطار" data-sourate="82" data-versets="19" data-nom="İnfitâr"><a class="sourate-carte" href="82/">
+        <span class="num-etoile" aria-hidden="true"><span>82</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">İnfitâr</span>
+          <span class="sourate-carte__meta">19 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الإنفطار</span></a></li>
+      <li data-recherche="83 mutaffifîn al-mutaffifin المطففين" data-sourate="83" data-versets="36" data-nom="Mutaffifîn"><a class="sourate-carte" href="83/">
+        <span class="num-etoile" aria-hidden="true"><span>83</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Mutaffifîn</span>
+          <span class="sourate-carte__meta">36 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المطففين</span></a></li>
+      <li data-recherche="84 i̇nşikâk al-inshiqaq الإنشقاق" data-sourate="84" data-versets="25" data-nom="İnşikâk"><a class="sourate-carte" href="84/">
+        <span class="num-etoile" aria-hidden="true"><span>84</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">İnşikâk</span>
+          <span class="sourate-carte__meta">25 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الإنشقاق</span></a></li>
+      <li data-recherche="85 burûc al-buruj البروج" data-sourate="85" data-versets="22" data-nom="Burûc"><a class="sourate-carte" href="85/">
+        <span class="num-etoile" aria-hidden="true"><span>85</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Burûc</span>
+          <span class="sourate-carte__meta">22 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">البروج</span></a></li>
+      <li data-recherche="86 târık at-tariq الطارق" data-sourate="86" data-versets="17" data-nom="Târık"><a class="sourate-carte" href="86/">
+        <span class="num-etoile" aria-hidden="true"><span>86</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Târık</span>
+          <span class="sourate-carte__meta">17 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الطارق</span></a></li>
+      <li data-recherche="87 a&#x27;lâ al-a‘la الأعلى" data-sourate="87" data-versets="19" data-nom="A&#x27;lâ"><a class="sourate-carte" href="87/">
+        <span class="num-etoile" aria-hidden="true"><span>87</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">A&#x27;lâ</span>
+          <span class="sourate-carte__meta">19 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الأعلى</span></a></li>
+      <li data-recherche="88 gâşiye al-ghashiya الغاشية" data-sourate="88" data-versets="26" data-nom="Gâşiye"><a class="sourate-carte" href="88/">
+        <span class="num-etoile" aria-hidden="true"><span>88</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Gâşiye</span>
+          <span class="sourate-carte__meta">26 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الغاشية</span></a></li>
+      <li data-recherche="89 fecr al-fajr الفجر" data-sourate="89" data-versets="30" data-nom="Fecr"><a class="sourate-carte" href="89/">
+        <span class="num-etoile" aria-hidden="true"><span>89</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Fecr</span>
+          <span class="sourate-carte__meta">30 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الفجر</span></a></li>
+      <li data-recherche="90 beled al-balad البلد" data-sourate="90" data-versets="20" data-nom="Beled"><a class="sourate-carte" href="90/">
+        <span class="num-etoile" aria-hidden="true"><span>90</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Beled</span>
+          <span class="sourate-carte__meta">20 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">البلد</span></a></li>
+      <li data-recherche="91 şems ash-shams الشمس" data-sourate="91" data-versets="15" data-nom="Şems"><a class="sourate-carte" href="91/">
+        <span class="num-etoile" aria-hidden="true"><span>91</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Şems</span>
+          <span class="sourate-carte__meta">15 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الشمس</span></a></li>
+      <li data-recherche="92 leyl al-layl الليل" data-sourate="92" data-versets="21" data-nom="Leyl"><a class="sourate-carte" href="92/">
+        <span class="num-etoile" aria-hidden="true"><span>92</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Leyl</span>
+          <span class="sourate-carte__meta">21 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الليل</span></a></li>
+      <li data-recherche="93 duhâ ad-duha الضحى" data-sourate="93" data-versets="11" data-nom="Duhâ"><a class="sourate-carte" href="93/">
+        <span class="num-etoile" aria-hidden="true"><span>93</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Duhâ</span>
+          <span class="sourate-carte__meta">11 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الضحى</span></a></li>
+      <li data-recherche="94 i̇nşirâh ash-sharh الشرح" data-sourate="94" data-versets="8" data-nom="İnşirâh"><a class="sourate-carte" href="94/">
+        <span class="num-etoile" aria-hidden="true"><span>94</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">İnşirâh</span>
+          <span class="sourate-carte__meta">8 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الشرح</span></a></li>
+      <li data-recherche="95 tîn at-tin التين" data-sourate="95" data-versets="8" data-nom="Tîn"><a class="sourate-carte" href="95/">
+        <span class="num-etoile" aria-hidden="true"><span>95</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Tîn</span>
+          <span class="sourate-carte__meta">8 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">التين</span></a></li>
+      <li data-recherche="96 alak al-‘alaq العلق" data-sourate="96" data-versets="19" data-nom="Alak"><a class="sourate-carte" href="96/">
+        <span class="num-etoile" aria-hidden="true"><span>96</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Alak</span>
+          <span class="sourate-carte__meta">19 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">العلق</span></a></li>
+      <li data-recherche="97 kadir al-qadr القدر" data-sourate="97" data-versets="5" data-nom="Kadir"><a class="sourate-carte" href="97/">
+        <span class="num-etoile" aria-hidden="true"><span>97</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Kadir</span>
+          <span class="sourate-carte__meta">5 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">القدر</span></a></li>
+      <li data-recherche="98 beyyine al-bayyina البينة" data-sourate="98" data-versets="8" data-nom="Beyyine"><a class="sourate-carte" href="98/">
+        <span class="num-etoile" aria-hidden="true"><span>98</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Beyyine</span>
+          <span class="sourate-carte__meta">8 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">البينة</span></a></li>
+      <li data-recherche="99 zilzâl az-zalzala الزلزلة" data-sourate="99" data-versets="8" data-nom="Zilzâl"><a class="sourate-carte" href="99/">
+        <span class="num-etoile" aria-hidden="true"><span>99</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Zilzâl</span>
+          <span class="sourate-carte__meta">8 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الزلزلة</span></a></li>
+      <li data-recherche="100 âdiyât al-‘adiyat العاديات" data-sourate="100" data-versets="11" data-nom="Âdiyât"><a class="sourate-carte" href="100/">
+        <span class="num-etoile" aria-hidden="true"><span>100</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Âdiyât</span>
+          <span class="sourate-carte__meta">11 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">العاديات</span></a></li>
+      <li data-recherche="101 kâria al-qari‘a القارعة" data-sourate="101" data-versets="11" data-nom="Kâria"><a class="sourate-carte" href="101/">
+        <span class="num-etoile" aria-hidden="true"><span>101</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Kâria</span>
+          <span class="sourate-carte__meta">11 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">القارعة</span></a></li>
+      <li data-recherche="102 tekâsür at-takathur التكاثر" data-sourate="102" data-versets="8" data-nom="Tekâsür"><a class="sourate-carte" href="102/">
+        <span class="num-etoile" aria-hidden="true"><span>102</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Tekâsür</span>
+          <span class="sourate-carte__meta">8 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">التكاثر</span></a></li>
+      <li data-recherche="103 asr al-‘asr العصر" data-sourate="103" data-versets="3" data-nom="Asr"><a class="sourate-carte" href="103/">
+        <span class="num-etoile" aria-hidden="true"><span>103</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Asr</span>
+          <span class="sourate-carte__meta">3 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">العصر</span></a></li>
+      <li data-recherche="104 hümeze al-humaza الهمزة" data-sourate="104" data-versets="9" data-nom="Hümeze"><a class="sourate-carte" href="104/">
+        <span class="num-etoile" aria-hidden="true"><span>104</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Hümeze</span>
+          <span class="sourate-carte__meta">9 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الهمزة</span></a></li>
+      <li data-recherche="105 fîl al-fil الفيل" data-sourate="105" data-versets="5" data-nom="Fîl"><a class="sourate-carte" href="105/">
+        <span class="num-etoile" aria-hidden="true"><span>105</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Fîl</span>
+          <span class="sourate-carte__meta">5 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الفيل</span></a></li>
+      <li data-recherche="106 kureyş quraysh قريش" data-sourate="106" data-versets="4" data-nom="Kureyş"><a class="sourate-carte" href="106/">
+        <span class="num-etoile" aria-hidden="true"><span>106</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Kureyş</span>
+          <span class="sourate-carte__meta">4 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">قريش</span></a></li>
+      <li data-recherche="107 maûn al-ma‘un الماعون" data-sourate="107" data-versets="7" data-nom="Maûn"><a class="sourate-carte" href="107/">
+        <span class="num-etoile" aria-hidden="true"><span>107</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Maûn</span>
+          <span class="sourate-carte__meta">7 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الماعون</span></a></li>
+      <li data-recherche="108 kevser al-kawthar الكوثر" data-sourate="108" data-versets="3" data-nom="Kevser"><a class="sourate-carte" href="108/">
+        <span class="num-etoile" aria-hidden="true"><span>108</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Kevser</span>
+          <span class="sourate-carte__meta">3 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الكوثر</span></a></li>
+      <li data-recherche="109 kâfirûn al-kafirun الكافرون" data-sourate="109" data-versets="6" data-nom="Kâfirûn"><a class="sourate-carte" href="109/">
+        <span class="num-etoile" aria-hidden="true"><span>109</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Kâfirûn</span>
+          <span class="sourate-carte__meta">6 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الكافرون</span></a></li>
+      <li data-recherche="110 nasr an-nasr النصر" data-sourate="110" data-versets="3" data-nom="Nasr"><a class="sourate-carte" href="110/">
+        <span class="num-etoile" aria-hidden="true"><span>110</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Nasr</span>
+          <span class="sourate-carte__meta">3 ayet · Medenî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">النصر</span></a></li>
+      <li data-recherche="111 tebbet al-masad المسد" data-sourate="111" data-versets="5" data-nom="Tebbet"><a class="sourate-carte" href="111/">
+        <span class="num-etoile" aria-hidden="true"><span>111</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Tebbet</span>
+          <span class="sourate-carte__meta">5 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">المسد</span></a></li>
+      <li data-recherche="112 i̇hlâs al-ikhlas الإخلاص" data-sourate="112" data-versets="4" data-nom="İhlâs"><a class="sourate-carte" href="112/">
+        <span class="num-etoile" aria-hidden="true"><span>112</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">İhlâs</span>
+          <span class="sourate-carte__meta">4 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الإخلاص</span></a></li>
+      <li data-recherche="113 felak al-falaq الفلق" data-sourate="113" data-versets="5" data-nom="Felak"><a class="sourate-carte" href="113/">
+        <span class="num-etoile" aria-hidden="true"><span>113</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Felak</span>
+          <span class="sourate-carte__meta">5 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الفلق</span></a></li>
+      <li data-recherche="114 nâs an-nas الناس" data-sourate="114" data-versets="6" data-nom="Nâs"><a class="sourate-carte" href="114/">
+        <span class="num-etoile" aria-hidden="true"><span>114</span></span>
+        <span class="sourate-carte__noms"><span class="sourate-carte__nom">Nâs</span>
+          <span class="sourate-carte__meta">6 ayet · Mekkî</span></span>
+        <span class="sourate-carte__ar" lang="ar" dir="rtl">الناس</span></a></li>
+    </ol>
+    <p class="liste-vide" data-liste-vide hidden>Bu aramaya uyan sure bulunamadı.</p>
+    <section class="sources-coran" aria-labelledby="titre-sources-coran">
+      <h2 id="titre-sources-coran">Kaynaklar ve doğrulama</h2>
+      <ul>
+        <li><strong>Arapça metin</strong>: <a href="https://tanzil.net" target="_blank" rel="noopener">Tanzil Project</a>, Resm-i Osmânî imla (sürüm 1.1), Âsım kıraatinin Hafs rivayeti. Metin değiştirilmeden aktarılmıştır.</li>
+        <li><strong>Doğrulama</strong>: 6.236 ayetin tamamı, Medine’deki Kral Fahd Kur’an Basım Kompleksi’nin QuranEnc’de yayımlanan metniyle harf harf karşılaştırıldı. Harfler her yerde aynıdır; iki küçük okuma işareti farklıdır (2:72 ve 17:7), harfler değişmez. Vakıf (durak) işaretleri bu sürümde gösterilmez.</li>
+        <li><strong>Türkçe meal</strong>: Diyanet İşleri Başkanlığı’nın meali, <a href="https://tanzil.net/trans/" target="_blank" rel="noopener">Tanzil.net</a>’in yayımladığı metin (tr.diyanet, son güncelleme: 27 Aralık 2011), değiştirilmeden aktarılmıştır. Tanzil çevirilerini yalnızca ticari olmayan kullanım için sunar; bu site de ticari değildir.</li>
+        <li><strong>Birlikte çevrilen ayetler</strong>: Diyanet meali, anlam bütünlüğü için bazı ardışık ayetleri birlikte çevirir (ör. Nâs Suresi 1–6). Bu ayetler tek blokta gösterilir: önce her ayetin Arapça metni, ardından ortak meal.</li>
+      </ul>
+      <p class="sources-coran__note">Bir meal, ayetlerin anlamını mütercimin anladığı biçimiyle aktarır: Kur’an’ın yerini tutmaz. Yalnızca Arapça metin vahyedilmiş kelamdır.</p>
+    </section>
+  </div>
+</main>
+<footer class="pied">
+  <div class="conteneur">
+    <div class="pied__haut">
+      <div>
+        <a class="logo" href="../../tr/"><span>Islamedia</span><span class="logo__ext">.fr</span></a>
+        <p class="pied__slogan">İslam’ı kaynaklarıyla anlamak.</p>
+      </div>
+      <nav aria-label="Alt bilgi bağlantıları">
+        <a href="../../tr/kuran/">Kur’an</a>
+        <a href="../../tr/namaz-vakitleri/">Namaz vakitleri</a>
+        <a href="../../tr/#methode">Yöntemimiz</a>
+        <a href="../../tr/yasal-bilgiler.html">Yasal bilgiler</a>
+        <a href="../../coran/" hreflang="fr" lang="fr" data-lien-langue>Français</a>
+      </nav>
+    </div>
+    <p class="pied__sources">© <span data-annee>2026</span> Islamedia.fr · Kur’an metni: <a href="https://tanzil.net" target="_blank" rel="noopener">Tanzil Project</a> (Osmânî 1.1, CC BY 3.0 lisansı, değiştirilmemiş metin) · Meal: Diyanet İşleri, <a href="https://tanzil.net/trans/" target="_blank" rel="noopener">Tanzil.net</a> metni (son güncelleme: 27 Aralık 2011) · Bu site çerez ve izleme aracı kullanmaz.</p>
+  </div>
+</footer>
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<script src="../../script.js" defer></script>
+</body>
+</html>
