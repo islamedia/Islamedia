@@ -8,8 +8,10 @@ données, pas de logiciel à installer.
 1. CE QU'IL Y A DANS LE DOSSIER
 -------------------------------
   index.html ............ la page d'accueil (le contenu : textes, sections)
-  coran/ ................ le Coran : le sommaire (coran/index.html) et une
-                          page par sourate (coran/1/ à coran/114/)
+  coran/ ................ le Coran : le sommaire (coran/index.html), une
+                          page par sourate (coran/1/ à coran/114/) et la
+                          lecture page par page (coran/page/)
+  mushaf.js ............. la lecture page par page (rien à modifier)
   horaires/ ............. les horaires de prière (page et liste des villes)
   tr/ ................... la version turque du site : accueil (tr/index.html),
                           Kur’an (tr/kuran/), namaz vakitleri
@@ -141,6 +143,13 @@ laisser, ils ne gênent pas.
    verset puis la traduction une seule fois.
  • Recherche : dans le sommaire du Coran, taper « 3:13 » (ou « 3/13 »,
    « Baqara 255 ») mène directement à la sourate 3, verset 13.
+ • Lecture page par page (coran/page/, en turc tr/kuran/sayfa/) : les 604
+   pages du Mushaf de Médine, avec les mêmes versets sur chaque page. Le
+   découpage a été comparé verset par verset dans deux sources publiées
+   (quran-api et quran-meta) : elles concordent pour les 6 236 versets. Les
+   lignes suivent la largeur de l'écran, elles ne reproduisent pas celles du
+   Mushaf imprimé. Une adresse comme islamedia.fr/coran/page/#440 ouvre
+   directement la page 440 ; le site reprend à la dernière page lue.
  • Pour ajouter un verset, ne le tape jamais à la main : demande-le à partir
    de ces sources.
 

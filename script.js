@@ -328,10 +328,10 @@ const REGLAGES = {
     });
   }
 
-  /* Bouton de langue : garder le verset affiché (#v13) en changeant de langue */
+  /* Bouton de langue : garder le verset (#v13) ou la page du Mushaf (#42) en changeant de langue */
   tous("[data-lien-langue]").forEach(function (a) {
     a.addEventListener("click", function () {
-      if (/^#v\d+$/.test(window.location.hash)) a.href = a.href.split("#")[0] + window.location.hash;
+      if (/^#v?\d+$/.test(window.location.hash)) a.href = a.href.split("#")[0] + window.location.hash;
     });
   });
 })();
