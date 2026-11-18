@@ -246,7 +246,22 @@
   };
   var FUSEAUX = { GP: "America/Guadeloupe", MQ: "America/Martinique", GF: "America/Cayenne", RE: "Indian/Reunion", YT: "Indian/Mayotte",
     BE: "Europe/Brussels", CH: "Europe/Zurich", LU: "Europe/Luxembourg", MC: "Europe/Monaco" };
-  var PARIS = { nom: "Paris", region: "11", lat: 48.8534, lon: 2.3488, tz: "Europe/Paris" };
+  var DEPARTEMENTS = { "01": "Ain", "02": "Aisne", "03": "Allier", "04": "Alpes-de-Haute-Provence", "05": "Hautes-Alpes",
+    "06": "Alpes-Maritimes", "07": "Ardèche", "08": "Ardennes", "09": "Ariège", "10": "Aube", "11": "Aude", "12": "Aveyron",
+    "13": "Bouches-du-Rhône", "14": "Calvados", "15": "Cantal", "16": "Charente", "17": "Charente-Maritime", "18": "Cher", "19": "Corrèze",
+    "2A": "Corse-du-Sud", "2B": "Haute-Corse", "21": "Côte-d’Or", "22": "Côtes-d’Armor", "23": "Creuse", "24": "Dordogne", "25": "Doubs",
+    "26": "Drôme", "27": "Eure", "28": "Eure-et-Loir", "29": "Finistère", "30": "Gard", "31": "Haute-Garonne", "32": "Gers",
+    "33": "Gironde", "34": "Hérault", "35": "Ille-et-Vilaine", "36": "Indre", "37": "Indre-et-Loire", "38": "Isère", "39": "Jura",
+    "40": "Landes", "41": "Loir-et-Cher", "42": "Loire", "43": "Haute-Loire", "44": "Loire-Atlantique", "45": "Loiret", "46": "Lot",
+    "47": "Lot-et-Garonne", "48": "Lozère", "49": "Maine-et-Loire", "50": "Manche", "51": "Marne", "52": "Haute-Marne", "53": "Mayenne",
+    "54": "Meurthe-et-Moselle", "55": "Meuse", "56": "Morbihan", "57": "Moselle", "58": "Nièvre", "59": "Nord", "60": "Oise", "61": "Orne",
+    "62": "Pas-de-Calais", "63": "Puy-de-Dôme", "64": "Pyrénées-Atlantiques", "65": "Hautes-Pyrénées", "66": "Pyrénées-Orientales",
+    "67": "Bas-Rhin", "68": "Haut-Rhin", "69": "Rhône", "70": "Haute-Saône", "71": "Saône-et-Loire", "72": "Sarthe", "73": "Savoie",
+    "74": "Haute-Savoie", "75": "Paris", "76": "Seine-Maritime", "77": "Seine-et-Marne", "78": "Yvelines", "79": "Deux-Sèvres",
+    "80": "Somme", "81": "Tarn", "82": "Tarn-et-Garonne", "83": "Var", "84": "Vaucluse", "85": "Vendée", "86": "Vienne",
+    "87": "Haute-Vienne", "88": "Vosges", "89": "Yonne", "90": "Territoire de Belfort", "91": "Essonne", "92": "Hauts-de-Seine",
+    "93": "Seine-Saint-Denis", "94": "Val-de-Marne", "95": "Val-d’Oise" };
+  var PARIS = { nom: "Paris", dep: "75", lat: 48.8534, lon: 2.3488, tz: "Europe/Paris" };
 
   function tous(sel, zone) { return Array.prototype.slice.call((zone || document).querySelectorAll(sel)); }
   function un(sel, zone) { return (zone || document).querySelector(sel); }
@@ -278,7 +293,7 @@
     } catch (e) { var d = new Date(); return { a: d.getFullYear(), m: d.getMonth() + 1, j: d.getDate() }; }
   }
   function instant(lieu, d, minutes) { return Date.UTC(d.a, d.m - 1, d.j) + (minutes - decalage(lieu.tz, d.a, d.m, d.j)) * 60000; }
-  function nomRegion(v) { return REGIONS[v.region] || ""; }
+  function nomRegion(v) { return v.dep && DEPARTEMENTS[v.dep] ? DEPARTEMENTS[v.dep] + " (" + v.dep + ")" : REGIONS[v.region] || ""; }
   function fuseauDe(code) { return FUSEAUX[code] || "Europe/Paris"; }
 
   function dureeTexte(ms) {
@@ -308,7 +323,8 @@
     if (!chargement) {
       chargement = fetch(base + "horaires/villes.json").then(function (r) { return r.json(); }).then(function (liste) {
         villes = liste.map(function (v) {
-          return { nom: v[0], region: v[1], lat: v[2], lon: v[3], autre: v[4] || "", tz: fuseauDe(v[1]),
+          var dep = DEPARTEMENTS[v[1]] ? v[1] : "";
+          return { nom: v[0], dep: dep, region: dep ? "" : v[1], lat: v[2], lon: v[3], autre: v[4] || "", tz: fuseauDe(v[1]),
                    cle: simplifier(v[0] + " " + (v[4] || "")) };
         });
         return villes;
@@ -344,7 +360,7 @@
       el.textContent = pro ? (pro.priere.nom + (pro.demain ? " demain" : "") + " dans " + dureeTexte(pro.dans)) : "";
     });
     tous("[data-h-ville]", zone).forEach(function (el) { el.textContent = lieu.nom; });
-    tous("[data-h-region]", zone).forEach(function (el) { el.textContent = lieu.region ? nomRegion(lieu) : ""; });
+    tous("[data-h-region]", zone).forEach(function (el) { el.textContent = nomRegion(lieu); });
     tous("[data-h-methode-nom]", zone).forEach(function (el) { el.textContent = METHODES[reglages.methode].court; });
     tous("[data-h-date]", zone).forEach(function (el) {
       el.textContent = new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })
@@ -373,9 +389,10 @@
     function afficherMessage(t) { if (message) { message.textContent = t || ""; message.hidden = !t; } }
 
     function majTitre() {
+      var n = reglages.ville.nom, lieu = /^Près de /.test(n) ? "près de " + n.slice(8) : n === "Ma position" ? "à votre position" : "à " + n;
       var titre = un("[data-h-titre]");
-      if (titre) titre.textContent = "Horaires de prière à " + reglages.ville.nom;
-      document.title = "Horaires de prière à " + reglages.ville.nom + " · Islamedia.fr";
+      if (titre) titre.textContent = "Horaires de prière " + lieu;
+      document.title = "Horaires de prière " + lieu + " · Islamedia.fr";
     }
     function majInfo() {
       if (!info) return;
@@ -407,7 +424,7 @@
       tous("[data-h-mois-titre]", zone).forEach(function (el) { el.textContent = titre.charAt(0).toUpperCase() + titre.slice(1); });
       tous("[data-h-legende]", zone).forEach(function (el) { el.hidden = !estime; });
       tous("[data-h-impression]", zone).forEach(function (el) {
-        el.textContent = lieu.nom + (lieu.region ? " (" + nomRegion(lieu) + ")" : "") + " · méthode\u00a0: " + METHODES[reglages.methode].court +
+        el.textContent = lieu.nom + (nomRegion(lieu) ? ", " + nomRegion(lieu) : "") + " · méthode\u00a0: " + METHODES[reglages.methode].court +
           (reglages.asr === "hanafite" ? " · asr hanafite" : "") + " · islamedia.fr/horaires";
       });
     }
@@ -420,7 +437,7 @@
       afficherMessage(nord ? "Au-delà du 60ᵉ parallèle, les méthodes de calcul ne s’appliquent plus vraiment\u00a0: renseignez-vous auprès de votre mosquée." : "");
     }
     function choisir(v) {
-      reglages.ville = { nom: v.nom, region: v.region || "", lat: v.lat, lon: v.lon, tz: v.tz };
+      reglages.ville = { nom: v.nom, dep: v.dep || "", region: v.region || "", lat: v.lat, lon: v.lon, tz: v.tz };
       ecrire(reglages); mois = null; tout(); fermer();
       if (champ) { champ.value = ""; champ.blur(); }
     }
@@ -486,7 +503,7 @@
           try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || tz; } catch (e) {}
           chargerVilles(base).catch(function () { return null; }).then(function () {
             var proche = plusProche(lat, lon);
-            choisir({ nom: proche ? "Près de " + proche.nom : "Ma position", region: proche ? proche.region : "", lat: lat, lon: lon, tz: tz });
+            choisir({ nom: proche ? "Près de " + proche.nom : "Ma position", dep: proche ? proche.dep : "", region: proche ? proche.region : "", lat: lat, lon: lon, tz: tz });
             afficherMessage(""); boutonGeo.disabled = false;
           });
         }, function (err) {

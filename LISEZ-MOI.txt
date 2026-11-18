@@ -140,8 +140,10 @@ laisser, ils ne gênent pas.
    villes : 95 % identiques à la minute, aucun écart de plus d'une minute.
  • Autres méthodes au choix : Musulmans de France (12°), Ligue islamique
    mondiale, 15° (ISNA), Égypte, Umm al-Qura, Karachi ; asr standard ou
-   hanafite. Le visiteur choisit sa ville (France, DOM, Belgique, Suisse,
-   Luxembourg, Monaco) ou se localise ; son choix reste dans son navigateur.
+   hanafite. Le visiteur choisit sa ville (toutes les communes de France
+   et des DOM de plus de 1 000 habitants, plus les grandes villes de
+   Belgique, de Suisse et du Luxembourg, et Monaco) ou se localise ; son
+   choix reste dans son navigateur.
  • Sans choix, la ville affichée est Paris, y compris sur l'accueil.
  • Liste des villes : GeoNames (licence CC BY 4.0, citée sur la page).
 
