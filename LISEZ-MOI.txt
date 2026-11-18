@@ -109,7 +109,10 @@ laisser, ils ne gênent pas.
 -------------------
  • Tes liens (TikTok, Instagram, YouTube), ton e-mail et ton nom :
    ouvre script.js, remplis le bloc RÉGLAGES tout en haut, enregistre.
-   Les boutons apparaissent tout seuls quand un lien est rempli.
+   Les boutons apparaissent tout seuls quand un lien est rempli : dans la
+   partie Contact de l'accueil, sur les séries vidéo et en bas de chaque page.
+   TikTok et Instagram sont déjà remplis (@islamedia.fr sur les deux).
+   Il reste YouTube, ton e-mail et ton nom.
    Sur GitHub : clique sur script.js > icône crayon > modifie >
    « Commit changes ». Le site se met à jour en une minute environ.
  • Les textes : dans index.html, les phrases sont lisibles entre les balises.

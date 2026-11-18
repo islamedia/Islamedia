@@ -7,8 +7,8 @@
    n'existe pas : le bouton correspondant restera caché automatiquement.
    -------------------------------------------------------------------------- */
 const REGLAGES = {
-  tiktok:    "",   // ex. : "https://www.tiktok.com/@ton_compte"
-  instagram: "",   // ex. : "https://www.instagram.com/ton_compte"
+  tiktok:    "https://www.tiktok.com/@islamedia.fr",
+  instagram: "https://www.instagram.com/islamedia.fr/",
   youtube:   "",   // ex. : "https://www.youtube.com/@ton_compte"
   email:     "",   // ex. : "contact@islamedia.fr"
   editeur:   "",   // ton prénom et ton nom (affichés dans les mentions légales)
@@ -204,6 +204,7 @@ const REGLAGES = {
   });
   var aucunReseau = !propre("tiktok") && !propre("instagram") && !propre("youtube");
   tous("[data-si-aucun-reseau]").forEach(function (el) { el.hidden = !aucunReseau; });
+  tous("[data-si-reseau]").forEach(function (el) { el.hidden = aucunReseau; });
 
   /* 10. Année du pied de page -------------------------------------------------- */
   tous("[data-annee]").forEach(function (el) { el.textContent = new Date().getFullYear(); });

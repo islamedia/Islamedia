@@ -504,6 +504,9 @@ h1, h2, h3 { margin: 0; font-family: var(--police-titre); font-weight: 800; line
 .pied { padding: 54px 0 34px; background: var(--nuit); color: rgba(244, 240, 230, .78); font-size: .92rem; border-top: 1px solid rgba(244, 240, 230, .08); }
 .pied__haut { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px; }
 .pied__slogan { margin-top: 12px; }
+.pied__reseaux { margin-top: 14px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+.pied__reseaux span { color: rgba(244, 240, 230, .62); }
+.pied__reseaux a { font-weight: 600; }
 .pied nav { display: flex; flex-wrap: wrap; gap: 6px 20px; }
 .pied a { color: var(--ivoire); text-decoration: none; }
 .pied a:hover { color: var(--or); }
