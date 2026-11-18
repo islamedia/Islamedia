@@ -113,6 +113,7 @@ laisser, ils ne gênent pas.
    partie Contact de l'accueil, sur les séries vidéo et en bas de chaque page.
    TikTok et Instagram sont déjà remplis (@islamedia.fr sur les deux).
    Il reste YouTube, ton e-mail et ton nom.
+   Le même bloc contient les dates du Ramadan (voir la partie 6).
    Sur GitHub : clique sur script.js > icône crayon > modifie >
    « Commit changes ». Le site se met à jour en une minute environ.
  • Les textes : dans index.html, les phrases sont lisibles entre les balises.
@@ -177,6 +178,20 @@ laisser, ils ne gênent pas.
  • Sans choix, la ville affichée est Paris, y compris sur l'accueil.
  • Liste des villes : GeoNames (licence CC BY 4.0, citée sur la page).
    Genève et Anvers y figurent depuis le 18/11/2026 (elles manquaient).
+ • Impression (depuis le 18/11/2026) : le bouton « Imprimer » donne une
+   feuille A4 aux couleurs d'Islamedia (logo, zellige doré) : le mois
+   affiché pour la ville et la méthode du visiteur, une barre qui montre la
+   journée (nuit, jour, prières), et en bas @islamedia.fr et un QR code vers
+   la page des horaires. Même feuille en turc sur la version turque.
+ • Ramadan : 40 jours avant et pendant le mois, un encart « Ramadan » apparaît
+   en haut de la page des horaires, avec un bouton pour imprimer le
+   calendrier du Ramadan (Fajr et Maghrib en gras, durée du jeûne chaque
+   jour, dix derniers jours marqués, date de l'Aïd). L'accueil affiche aussi
+   un lien « Calendrier du Ramadan à imprimer ».
+   Les dates sont calculées (calendrier Umm al-Qura) et notées « à
+   confirmer ». Dès l'annonce officielle, remplis dans script.js, bloc
+   RÉGLAGES : ramadan_debut (1er jour) et aid_al_fitr (jour de l'Aïd), au
+   format année-mois-jour, par exemple "2027-02-08" et "2027-03-09".
 
 
 7. VERSION TURQUE (tr/)

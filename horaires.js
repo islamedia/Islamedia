@@ -268,9 +268,6 @@
     titre: function (v) { return v.position ? "Konumunuza göre namaz vakitleri" : nomAffiche(v) + " namaz vakitleri"; },
     prochaine: function (nom, demain, duree) { return (demain ? "Yarınki " : "") + nom + " vaktine " + duree + " kaldı"; },
     duree: function (h, mn) { return h ? h + " sa " + String(mn).padStart(2, "0") + " dk" : mn + " dk"; },
-    impression: function (lieu, region, m, hanafite) {
-      return lieu + (region ? ", " + region : "") + " · yöntem: " + m + (hanafite ? " · asr-ı sânî" : "") + " · islamedia.fr/tr/namaz-vakitleri";
-    },
     aucune: "Şehir bulunamadı. “Konumumu bul” düğmesini deneyin.",
     erreurListe: "Şehir listesi yüklenemedi. Bağlantınızı kontrol edin.",
     recherche: "Konumunuz aranıyor…",
@@ -285,9 +282,6 @@
     titre: function (v) { return "Horaires de prière " + (v.position ? "à votre position" : v.pres ? "près de " + v.nom : "à " + v.nom); },
     prochaine: function (nom, demain, duree) { return nom + (demain ? " demain" : "") + " dans " + duree; },
     duree: function (h, mn) { return h ? h + " h " + String(mn).padStart(2, "0") : mn + " min"; },
-    impression: function (lieu, region, m, hanafite) {
-      return lieu + (region ? ", " + region : "") + " · méthode : " + m + (hanafite ? " · asr hanafite" : "") + " · islamedia.fr/horaires";
-    },
     aucune: "Aucune ville trouvée. Essayez « Me localiser ».",
     erreurListe: "La liste des villes n’a pas pu être chargée. Vérifiez votre connexion.",
     recherche: "Recherche de votre position…",
@@ -328,6 +322,223 @@
     "87": "Haute-Vienne", "88": "Vosges", "89": "Yonne", "90": "Territoire de Belfort", "91": "Essonne", "92": "Hauts-de-Seine",
     "93": "Seine-Saint-Denis", "94": "Val-de-Marne", "95": "Val-d’Oise" };
   var PARIS = { nom: "Paris", dep: "75", lat: 48.8534, lon: 2.3488, tz: "Europe/Paris" };
+
+  /* 5. RAMADAN ET FEUILLE IMPRIMÉE ---------------------------------------------- */
+  /* Textes de la feuille A4 (mois affiché ou Ramadan) et de l'encart « Ramadan » */
+  var F = TR ? {
+    surMois: function (m) { return "Namaz vakitleri, " + m; },
+    surRamadan: function (an) { return an ? "Ramazan " + an + " imsakiyesi" : "Ramazan imsakiyesi"; },
+    colonnes: ["İmsak", "Güneş", "Öğle", "İkindi", "Akşam", "Yatsı"], jour: "Gün", date: "Tarih", journee: "Gün boyu", jeune: "Oruç süresi",
+    heure: "", et: "ve", ar: "مواقيت الصلاة",
+    legende: ["gece", "gündüz", "vakitler"], legendeRamadan: ["oruç, imsaktan akşama", "gece", "imsak, akşam, yatsı", "son on gün"],
+    estime: "* tahminî vakit (yaz kuralı)",
+    periode: function (d1, d2) { return d1 + " – " + d2; },
+    aid: function (d) { return "Ramazan Bayramı: " + d; },
+    aConfirmer: "Tarihler resmî duyuruyla kesinleşir.",
+    methode: function (cle, nom, hanafite) {
+      return (cle === "diyanet" ? "Diyanet (DİTİB) yöntemi, resmî takvimleriyle karşılaştırılmıştır." : "Yöntem: " + nom + ".") + (hanafite ? " İkindi: asr-ı sânî (Hanefî)." : "");
+    },
+    carteTitre: function (an) { return an ? "Ramazan " + an : "Ramazan"; },
+    carteTexte: function (periode, confirme) {
+      return periode + (confirme ? "" : " (tahminî tarihler, resmî duyuruyla kesinleşir)") + ". Şehrinizin imsakiyesini, her günün oruç süresiyle tek sayfada yazdırın.";
+    },
+    nord: "K", sud: "G", est: "D", ouest: "B"
+  } : {
+    surMois: function (m) { return "Horaires de prière, " + m; },
+    surRamadan: function (an) { return an ? "Calendrier du Ramadan " + an : "Calendrier du Ramadan"; },
+    colonnes: ["Fajr", "Lever", "Dhuhr", "Asr", "Maghrib", "Isha"], jour: "Jour", date: "Date", journee: "La journée", jeune: "Durée du jeûne",
+    heure: " h", et: "et", ar: "مواقيت الصلاة",
+    legende: ["nuit", "jour", "prières"], legendeRamadan: ["jeûne, du fajr au maghrib", "nuit", "fajr, maghrib, isha", "les dix derniers jours"],
+    estime: "* horaire estimé (règle d’été)",
+    periode: function (d1, d2) { return "Du " + d1 + " au " + d2; },
+    aid: function (d) { return "Aïd al-Fitr le " + d; },
+    aConfirmer: "Dates à confirmer à l’annonce officielle.",
+    methode: function (cle, nom, hanafite) {
+      return (cle === "diyanet" ? "Méthode Diyanet (DITIB), comparée à ses calendriers officiels." : "Méthode : " + nom + ".") + (hanafite ? " Asr selon l’école hanafite." : "");
+    },
+    carteTitre: function (an) { return an ? "Ramadan " + an : "Ramadan"; },
+    carteTexte: function (periode, confirme) {
+      return periode + (confirme ? "" : " (dates à confirmer à l’annonce officielle)") + ". Imprimez le calendrier de votre ville sur une page, avec la durée du jeûne de chaque jour.";
+    },
+    nord: "N", sud: "S", est: "E", ouest: "O"
+  };
+  /* Mois de l'hégire : calendrier Umm al-Qura du navigateur, donné à titre indicatif */
+  var MOIS_HIJRI = TR
+    ? ["Muharrem", "Safer", "Rebiülevvel", "Rebiülahir", "Cemaziyelevvel", "Cemaziyelahir", "Recep", "Şaban", "Ramazan", "Şevval", "Zilkade", "Zilhicce"]
+    : ["Mouharram", "Safar", "Rabi al-Awwal", "Rabi ath-Thani", "Joumada al-Oula", "Joumada ath-Thania", "Rajab", "Chaabane", "Ramadan", "Chawwal", "Dhou al-Qi’da", "Dhou al-Hijja"];
+  var CHIFFRES_AR = "٠١٢٣٤٥٦٧٨٩";
+  var COULEURS = { vert: "#123B2F", or: "#C5A15B", brume: "#DDE6DE", jour: "#F4E5BC" };
+  var fmtHijri = null;
+  try {
+    fmtHijri = new Intl.DateTimeFormat("en-u-ca-islamic-umalqura", { day: "numeric", month: "numeric", year: "numeric", timeZone: "UTC" });
+    if (!/^islamic/.test(fmtHijri.resolvedOptions().calendar)) fmtHijri = null;
+  } catch (e) { fmtHijri = null; }
+
+  /* Les jours sont numérotés depuis le 1er janvier 1970 : plus simple pour compter. */
+  function jourNum(d) { return Math.round(Date.UTC(d.a, d.m - 1, d.j) / 86400000); }
+  function numJour(n) { var x = new Date(n * 86400000); return { a: x.getUTCFullYear(), m: x.getUTCMonth() + 1, j: x.getUTCDate(), sem: x.getUTCDay() }; }
+  function hijri(n) {
+    if (!fmtHijri) return null;
+    var p = {};
+    fmtHijri.formatToParts(new Date(n * 86400000)).forEach(function (x) { p[x.type] = x.value; });
+    return { a: parseInt(p.year, 10), m: parseInt(p.month, 10), j: parseInt(p.day, 10) };
+  }
+  function chiffresArabes(n) { return String(n).replace(/[0-9]/g, function (c) { return CHIFFRES_AR.charAt(+c); }); }
+  function echapperHTML(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  /* Réglages du site (bloc RÉGLAGES de script.js, chargé après ce fichier) */
+  function reglagesSite() { return typeof REGLAGES !== "undefined" && REGLAGES ? REGLAGES : {}; }
+  function lireDate(t) { var x = /^\s*(\d{4})-(\d{1,2})-(\d{1,2})\s*$/.exec(String(t || "")); return x ? jourNum({ a: +x[1], m: +x[2], j: +x[3] }) : null; }
+
+  /* Le Ramadan en cours, ou le prochain : les dates du bloc RÉGLAGES quand elles sont remplies
+     (après l'annonce officielle), sinon le calendrier Umm al-Qura, affiché « à confirmer ». */
+  var memoRamadan = {};
+  function ramadanAutour(auj) {
+    var R = reglagesSite(), cle = auj + "|" + (R.ramadan_debut || "") + "|" + (R.aid_al_fitr || "");
+    if (cle in memoRamadan) return memoRamadan[cle];
+    var res = null, d = lireDate(R.ramadan_debut), aid = lireDate(R.aid_al_fitr), h;
+    if (d !== null && aid !== null && aid - d >= 29 && aid - d <= 30 && aid >= auj) {
+      h = hijri(d + 14);
+      res = { debut: d, fin: aid - 1, aid: aid, annee: h ? h.a : null, confirme: true };
+    } else if (fmtHijri) {
+      var debut = null, h0 = hijri(auj);
+      if (h0.m === 9) debut = auj - h0.j + 1;
+      else for (var k = 1; k <= 400 && debut === null; k++) { h = hijri(auj + k); if (h.m === 9 && h.j === 1) debut = auj + k; }
+      if (debut !== null) {
+        var fin = debut + 28;
+        while (fin < debut + 29 && hijri(fin + 1).m === 9) fin++;
+        res = { debut: debut, fin: fin, aid: fin + 1, annee: hijri(debut).a, confirme: false };
+      }
+    }
+    return (memoRamadan[cle] = res);
+  }
+  /* L'encart et le lien « Ramadan » apparaissent 40 jours avant, et jusqu'au dernier jour. */
+  function dansFenetre(ram, auj) { return !!ram && auj >= ram.debut - 40 && auj <= ram.fin; }
+  function chevaucheMois(ram, m) {
+    if (!ram || !m) return false;
+    var a = jourNum({ a: m.a, m: m.m, j: 1 }), b = a + new Date(Date.UTC(m.a, m.m, 0)).getUTCDate() - 1;
+    return a <= ram.fin && b >= ram.debut;
+  }
+  function dateLongue(n, avecAnnee) {
+    var o = { day: "numeric", month: "long", timeZone: "UTC" };
+    if (avecAnnee) o.year = "numeric";
+    var t = new Intl.DateTimeFormat(LOCALE, o).format(new Date(n * 86400000));
+    return TR ? t : t.replace(/^1 /, "1er ");
+  }
+  function periodeRamadan(ram) {
+    return F.periode(dateLongue(ram.debut, numJour(ram.debut).a !== numJour(ram.fin).a), dateLongue(ram.fin, true));
+  }
+  function moisHijriTexte(n1, n2) {
+    if (!fmtHijri) return "";
+    var liste = [], dernier = "";
+    for (var n = n1; n <= n2; n++) { var h = hijri(n), c = h.a + "-" + h.m; if (c !== dernier) { liste.push(h); dernier = c; } }
+    var noms = liste.map(function (h, i) { var s = liste[i + 1]; return MOIS_HIJRI[h.m - 1] + (!s || s.a !== h.a ? " " + h.a : ""); });
+    return noms.length === 1 ? noms[0] : noms.slice(0, -1).join(", ") + "<br>" + F.et + " " + noms[noms.length - 1];
+  }
+  function coordonnees(l) {
+    var f = new Intl.NumberFormat(LOCALE, { maximumFractionDigits: 2 });
+    return f.format(Math.abs(l.lat)) + "° " + (l.lat >= 0 ? F.nord : F.sud) + ", " + f.format(Math.abs(l.lon)) + "° " + (l.lon >= 0 ? F.est : F.ouest);
+  }
+  function minutes(x) { return x === null || x === undefined || isNaN(x) ? null : Math.floor(x + 0.5); }
+  function pastille(couleur, rond) {
+    return '<svg class="fi__pastille" viewBox="0 0 10 5" aria-hidden="true">' +
+      (rond ? '<circle cx="5" cy="2.5" r="1.7" fill="' + couleur + '"/>' : '<rect y="0.4" width="10" height="4.2" rx="2.1" fill="' + couleur + '"/>') + "</svg>";
+  }
+  /* La journée en une ligne : nuit, jour (du lever au coucher), prières ; en Ramadan, le jeûne en or. */
+  function barreJour(r, debut, fin, largeur, ramadan) {
+    var pos = function (m) { return Math.max(0, Math.min(largeur, (m - debut) / (fin - debut) * largeur)); }, x = function (v) { return v.toFixed(2); };
+    var fajr = minutes(r.fajr), lever = minutes(r.lever), maghrib = minutes(r.maghrib), isha = minutes(r.isha);
+    if (isha !== null && maghrib !== null && isha < maghrib) isha += 1440;
+    var s = '<svg class="fi__barre" viewBox="0 0 ' + largeur + ' 4" aria-hidden="true"><rect y="0.6" width="' + largeur + '" height="2.8" rx="1.4" fill="' + COULEURS.brume + '"/>';
+    if (lever !== null && maghrib !== null) s += '<rect x="' + x(pos(lever)) + '" y="0.6" width="' + x(pos(maghrib) - pos(lever)) + '" height="2.8" fill="' + COULEURS.jour + '"/>';
+    if (ramadan && fajr !== null && maghrib !== null) s += '<rect x="' + x(pos(fajr)) + '" y="1.05" width="' + x(pos(maghrib) - pos(fajr)) + '" height="1.9" rx="0.95" fill="' + COULEURS.or + '"/>';
+    (ramadan ? ["fajr", "maghrib", "isha"] : ["fajr", "dhuhr", "asr", "maghrib", "isha"]).forEach(function (k) {
+      var v = k === "isha" ? isha : minutes(r[k]);
+      if (v !== null && v >= debut && v <= fin) s += '<circle cx="' + x(pos(v)) + '" cy="2" r="0.85" fill="' + COULEURS.vert + '"/>';
+    });
+    return s + "</svg>";
+  }
+  /* Taille du nom de la ville : 44 pt, réduite pour les noms longs (110 mm de large au plus). */
+  var mesureur = null;
+  function ajusterVille(el) {
+    var taille = 44, max = 110 / 25.4 * 96, texte = el.textContent;
+    try {
+      mesureur = mesureur || document.createElement("canvas").getContext("2d");
+      mesureur.font = "800 " + taille + "pt Manrope, sans-serif";
+      var l = mesureur.measureText(texte).width;
+      if (l > max) taille = Math.max(20, Math.floor(taille * max / l));
+    } catch (e) { if (texte.length > 12) taille = Math.max(20, Math.floor(44 * 12 / texte.length)); }
+    el.style.fontSize = taille + "pt";
+  }
+  /* Remplit la feuille imprimée : mode « mois » (le mois affiché) ou « ramadan ». Renvoie le mode retenu. */
+  function remplirFeuille(f, mode, reglages, mois) {
+    if (!f) return "mois";
+    var lieu = reglages.ville, auj = aujourdhui(lieu.tz), ram = mode === "ramadan" ? ramadanAutour(jourNum(auj)) : null, jours = [], n, k;
+    if (ram) for (n = ram.debut; n <= ram.fin; n++) jours.push(n);
+    else {
+      var m = mois || { a: auj.a, m: auj.m }, n0 = jourNum({ a: m.a, m: m.m, j: 1 }), nb = new Date(Date.UTC(m.a, m.m, 0)).getUTCDate();
+      for (k = 0; k < nb; k++) jours.push(n0 + k);
+    }
+    var lignes = jours.map(function (n) { var d = numJour(n); return { n: n, d: d, r: calculer(lieu, d.a, d.m, d.j, reglages) }; });
+    var bas = Infinity, haut = -Infinity;
+    lignes.forEach(function (l) {
+      if (!l.r) return;
+      var f0 = minutes(l.r.fajr), i0 = minutes(l.r.isha), m0 = minutes(l.r.maghrib);
+      if (f0 !== null) bas = Math.min(bas, f0);
+      if (i0 !== null) { if (m0 !== null && i0 < m0) i0 += 1440; haut = Math.max(haut, i0); }
+    });
+    if (!isFinite(bas)) bas = 300;
+    if (!isFinite(haut)) haut = 1320;
+    var debut = Math.max(0, Math.floor((bas - 40) / 60) * 60), fin = Math.min(1560, Math.ceil((haut + 40) / 60) * 60);
+    var largeur = ram ? 44 : 50, pas = ram || fin - debut > 15 * 60 ? 6 : 3, grad = ""; /* graduations assez espacées pour rester lisibles */
+    for (var h = Math.floor(debut / 60) + 1; h * 60 < fin; h++) {
+      if (h % pas === 0) grad += '<span style="left:' + ((h * 60 - debut) / (fin - debut) * 100).toFixed(2) + '%">' + (h % 24) + F.heure + "</span>";
+    }
+    var fmtSem = new Intl.DateTimeFormat(LOCALE, { weekday: "short", timeZone: "UTC" }), fmtMois = new Intl.DateTimeFormat(LOCALE, { month: "short", timeZone: "UTC" });
+    var cols = ["fajr", "lever", "dhuhr", "asr", "maghrib", "isha"], estime = false;
+    var fort = function (c) { return ram && (c === "fajr" || c === "maghrib") ? ' class="fort"' : ""; };
+    var entetes = "<tr>" + (ram ? '<th class="c-jour">' + F.jour + '</th><th class="c-date">' + F.date + "</th>" : '<th class="c-date">' + F.jour + "</th>") +
+      cols.map(function (c, i) { return "<th" + fort(c) + ">" + F.colonnes[i] + "</th>"; }).join("") +
+      '<th class="c-barre">' + (ram ? F.jeune : F.journee) + '<div class="fi__grad">' + grad + "</div></th></tr>";
+    var corps = lignes.map(function (l, i) {
+      var r = l.r, dt = new Date(l.n * 86400000), sem = fmtSem.format(dt);
+      var cases = cols.map(function (c) {
+        var e = !!(r && r.estime && r.estime[c]);
+        if (e) estime = true;
+        return "<td" + fort(c) + ">" + (r ? hm(r[c]) : "—") + (e ? "*" : "") + "</td>";
+      }).join("");
+      var duree = "";
+      if (ram && r && minutes(r.fajr) !== null && minutes(r.maghrib) !== null) {
+        var dm = minutes(r.maghrib) - minutes(r.fajr);
+        duree = '<span class="fi__duree">' + T.duree(Math.floor(dm / 60), dm % 60) + "</span>";
+      }
+      return "<tr" + (l.d.sem === 5 ? ' class="ven"' : "") + ">" +
+        (ram ? '<td class="c-jour"><span' + (i >= 20 ? ' class="fin"' : "") + ">" + (i + 1) + "</span></td>" : "") +
+        '<td class="c-date">' + sem + " " + (ram && !TR && l.d.j === 1 ? "1er" : l.d.j) + (ram ? " " + fmtMois.format(dt) : "") + "</td>" + cases +
+        '<td class="c-barre"><div class="fi__ligne">' + (r ? barreJour(r, debut, fin, largeur, !!ram) : "") + duree + "</div></td></tr>";
+    }).join("");
+    var legende = ram
+      ? [pastille(COULEURS.or) + F.legendeRamadan[0], pastille(COULEURS.brume) + F.legendeRamadan[1], pastille(COULEURS.vert, true) + F.legendeRamadan[2], "<b>21</b>" + F.legendeRamadan[3]]
+      : [pastille(COULEURS.brume) + F.legende[0], pastille(COULEURS.jour) + F.legende[1], pastille(COULEURS.vert, true) + F.legende[2]];
+    if (estime) legende.push(F.estime);
+
+    var ville = un("[data-fi-ville]", f);
+    un("[data-fi-sur]", f).textContent = ram ? F.surRamadan(ram.annee) :
+      F.surMois(new Intl.DateTimeFormat(LOCALE, { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(jours[0] * 86400000)));
+    ville.textContent = nomAffiche(lieu);
+    ajusterVille(ville);
+    un("[data-fi-region]", f).textContent = lieu.position ? coordonnees(lieu) : nomRegion(lieu);
+    un("[data-fi-ar]", f).textContent = ram ? "رمضان" + (ram.annee ? " " + chiffresArabes(ram.annee) : "") : F.ar;
+    un("[data-fi-dates]", f).innerHTML = ram
+      ? echapperHTML(periodeRamadan(ram)) + "<br>" + echapperHTML(F.aid(dateLongue(ram.aid, false))) +
+        (ram.confirme ? "" : '<br><span class="fi__petit">' + echapperHTML(F.aConfirmer) + "</span>")
+      : moisHijriTexte(jours[0], jours[jours.length - 1]);
+    un("[data-fi-entetes]", f).innerHTML = entetes;
+    un("[data-fi-corps]", f).innerHTML = corps;
+    un("[data-fi-legende]", f).innerHTML = legende.map(function (x) { return "<span>" + x + "</span>"; }).join("");
+    un("[data-fi-methode]", f).textContent = F.methode(reglages.methode, methode(reglages.methode).nom, reglages.asr === "hanafite");
+    f.classList.toggle("fi--ramadan", !!ram);
+    return ram ? "ramadan" : "mois";
+  }
 
   function tous(sel, zone) { return Array.prototype.slice.call((zone || document).querySelectorAll(sel)); }
   function un(sel, zone) { return (zone || document).querySelector(sel); }
@@ -443,9 +654,15 @@
 
   /* Encart de l'accueil */
   function accueil(zone) {
-    var reglages = lire();
+    var reglages = lire(), lien = un("[data-h-ramadan-lien]");
     var maj = function () { remplirJour(zone, reglages.ville, reglages); zone.hidden = false; };
-    maj();
+    var majLien = function () {
+      if (!lien) return;
+      var auj = jourNum(aujourdhui(reglages.ville.tz));
+      lien.hidden = !dansFenetre(ramadanAutour(auj), auj);
+    };
+    maj(); majLien();
+    document.addEventListener("DOMContentLoaded", majLien); /* une fois script.js chargé (dates du bloc RÉGLAGES) */
     setInterval(maj, 30000);
   }
 
@@ -458,6 +675,7 @@
     var champ = un("[data-h-recherche]", zone), liste = un("[data-h-resultats]", zone);
     var info = un("[data-h-info]", zone), message = un("[data-h-message]", zone);
     var actif = -1, resultats = [];
+    var feuille = un("[data-h-feuille]"), modeFeuille = "mois", carteRamadan = un("[data-h-ramadan]", zone), vuRamadan = false;
 
     function afficherMessage(t) { if (message) { message.textContent = t || ""; message.hidden = !t; } }
 
@@ -494,9 +712,19 @@
       var titre = new Intl.DateTimeFormat(LOCALE, { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(mois.a, mois.m - 1, 1)));
       tous("[data-h-mois-titre]", zone).forEach(function (el) { el.textContent = titre.charAt(0).toLocaleUpperCase(LOCALE) + titre.slice(1); });
       tous("[data-h-legende]", zone).forEach(function (el) { el.hidden = !estime; });
-      tous("[data-h-impression]", zone).forEach(function (el) {
-        el.textContent = T.impression(nomAffiche(lieu), nomRegion(lieu), methode(reglages.methode).court, reglages.asr === "hanafite");
-      });
+      modeFeuille = remplirFeuille(feuille, "mois", reglages, mois);
+      majRamadan();
+    }
+    /* Encart « Ramadan » : 40 jours avant et pendant le mois, ou quand le mois affiché en contient des jours */
+    function majRamadan() {
+      if (!carteRamadan) return;
+      var auj = jourNum(aujourdhui(reglages.ville.tz)), ram = ramadanAutour(auj);
+      var voir = !!ram && (dansFenetre(ram, auj) || chevaucheMois(ram, mois));
+      carteRamadan.hidden = !voir;
+      if (!voir) return;
+      un("[data-h-ramadan-titre]", carteRamadan).textContent = F.carteTitre(ram.annee);
+      un("[data-h-ramadan-texte]", carteRamadan).textContent = F.carteTexte(periodeRamadan(ram), ram.confirme);
+      if (!vuRamadan && location.hash === "#ramadan") { vuRamadan = true; carteRamadan.scrollIntoView(); }
     }
     function tout() {
       remplirJour(zone, reglages.ville, reglages);
@@ -596,8 +824,14 @@
         rendreMois();
       });
     });
-    var boutonImprimer = un("[data-h-imprimer]", zone);
-    if (boutonImprimer) boutonImprimer.addEventListener("click", function () { window.print(); });
+    /* Impression : la feuille A4 est remplie juste avant (mois affiché, ou Ramadan), puis remise sur le mois. */
+    var boutonImprimer = un("[data-h-imprimer]", zone), boutonRamadan = un("[data-h-imprimer-ramadan]", zone);
+    if (boutonImprimer) boutonImprimer.addEventListener("click", function () { modeFeuille = remplirFeuille(feuille, "mois", reglages, mois); window.print(); });
+    if (boutonRamadan) boutonRamadan.addEventListener("click", function () { modeFeuille = remplirFeuille(feuille, "ramadan", reglages, mois); window.print(); });
+    window.addEventListener("afterprint", function () { if (modeFeuille !== "mois") modeFeuille = remplirFeuille(feuille, "mois", reglages, mois); });
+    document.addEventListener("DOMContentLoaded", function () { /* une fois script.js chargé (dates du bloc RÉGLAGES) */
+      majRamadan(); modeFeuille = remplirFeuille(feuille, modeFeuille, reglages, mois);
+    });
 
     tout();
     zone.classList.add("est-pret");

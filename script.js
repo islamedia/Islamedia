@@ -12,6 +12,10 @@ const REGLAGES = {
   youtube:   "",   // ex. : "https://www.youtube.com/@ton_compte"
   email:     "",   // ex. : "contact@islamedia.fr"
   editeur:   "",   // ton prénom et ton nom (affichés dans les mentions légales)
+  /* Ramadan : à remplir après l'annonce officielle (format année-mois-jour).
+     Tant que c'est vide, le site calcule les dates (calendrier Umm al-Qura) et écrit « à confirmer ». */
+  ramadan_debut: "",   // 1er jour du Ramadan, ex. : "2027-02-08"
+  aid_al_fitr:   "",   // jour de l'Aïd al-Fitr, ex. : "2027-03-09"
 };
 /* ===== Fin des réglages : ne modifie rien en dessous de cette ligne ===== */
 
